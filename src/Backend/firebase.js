@@ -1,4 +1,3 @@
-
 const app = {
     apiKey: process.env.apiKey,
     authDomain: process.env.authDomain,
