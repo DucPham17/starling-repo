@@ -2,10 +2,10 @@ import React from 'react';
 import {Button, Container, Row, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import './Homepage.css';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div className="grid-container">
-        
             <h1 className="grid-container--header">
                 Welcome to our Workspace.
             </h1>
@@ -27,5 +27,5 @@ const Home = () => {
         </div>
     )
 }
-
+export default Home
  

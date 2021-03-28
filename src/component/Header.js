@@ -23,8 +23,8 @@ const Header = () => {
                 
                 <NavDropdown title="Account" id="collasible-nav-dropdown" className='userName'>
                     <img src={cat} className='userImage'/>
-                    <NavDropdown.Item href="">Profile</NavDropdown.Item>
-                    <NavDropdown.Item href="">Sign Out</NavDropdown.Item>
+                    <NavDropdown.Item href='/home'>Profile</NavDropdown.Item>
+                    <NavDropdown.Item href='/home'>Sign Out</NavDropdown.Item>
                 </NavDropdown>
             </Navbar>
             
