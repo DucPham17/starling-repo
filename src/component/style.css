@@ -1,0 +1,25 @@
+/* Header */
+.appName {
+    float: left;
+}
+.userName {
+    float: right;
+}
+
+.logoImage {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.userImage {
+    width: 75px;
+    height: 75px;
+}
+
+/* Footer */
+
+/* Menu */
+.navItem {
+    display: block;
+}
