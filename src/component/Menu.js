@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import './style.css';
-import {Link, NavLink, Route, Router, useLocation} from 'react-router-dom'
+import {useHistory, useLocation} from 'react-router-dom'
 
 
 const routes = [
@@ -25,6 +25,8 @@ const routes = [
 ];
 const Menu = () => {
     const location = useLocation();
+    const history = useHistory();
+
     return (
         <div> 
             <Navbar>
@@ -33,9 +35,10 @@ const Menu = () => {
                     routes.map((route) => 
                     <Nav.Item>
                         <Nav.Link 
-                        href={route.href}
-                        active={location.pathname === route.href}>
-                        <p>{route.label}</p>
+                            onClick={() => history.push(route.href)}
+                            active={location.pathname === route.href}
+                        >
+                            <p>{route.label}</p>
                         </Nav.Link>
                     </Nav.Item>
                     )
