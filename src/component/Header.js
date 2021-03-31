@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button, Container, Row, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import logo from '../constant/logo192.png'
-import cat from '../constant/cat.jpg'
+import cat from '../resources/images/cat.jpg'
 import './style.css';
 import { useHistory } from 'react-router';
+import { Logo } from './common/Logo';
 
 const Header = () => {
     const history = useHistory();
@@ -19,8 +19,7 @@ const Header = () => {
             </Row>*/}
             <Navbar col lapseOnSelect id='navbar' expand='lg' bg='dark' variant='dark'>
                 <Navbar.Brand className='appName' onClick={() => history.push('/')}> 
-                    <img src={logo} className='logoImage mr-2'/>
-                    STARLING
+                    <Logo/>
                 </Navbar.Brand>
                 
                 <NavDropdown title="Account" id="collasible-nav-dropdown" className='userName'>

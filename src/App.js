@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import Report from './pages/Report'
 import Lists from './pages/Lists'
 import Home from './pages/Home'
+
 function App() {
   return(
     <div>
@@ -15,7 +16,6 @@ function App() {
       <Menu/>
       
       <Switch> 
-        {/*<Route exact path="/" component={}/>*/}
         <Route exact path="/dashboard" component={Dashboard}/>
         <Route exact path="/report" component={Report}/>
         <Route exact path="/lists" component={Lists}/>

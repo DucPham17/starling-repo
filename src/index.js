@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import { LandingPage } from './pages/LandingPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
       <Router>
-        <App />
+        <Switch>
+          <Route exact path='/' component={LandingPage}/>
+          <Route component={App}/>
+        </Switch>
       </Router>
     </Provider>
   </React.StrictMode>,
