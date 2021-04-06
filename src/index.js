@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import { LandingPage } from './pages/LandingPage';
+import { LandingPage } from './pages/LandingPage/LandingPage';
 
 ReactDOM.render(
   <React.StrictMode>

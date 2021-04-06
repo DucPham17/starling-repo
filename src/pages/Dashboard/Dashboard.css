@@ -1,0 +1,33 @@
+.introduction {
+    background-color: aqua;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.calendar{
+    background-color: blueviolet;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+}
+
+.todayList{
+    background-color: coral;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 1em;
+    height: 100%;
+}
+
+.cardBox {
+    display: block;
+}
+
+.cardStyle {
+    padding: 0.5em;
+    margin: 1em;
+}
+.cardText {
+    display: flex;
+}

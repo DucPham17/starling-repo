@@ -1,12 +1,16 @@
 const routes = [
     {
-        href: '/',
-        label: 'Home'
+        href: '/dashboard',
+        label: 'Dashboard'
+    },
+    {
+        href: '/report',
+        label: 'Report'
+    },
+    {
+        href: '/lists',
+        label: 'Lists'
     },
     
 ];
-const user = [
-    {
-
-    },
-]
+export default routes

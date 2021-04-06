@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { Logo } from '../component/common/Logo';
+import { Logo } from '../../component/common/Logo';
 import './LandingPage.css';
 
 export const LandingPage = () => {
@@ -27,3 +27,5 @@ export const LandingPage = () => {
   </div>
   );
 };
+
+export default LandingPage
