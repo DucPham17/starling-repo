@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import {Col, Card, Row, Form} from 'react-bootstrap'
+import { useSelector, useDispatch } from "react-redux";
+import { signout } from '../../Action/userAction';
 import './Dashboard.css';
-const Dashboard= ()=> {
+const Dashboard= (props)=> {
     const todayList = {}
+    const info = useSelector(state => state.user);
+    const {loading, userInfo ,error} = info;
+    const dispatch = useDispatch();
+    console.log(userInfo);
+    useEffect(()=>{
+        if(!userInfo){
+            props.history.push("/signin");
+        }
+    })
 
+    const handleSignout = () =>{
+        dispatch(signout());
+    }
     return (
         <div className='dashboard'>
             <Row> 
@@ -65,6 +79,7 @@ const Dashboard= ()=> {
                     </div>
                 </Col> 
             </Row>
+            <button onClick={handleSignout}>Sign out</button>
         </div> 
     )
 }

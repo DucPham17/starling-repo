@@ -3,7 +3,7 @@ const app = {
     authDomain: process.env.authDomain,
     projectId: process.env.projectId,
     storageBucket: process.env.storageBucket,
-    messagingSenderId: process.messagingSenderId,
+    messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId,
     measurementId: process.env.measurementId
   };

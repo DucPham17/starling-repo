@@ -1,65 +1,47 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
+import { useSelector} from "react-redux";
+import SignInPage from './Pages/SignInPage/SignInPage';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-import {Col, Button, Container, Row, Nav, Navbar, NavDropdown} from 'react-bootstrap'
-import Header from './component/Header'
-import Footer from './component/Footer'
-import Menu from './component/Menu'
-import Dashboard from './pages/Dashboard/Dashboard'
-import Report from './pages/Report/Report'
-import Lists from './pages/Lists'
-import LandingPage from './pages/LandingPage/LandingPage'
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Report from "./Pages/Report/Report";
+import Lists from "./Pages/ListPage/Lists";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import SignUpPage from './Pages/SignUpPage/SignUpPage';
+
 
 function App() {
-  return(
-    <div>
-      <Header/>
-      <Switch>
-        <Row> 
-          <Col sm={3}> 
-            <Menu/>
-          </Col>
-          <Col sm={9}>
-              <Route exact path="/dashboard" component={Dashboard}/>
-              <Route exact path="/report" component={Report}/>
-              <Route exact path="/lists" component={Lists}/>
-              <Route exact path="/" component={LandingPage}/>
-            {/* Here will be the router of our App to others component
-                  there is an example:
-                  <Route path="/" exact={true} component={HomeScreen} /> */}
-          </Col>
-        </Row>
-      </Switch>
-      
-      
-      
-      
-      <Footer/>
-      
+  const userInfo = useSelector(state => state.user);
+
+  return (
+    <BrowserRouter>
       <div className="grid-container">
-        {/* Change the header at here */}
-        
-        {/*<header className="grid-container--header">
+        <header className="grid-container--header">
           <div className="grid-container--brand">
-            <EventAvailableIcon style={{ fontSize: 40, color: '#aaa', marginRight: 6 }} />
+            <EventAvailableIcon style={{fontSize: 40, color: '#fff', marginRight: 6}}/>
             <Link to="/">Productivity</Link>
           </div>
-        </header>*/}
+          <div className='signin-title'>
+            {userInfo != null? userInfo.userInfo != null?<a href='/dashboard'>
+              {userInfo.userInfo.displayName}</a> :<a href='/signin'>Sign In</a>: <a href='/signin'>Sign In</a>}
+          </div>
+        </header>
         <main>
           <div className="content">
-
-            
-
+          <Route exact path="/dashboard" component={Dashboard} /> 
+          <Route exact path="/report" component={Report} /> 
+          <Route exact path="/lists" component={Lists} /> 
+          <Route exact path="/" component={LandingPage} /> 
+          <Route exact path="/signin" component={SignInPage} />
+          <Route exact path="/signup" component={SignUpPage} />              
           </div>
         </main>
-
-        {/* Change the footer at here */}
         <footer className="grid-container--footer">
-
-        </footer>
+          Let's Productivity
+      </footer>
 
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 

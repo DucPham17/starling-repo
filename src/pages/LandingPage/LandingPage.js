@@ -1,11 +1,15 @@
-import React from 'react';
+import React  from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { Logo } from '../../component/common/Logo';
+import { Logo } from '../../Component/common/Logo';
 import './LandingPage.css';
 
-export const LandingPage = () => {
+function LandingPage (props) {
   const history = useHistory();
+
+  const handleClickSignIn = () =>{
+    props.history.push("/signin")
+  }
 
   return (
     <div className='wrapper d-flex flex-column justify-content-between'>
@@ -20,7 +24,7 @@ export const LandingPage = () => {
           </h1>
           <div className='button-wrapper'>
               <Button variant="primary" onClick={() => history.push('/dashboard')}>Get Started</Button>
-              <Button variant="secondary">Have an account? Login</Button>
+              <Button variant="secondary" onClick={handleClickSignIn}>Have an account? Login</Button>
           </div>
       </Container>
       <div/>
@@ -28,4 +32,4 @@ export const LandingPage = () => {
   );
 };
 
-export default LandingPage
+export default LandingPage;

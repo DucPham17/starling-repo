@@ -5,21 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import { LandingPage } from './pages/LandingPage/LandingPage';
+import theme from './theme';
+import { ThemeProvider } from '@material-ui/core/styles';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store = {store}>
-      <Router>
-        <Switch>
-          <Route exact path='/' component={LandingPage}/>
-          <Route component={App}/>
-        </Switch>
-      </Router>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store = {store}>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );
 

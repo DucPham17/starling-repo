@@ -1,8 +1,9 @@
-import { SignalCellularNullSharp } from "@material-ui/icons";
 import {createStore, combineReducers, compose, applyMiddleware} from "redux"
 import thunk from 'redux-thunk'
+import Cookie from "js-cookie";
 import { userReducer } from "./Reducer/userReducer";
-const initialState = {user : SignalCellularNullSharp};
+const userInfo = Cookie.getJSON("userInfo") || null;
+const initialState = {user : {userInfo}};
 
 // here is where you combine reducers
 const reducer = combineReducers({
