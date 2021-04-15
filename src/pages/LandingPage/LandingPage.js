@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { Logo } from '../../Component/common/Logo';
+import { Logo } from '../../Component/Common/Logo';
 import './LandingPage.css';
 
 function LandingPage (props) {

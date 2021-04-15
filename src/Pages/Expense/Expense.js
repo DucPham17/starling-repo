@@ -2,7 +2,7 @@ import { ReportOffSharp } from '@material-ui/icons';
 import React from 'react';
 import {Row, Col} from 'react-bootstrap'
 import Menu from '../../Component/Menu'
-const Report = ()=> {
+const Expense = ()=> {
     return (
         <div>
             <Row> 
@@ -18,4 +18,4 @@ const Report = ()=> {
         </div> 
     )
 }
-export default Report
+export default Expense
