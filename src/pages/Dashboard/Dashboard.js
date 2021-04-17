@@ -11,6 +11,7 @@ const Dashboard= (props)=> {
     const {loading, userInfo ,error} = info;
     const dispatch = useDispatch();
     console.log(userInfo);
+    
     useEffect(()=>{
         if(!userInfo){
             props.history.push("/signin");
@@ -40,7 +41,7 @@ const Dashboard= (props)=> {
                             </div>
                             <div className='calendar'>
                                 <p>
-                                    Calendar
+                                    Expense List 
                                 </p>
                             </div>
                         </Col>
@@ -89,8 +90,7 @@ const Dashboard= (props)=> {
                     </Row>
                     <button onClick={handleSignout}>Sign out</button>
                 </Col>
-            </Row>
-            
+            </Row> 
         </div> 
     )
 }
