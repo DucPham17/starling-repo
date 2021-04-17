@@ -11,6 +11,10 @@ const routes = [
         href: '/lists',
         label: 'Lists'
     },
+    {
+        href: '/expense',
+        label: 'Expense'
+    }
     
 ];
 export default routes

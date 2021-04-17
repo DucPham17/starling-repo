@@ -1,10 +1,20 @@
 import React from 'react';
-
-const Lists= ()=> {
+import {Row, Col} from 'react-bootstrap'
+import Menu from '../../Component/Menu'
+const Lists= () => {
     return (
         <div>
-            
-        </div> 
+            <Row> 
+                <Col sm={3}>
+                    <Menu/>
+                </Col>
+                <Col sm={9}>
+                    <div>
+                        
+                    </div>
+                </Col>
+            </Row>            
+        </div>  
     )
 }
 export default Lists
