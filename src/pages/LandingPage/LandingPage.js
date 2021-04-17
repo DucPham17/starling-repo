@@ -3,6 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { Logo } from '../../Component/common/Logo';
 import './LandingPage.css';
+import Axios from 'axios';
 
 function LandingPage (props) {
   const history = useHistory();
@@ -10,6 +11,12 @@ function LandingPage (props) {
   const handleClickSignIn = () =>{
     props.history.push("/signin")
   }
+
+  // const handleTestClick = async() =>{
+  //     const userId = 123456;
+  //     const {data} = await Axios.post("/api/expenses/addexpense",{userId});
+  //     console.log(data);
+  // }
 
   return (
     <div className='wrapper d-flex flex-column justify-content-between'>
@@ -25,6 +32,7 @@ function LandingPage (props) {
           <div className='button-wrapper'>
               <Button variant="primary" onClick={() => history.push('/dashboard')}>Get Started</Button>
               <Button variant="secondary" onClick={handleClickSignIn}>Have an account? Login</Button>
+              {/* <Button variant="secondary" onClick={handleTestClick}>Test</Button> */}
           </div>
       </Container>
       <div/>
