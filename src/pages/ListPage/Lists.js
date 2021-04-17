@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap'
-import Menu from '../../Component/Menu'
+import Menu from '../../component/Menu'
 const Lists= () => {
     return (
         <div>

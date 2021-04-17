@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import {Col, Card, Row, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from '../../Action/userAction';
-import Menu from '../../Component/Menu'
+import Menu from '../../component/Menu'
 import './Dashboard.css';
 
 const Dashboard= (props)=> {
