@@ -125,10 +125,9 @@ const Dashboard= (props)=> {
                         </Col>
                         <Col sm={8}> 
                             <div className='todayList'>
-                                <h3>Today's todos:</h3>
-                                <div className='add-todo'>
-                                    <TodoForm addTodo={addTodo}/>
-                                </div>
+                                <h5>Today:</h5>
+                                    
+                                <TodoForm addTodo={addTodo}/>
 
                                 <div className='todo-list'>
                                 <TodoList

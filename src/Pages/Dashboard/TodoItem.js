@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState}  from 'react';
 import classNames from 'classnames';
-import {Form, Button, ListGroup, Row, Col} from 'react-bootstrap';
-
+import {Form, Button, ListGroup, Row, Col, Modal} from 'react-bootstrap';
+import {AiOutlineCheckCircle} from 'react-icons';
 
 function TodoItem({todo, toggleComplete, editTodo, updateTodo, removeTodo, closeEditView}){
     
+
+    const [showModal, setShow] = useState(false);
+    const handleClose = () => 
+      setShow(false);
+    
+
     function handleCheckboxClick(){
         toggleComplete(todo.id);
     }
@@ -14,6 +20,7 @@ function TodoItem({todo, toggleComplete, editTodo, updateTodo, removeTodo, close
     }
 
     function editText() {
+        setShow(true);
         editTodo(todo.id);
     }
 
@@ -25,6 +32,7 @@ function TodoItem({todo, toggleComplete, editTodo, updateTodo, removeTodo, close
     function onKeyDown(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
+            setShow(false);
             closeEditView();
           }
     } 
@@ -36,24 +44,34 @@ function TodoItem({todo, toggleComplete, editTodo, updateTodo, removeTodo, close
                 editing: todo.isEditing 
             })}>
             <div className="view">
-                <ListGroup>
-                <ListGroup.Item primary={todo} secondary="In Progress">
+                <ListGroup.Item>
                 <Form inline>
-                <Form.Check type="checkbox" 
-                        checked={todo.isCompleted}
+                <Form.Check 
+                        className="completed"
                         onClick={handleCheckboxClick}
                 />
+                {/* <AiOutlineCheckCircle /> */}
+                <ListGroup.Item style={{ textDecoration: todo.isCompleted ? "line-through" : "" }} onClick={editText}>
+                {todo.title}
+                </ListGroup.Item>
+                </Form>
+
+                <Modal show={showModal} onHide={handleClose}>
+                <Modal.Body>
                 <Form.Control  
+                        className="edit"
                         value={todo.title} 
                         onChange={updateTitle} 
                         onKeyDown={onKeyDown}
-                         /> 
-                <Button onClick={removeText}>x</Button>
-     
-                </Form>
-                  
+                 /> 
+                <Modal.Footer> 
+                    <Button variant="secondary" onClick={removeText}>Delete</Button>
+                    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+                </Modal.Footer> 
+                </Modal.Body>
+                
+                </Modal>
                 </ListGroup.Item>
-                </ListGroup>
             </div>
            
         </div>)
