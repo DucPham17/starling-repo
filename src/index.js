@@ -8,11 +8,14 @@ import store from './store';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import "bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <Provider store = {store}>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')

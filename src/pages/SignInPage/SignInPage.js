@@ -1,9 +1,11 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {Form, Button, Card} from 'react-bootstrap';
 import { Container } from '@material-ui/core';
 import { signin } from '../../Action/userAction';
+import { useHistory } from 'react-router-dom';
 import './SignIn.css';
+import { LinkButton } from '../../component/common/LinkButton';
 
 function SignInPage(props) {
     const[email, setEmail] = useState('');
@@ -11,14 +13,9 @@ function SignInPage(props) {
     const info = useSelector(state => state.user);
     const dispatch = useDispatch();
     const {loading, userInfo,error} = info;
+    const history = useHistory();
 
     console.log(userInfo);
-
-    useEffect(() => {
-        if(userInfo){
-            props.history.push("/dashboard");
-        }
-    })
 
 
     const handleSignin = (e) =>{
@@ -47,7 +44,7 @@ function SignInPage(props) {
                     </Form>
                 </Card.Body>
             </Card>
-            <a href="/signup">Don't have account? Signup</a>
+            <LinkButton onClick={() => history.push("/signup")}>Don't have account? Signup</LinkButton>
         </div>
         </Container>
     )

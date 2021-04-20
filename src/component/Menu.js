@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import './style.css';
 import {useHistory, useLocation} from 'react-router-dom'
-import routes from '../Constant/routes'
+import routes from '../constant/routes'
 
 /*const routes = [
     {
