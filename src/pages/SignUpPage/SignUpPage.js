@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 import { signup } from '../../Action/userAction';
 import './SignUp.css';
 import { useHistory } from 'react-router-dom';
-import { LinkButton } from '../../component/common/LinkButton';
+import { LinkButton } from '../../Component/common/LinkButton';
 
 function SignUpPage(props) {
     const[email, setEmail] = useState('');

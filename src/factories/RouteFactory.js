@@ -7,8 +7,8 @@ import LandingPage from "../Pages/LandingPage/LandingPage";
 import SignUpPage from '../Pages/SignUpPage/SignUpPage';
 import Expense from '../Pages/Expense/Expense';
 import { Redirect, Route } from 'react-router-dom';
-import Header from '../component/Header';
-import Footer from '../component/Footer';
+import Header from '../Component/Header';
+import Footer from '../Component/Footer';
 
 export const getMainRoutes = () => (
     <>
