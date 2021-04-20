@@ -1,6 +1,6 @@
 const routes = [
     {
-        href: '/dashboard',
+        href: '/',
         label: 'Dashboard'
     },
     {

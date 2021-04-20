@@ -1,7 +1,7 @@
 import { ReportOffSharp } from '@material-ui/icons';
 import React from 'react';
 import {Row, Col, Button} from 'react-bootstrap'
-import Menu from '../../component/Menu'
+import Menu from '../../Component/Menu'
 const Expense = ()=> {
     const handleClick = ()=> {
 

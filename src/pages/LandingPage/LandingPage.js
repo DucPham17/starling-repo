@@ -1,7 +1,7 @@
 import React  from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { Logo } from '../../component/common/Logo';
+import { Logo } from '../../Component/Common/Logo';
 import './LandingPage.css';
 import Axios from 'axios';
 

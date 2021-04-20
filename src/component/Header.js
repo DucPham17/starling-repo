@@ -3,7 +3,7 @@ import {Navbar, NavDropdown} from 'react-bootstrap'
 import cat from '../resources/images/cat.jpg'
 import './style.css';
 import { useHistory } from 'react-router-dom';
-import { Logo } from './common/Logo';
+// import { Logo } from './common/Logo';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import { useSelector } from 'react-redux';
 
