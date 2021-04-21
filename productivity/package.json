@@ -1,0 +1,65 @@
+{
+  "name": "productivity",
+  "version": "0.1.0",
+  "proxy": "http://127.0.0.1:5000",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
+    "classnames": "^2.3.1",
+    "dotenv": "^8.2.0",
+    "expres": "0.0.5",
+    "express": "^4.17.1",
+    "firebase": "^8.3.1",
+    "firebase-admin": "^9.5.0",
+    "get-google-fonts": "^1.2.2",
+    "js-cookie": "^2.2.1",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
+    "react-bootstrap-icons": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-uuid": "^1.0.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start-api": "node ./server.js",
+    "start-all": "concurrently 'npm:start-api' 'npm:start'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.2"
+  }
+}
