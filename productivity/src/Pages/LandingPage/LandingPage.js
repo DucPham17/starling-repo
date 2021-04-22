@@ -1,15 +1,18 @@
 import React  from 'react';
 import { Button, Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { setModal } from '../../Action/modalsAction';
 import { Logo } from '../../Component/Common/Logo';
+import { ModalTypes } from '../../Constant/modalTypes';
 import './LandingPage.css';
-import Axios from 'axios';
 
 function LandingPage (props) {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClickSignIn = () =>{
-    props.history.push("/signin")
+    dispatch(setModal(ModalTypes.SIGN_IN));
   }
 
   // const handleTestClick = async() =>{

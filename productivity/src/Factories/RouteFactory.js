@@ -1,10 +1,8 @@
 
-import SignInPage from '../Pages/SignInPage/SignInPage';
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Report from "../Pages/Report/Report";
 import Lists from "../Pages/ListPage/Lists";
 import LandingPage from "../Pages/LandingPage/LandingPage";
-import SignUpPage from '../Pages/SignUpPage/SignUpPage';
 import Expense from '../Pages/Expense/Expense';
 import { Redirect, Route } from 'react-router-dom';
 import Header from '../Component/Header';
@@ -25,8 +23,6 @@ export const getMainRoutes = () => (
 export const getEntryRoutes = () => (
     <>
         <Route exact path="/" component={LandingPage} /> 
-        <Route path="/signin" component={SignInPage} />
-        <Route path="/signup" component={SignUpPage} /> 
         <Redirect to='/'/>
     </>
 );

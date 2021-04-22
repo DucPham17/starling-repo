@@ -6,7 +6,7 @@ import {
     SIGNUP_ACTION_SUCCESS,
     SIGNUP_ACTION_FAIL,
     SIGNOUT_ACTION_REQUEST
-} from "../Constant/userConst";
+} from "../Constant/actionTypes";
 
 export const userReducer = (state = {},action) => {
     switch(action.type){

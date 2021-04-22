@@ -9,11 +9,13 @@ import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter } from 'react-router-dom';
+import { Modals } from './Component/Modals';
 
 ReactDOM.render(
   <Provider store = {store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <Modals/>
         <App />
       </BrowserRouter>
     </ThemeProvider>
