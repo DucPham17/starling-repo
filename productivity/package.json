@@ -21,6 +21,7 @@
     "get-google-fonts": "^1.2.2",
     "js-cookie": "^2.2.1",
     "react": "^17.0.1",
+    "react-avatar": "^3.10.0",
     "react-bootstrap": "^1.5.2",
     "react-bootstrap-icons": "^1.4.0",
     "react-dom": "^17.0.1",

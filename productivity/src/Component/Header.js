@@ -1,30 +1,28 @@
 import React from 'react';
-import {Navbar, NavDropdown} from 'react-bootstrap'
-import cat from '../resources/images/cat.jpg'
 import './style.css';
 import { useHistory } from 'react-router-dom';
 // import { Logo } from './common/Logo';
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import { useSelector } from 'react-redux';
+import { Logo } from './Common/Logo';
+import Avatar from 'react-avatar';
 
 const Header = () => {
-    const userInfo = useSelector(state => state.user);
+    const {userInfo} = useSelector(state => state.user);
     const history = useHistory();
 
     return (
-        <div> 
-        <header className="grid-container--header">
-          <div className="grid-container--brand">
-            <EventAvailableIcon style={{fontSize: 40, color: '#fff', marginRight: 6}}/>
-            <div onClick={history.push('/')}>Productivity</div>
-          </div>
-          <div className='signin-title'>
-            {userInfo != null? userInfo.userInfo != null?<a href='/dashboard'>
-              {userInfo.userInfo.displayName}</a> :<a href='/signin'>Sign In</a>: <a href='/signin'>Sign In</a>}
-          </div>
-        </header>
-            
+      <div className="p-3 d-flex justify-content-between align-items-center header">
+        <Logo className="logo" onClick={() => history.push('/')}/>
+        <div>
+          <span className="mr-3">{`Welcome, ${userInfo.displayName}`}</span>
+          <Avatar
+            name={userInfo.displayName}
+            src={userInfo.photoURL}
+            size={50}
+            round
+          />
         </div>
+      </div>
     )
 
     

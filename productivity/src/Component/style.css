@@ -7,12 +7,10 @@
 .userName {
   clear: both;
   position: absolute;
-  margin-right:0;
-  
+  margin-right: 0;
 }
 
 .logoImage {
-  
   width: 2rem;
   height: 2rem;
 }
@@ -40,11 +38,18 @@
   align-items: center;
 }
 
-.flex-column{
+.flex-column {
   text-align: center;
-  
 }
 
 .navItem {
   display: block;
+}
+
+.header {
+  background-color: #eee;
+}
+
+.logo {
+  cursor: pointer;
 }

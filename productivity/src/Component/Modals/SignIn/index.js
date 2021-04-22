@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Form, Button, Card, Modal} from 'react-bootstrap';
+import {Form, Button, Modal} from 'react-bootstrap';
 import { signin } from '../../../Action/userAction';
-import { useHistory } from 'react-router-dom';
 import './SignIn.css';
 import { LinkButton } from '../../../Component/Common/LinkButton';
 import { setModal } from '../../../Action/modalsAction';
@@ -14,7 +13,6 @@ function SignInPage(props) {
     const info = useSelector(state => state.user);
     const dispatch = useDispatch();
     const {loading, userInfo,error} = info;
-    const history = useHistory();
 
     console.log(userInfo);
 

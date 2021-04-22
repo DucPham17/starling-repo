@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Form, Button, Card, Modal} from 'react-bootstrap';
+import {Form, Button, Modal} from 'react-bootstrap';
 import { signup } from '../../../Action/userAction';
 import './SignUp.css';
-import { useHistory } from 'react-router-dom';
 import { LinkButton } from '../../../Component/Common/LinkButton';
 import { setModal } from '../../../Action/modalsAction';
 import { ModalTypes } from '../../../Constant/modalTypes';
