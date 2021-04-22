@@ -48,10 +48,14 @@
 }
 
 .nav-item {
+  font-size: 1.2rem;
+  padding: 0.7rem 1rem;
   cursor: pointer;
   color: #555;
 }
 
 .nav-active {
+  border-radius: 20px;
+  background-color: #b2dfdb;
   font-weight: bold;
 }

@@ -17,7 +17,7 @@ const Menu = (props) => {
                     })}
                     onClick={() => history.push(route.href)}
                 >
-                    <p style={{fontSize:'20px'}}>{route.label}</p>
+                    {route.label}
                 </div>
             )}
         </div>
