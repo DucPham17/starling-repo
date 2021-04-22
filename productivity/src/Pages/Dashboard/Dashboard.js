@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import {Col, Card, Row, Form,  Button} from 'react-bootstrap'
+import {Col, Row} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from '../../Action/userAction';
 import Menu from '../../Component/Menu'
@@ -21,47 +21,35 @@ const Dashboard= (props)=> {
         }
     })
 
-    const handleSignout = () =>{
-        dispatch(signout());
-    }
-
     
     return (
         <div className='dashboard'>
             <Row> 
-                <Col sm={3}>
-                    <Menu/>
+                <Col sm={4}> 
+                    <div className='introduction'>
+                        <p>
+                            Hello ... 
+                        </p>
+                        <p>
+                            Today is ...
+                        </p>
+                    </div>
+                    <div className='calendar'>
+                        <p>
+                            Expense List 
+                        </p>
+                    </div>
                 </Col>
-                <Col sm={9}>
-                    <Row> 
-                        <Col sm={4}> 
-                            <div className='introduction'>
-                                <p>
-                                    Hello ... 
-                                </p>
-                                <p>
-                                    Today is ...
-                                </p>
-                            </div>
-                            <div className='calendar'>
-                                <p>
-                                    Expense List 
-                                </p>
-                            </div>
-                        </Col>
-                        <Col sm={8}> 
-                            <div className='todayList'>
-                                <h5>Today:</h5>
-                                    
-                                
+                <Col sm={8}> 
+                    <div className='todayList'>
+                        <h5>Today:</h5>
+                            
+                        
 
-                                  
-                            </div>
-                        </Col> 
-                    </Row>
-                    <button onClick={handleSignout}>Sign out</button>
-                </Col>
-            </Row> 
+                            
+                    </div>
+                </Col> 
+            </Row>
         </div> 
     )
 }
