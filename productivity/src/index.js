@@ -10,11 +10,14 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter } from 'react-router-dom';
 import { Modals } from './Component/Modals';
+import "react-datepicker/dist/react-datepicker.css";
+import { FullPageLoading } from './Component/Common/FullPageLoading';
 
 ReactDOM.render(
   <Provider store = {store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <FullPageLoading/>
         <Modals/>
         <App />
       </BrowserRouter>

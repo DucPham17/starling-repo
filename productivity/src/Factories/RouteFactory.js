@@ -1,7 +1,7 @@
 
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Report from "../Pages/Report/Report";
-import Lists from "../Pages/ListPage/Lists";
+import { Notes } from "../Pages/Notes";
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import Expense from '../Pages/Expense/Expense';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -18,7 +18,7 @@ export const getMainRoutes = () => (
             <Switch>
                 <Route exact path="/" component={Dashboard} /> 
                 <Route path="/report" component={Report} /> 
-                <Route path="/lists" component={Lists} /> 
+                <Route path="/notes" component={Notes} /> 
                 <Route path="/expense" component={Expense}/> 
                 <Redirect to='/'/>
             </Switch>

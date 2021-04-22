@@ -4,6 +4,8 @@ import Cookie from "js-cookie";
 import { userReducer } from "./Reducer/userReducer";
 import { modalsReducer } from "./Reducer/modalsReducer";
 import { expenseReducer } from "./Reducer/expenseReducer";
+import { pageStatusReducer } from "./Reducer/pageStatusReducer";
+import { todoReducer } from "./Reducer/todoReducer";
 const userInfo = Cookie.getJSON("userInfo") || null;
 const initialState = {user : {userInfo}};
 
@@ -11,7 +13,9 @@ const initialState = {user : {userInfo}};
 const reducer = combineReducers({
     modals: modalsReducer,
     user : userReducer, 
-    expense: expenseReducer
+    expense: expenseReducer,
+    todos: todoReducer,
+    pageStatus: pageStatusReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

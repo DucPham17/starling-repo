@@ -8,8 +8,8 @@ const routes = [
         label: 'Report'
     },
     {
-        href: '/lists',
-        label: 'Lists'
+        href: '/notes',
+        label: 'Notes'
     },
     {
         href: '/expense',

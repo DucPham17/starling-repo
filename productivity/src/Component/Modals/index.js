@@ -3,8 +3,10 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import { ModalTypes } from "../../Constant/modalTypes";
 import { setModal } from "../../Action/modalsAction";
+import { AddNote } from "./AddNote";
 
 const modals = {
+    [ModalTypes.ADD_NOTE]: AddNote,
     [ModalTypes.SIGN_UP]: SignUp,
     [ModalTypes.SIGN_IN]: SignIn
 };
