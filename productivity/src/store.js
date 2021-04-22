@@ -6,7 +6,7 @@ import { modalsReducer } from "./Reducer/modalsReducer";
 import { expenseReducer } from "./Reducer/expenseReducer";
 import { pageStatusReducer } from "./Reducer/pageStatusReducer";
 import { todoReducer } from "./Reducer/todoReducer";
-const userInfo = Cookie.getJSON("userInfo") || null;
+const userInfo = Cookie.getJSON("userInfo") || {};
 const initialState = {user : {userInfo}};
 
 // here is where you combine reducers

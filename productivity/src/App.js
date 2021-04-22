@@ -9,7 +9,7 @@ function App() {
   return (
       <Switch>
         {
-          userInfo ? 
+          userInfo.uid ? 
             getMainRoutes() :
             getEntryRoutes()
         }

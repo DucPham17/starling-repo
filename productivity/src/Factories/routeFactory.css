@@ -24,6 +24,7 @@
 
 .appContent {
   grid-area: content;
+  overflow-y: scroll;
 }
 
 .appFooter {
