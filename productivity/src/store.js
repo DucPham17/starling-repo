@@ -3,13 +3,15 @@ import thunk from 'redux-thunk'
 import Cookie from "js-cookie";
 import { userReducer } from "./Reducer/userReducer";
 import { modalsReducer } from "./Reducer/modalsReducer";
+import { expenseReducer } from "./Reducer/expenseReducer";
 const userInfo = Cookie.getJSON("userInfo") || null;
 const initialState = {user : {userInfo}};
 
 // here is where you combine reducers
 const reducer = combineReducers({
     modals: modalsReducer,
-    user : userReducer
+    user : userReducer, 
+    expense: expenseReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
