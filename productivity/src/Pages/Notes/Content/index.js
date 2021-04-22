@@ -6,6 +6,7 @@ import { setModal } from '../../../Action/modalsAction';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { dateToPresentableString } from '../../../Helpers/date';
 import { NoteItem } from './NoteItem';
+import { NoNoteFound } from './NoNoteFound';
 
 export const Content = (props) => {
     const {todos, selectedDate} = useSelector((state) => state.todos);
@@ -27,7 +28,7 @@ export const Content = (props) => {
                 {
                     todos.length > 0 ?
                         todos.map((todo) => <NoteItem note={todo}/>) :
-                        <span>Nothing for today. Click add note to add more notes</span>
+                        <NoNoteFound/>
                 }
             </div>
         </div>
