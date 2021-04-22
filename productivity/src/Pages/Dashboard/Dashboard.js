@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import {Col, Card, Row, Form,  Button} from 'react-bootstrap'
+import {Col, Row} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux";
 import { signout } from '../../Action/userAction';
 import Menu from '../../Component/Menu'
@@ -58,8 +58,20 @@ const Dashboard= (props)=> {
     return (
         <div className='dashboard'>
             <Row> 
-                <Col sm={3}>
-                    <Menu/>
+                <Col sm={4}> 
+                    <div className='introduction'>
+                        <p>
+                            Hello ... 
+                        </p>
+                        <p>
+                            Today is ...
+                        </p>
+                    </div>
+                    <div className='calendar'>
+                        <p>
+                            Expense List 
+                        </p>
+                    </div>
                 </Col>
                 <Col sm={9}>
                     <Row> 
@@ -72,7 +84,7 @@ const Dashboard= (props)=> {
                                     Today is {today.getMonth()}/{today.getDate()}/{today.getFullYear()}
                                 </p>
                             </div>
-                            <div className='calendar'>
+                            <div className='expense'>
                                 <h5>
                                     Expense: 
                                 </h5>
@@ -90,16 +102,11 @@ const Dashboard= (props)=> {
                         <Col sm={8}> 
                             <div className='todayList'>
                                 <h5>Today List:</h5>
-                                    
-                                
-
-                                  
                             </div>
-                        </Col> 
-                    </Row>
-                    <button onClick={handleSignout}>Sign out</button>
-                </Col>
-            </Row> 
+                        </Col>
+                        </Row>          
+                    </Col>              
+            </Row>
         </div> 
     )
 }

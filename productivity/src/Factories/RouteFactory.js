@@ -7,19 +7,24 @@ import Expense from '../Pages/Expense/Expense';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Header from '../Component/Header';
 import Footer from '../Component/Footer';
+import './routeFactory.css';
+import Menu from "../Component/Menu";
 
 export const getMainRoutes = () => (
-    <>
-        <Header/>
-        <Switch>
-            <Route exact path="/" component={Dashboard} /> 
-            <Route path="/report" component={Report} /> 
-            <Route path="/lists" component={Lists} /> 
-            <Route path="/expense" component={Expense}/> 
-            <Redirect to='/'/>
-        </Switch>
-        <Footer/>
-    </>
+    <div className='appWrapper'>
+        <Header className='appHeader'/>
+        <Menu className='appMenu'/>
+        <div className='appContent'>
+            <Switch>
+                <Route exact path="/" component={Dashboard} /> 
+                <Route path="/report" component={Report} /> 
+                <Route path="/lists" component={Lists} /> 
+                <Route path="/expense" component={Expense}/> 
+                <Redirect to='/'/>
+            </Switch>
+        </div>
+        <Footer className='appFooter'/>
+    </div>
 );
 
 export const getEntryRoutes = () => (

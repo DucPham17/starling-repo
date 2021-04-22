@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import {Button, Row, Col, Modal, Form, Card} from 'react-bootstrap'
-import Menu from '../../Component/Menu'
 import { addData, getData, deleteData } from '../../Action/expenseAction'
 import './Expense.css';
 
@@ -103,10 +102,20 @@ const Expense = ()=> {
     return (
         <div>
             <Row> 
-                <Col sm={3}>
-                    <Menu/>
+                <Col sm={4}>
+                    <Row> 
+                        <Col> 
+                            <h5> Total Amount: </h5>
+                            <p> Spending: </p>
+                            <p> Saving: </p>
+                        </Col>
+                    </Row>
+                    <Row> 
+                        <Button onClick={()=> handleClick()}> Add New Expense </Button> 
+                    </Row>    
                 </Col>
-                <Col sm={9}>
+                <Col sm={8}> 
+                    <h5> Expense List </h5>
                     <div>
                         <Row> 
                             <Col sm={4}>
@@ -155,9 +164,10 @@ const Expense = ()=> {
                                 </div>
                             </Col>
                         </Row>
+
                     </div>
                 </Col>
-            </Row>            
+            </Row>      
         </div> 
     )
 }
