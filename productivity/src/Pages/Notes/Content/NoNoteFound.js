@@ -1,5 +1,5 @@
 import Lottie from 'react-lottie-player';
-import animationData from '../../../Resources/Lotties/no-note-found.json';
+import animationData from '../../../resources/Lotties/no-note-found.json';
 
 export const NoNoteFound = () => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import logo from '../../Resources/Images/logo192.png';
+import logo from '../../resources/images/logo192.png';
 
 export const Logo = (props) => {
   const {
