@@ -10,8 +10,7 @@
 }
 
 .info {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1em;
     padding: 0.5em;
     border-radius: 1em;
     background-color: cadetblue;
@@ -19,4 +18,8 @@
 
 .expenseList{
     margin-top: 1em; 
+}
+
+.addButton {
+    margin-left: 3em;
 }

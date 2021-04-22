@@ -104,71 +104,51 @@ const Expense = ()=> {
             <Row> 
                 <Col sm={4}>
                     <Row> 
-                        <Col> 
-                            <h5> Total Amount: </h5>
-                            <p> Spending: </p>
-                            <p> Saving: </p>
+                        <Col>
+                            <div className='info'> 
+                                <h5> Total: {spending + earning}</h5>
+                                <p> Spending: {spending}</p>
+                                <p> Earning: {earning} </p>
+                            </div> 
                         </Col>
                     </Row>
                     <Row> 
-                        <Button onClick={()=> handleClick()}> Add New Expense </Button> 
+                        <Button className='addButton' onClick={()=> setModal(true)}> Add New Expense </Button> 
+                        {modalShow}
                     </Row>    
                 </Col>
-                <Col sm={8}> 
+                <Col sm={8} className='expenseList'> 
                     <h5> Expense List </h5>
-                    <div>
-                        <Row> 
-                            <Col sm={4}>
-                                <Row> 
-                                    <Col>
-                                        <div className='info'> 
-                                            <h5> Total: {spending + earning}</h5>
-                                            <p> Spending: {spending}</p>
-                                            <p> Earning: {earning} </p>
-                                        </div> 
-                                    </Col>
-                                </Row>
-                                <Row> 
-                                   <Button onClick={()=> setModal(true)}> Add New Expense </Button> 
-                                   {modalShow}
-                                </Row>    
-                            </Col>
-                            <Col sm={8} className='expenseList'> 
-                                <h5> Expense List </h5>
-                                <div className='deck'>
-                                    
-                                    {infoExpense.map((expenseItem)=> {
-                                        const recent = new Date(expenseItem.date)
-                                        return (
-                                            <Card className='card'> 
-                                                <Card.Body>
-                                                    <Card.Header>
-                                                        {recent.getMonth()}/{recent.getDate()}/{recent.getFullYear()}
-                                                    </Card.Header>
-                                                    <Card.Title> 
-                                                        {expenseItem.name}
-                                                    </Card.Title>
-                                                    <Card.Text>
-                                                        {expenseItem.amount}
-                                                        {/* {expenseItem.expenseType} */}
-                                                    </Card.Text>
-                                                    {/* <Card.Footer> 
-                                                        <Button onClick={()=> handleEdit()}> Edit </Button>
-                                                        <Button onClick={()=> handleDelete(expenseItem.date)}> Delete </Button>
-                                                    </Card.Footer> */}
-                                                </Card.Body>
-                                            </Card>
-                                        )
-                                    })}
-        
-                                </div>
-                            </Col>
-                        </Row>
+                    <div className='deck'>
+                        
+                        {infoExpense.map((expenseItem)=> {
+                            const recent = new Date(expenseItem.date)
+                            return (
+                                <Card className='card'> 
+                                    <Card.Body>
+                                        <Card.Header>
+                                            {recent.getMonth()}/{recent.getDate()}/{recent.getFullYear()}
+                                        </Card.Header>
+                                        <Card.Title> 
+                                            {expenseItem.name}
+                                        </Card.Title>
+                                        <Card.Text>
+                                            {expenseItem.amount}
+                                            {/* {expenseItem.expenseType} */}
+                                        </Card.Text>
+                                        {/* <Card.Footer> 
+                                            <Button onClick={()=> handleEdit()}> Edit </Button>
+                                            <Button onClick={()=> handleDelete(expenseItem.date)}> Delete </Button>
+                                        </Card.Footer> */}
+                                    </Card.Body>
+                                </Card>
+                            )
+                        })}
 
                     </div>
                 </Col>
-            </Row>      
-        </div> 
+            </Row>
+        </div>
     )
 }
 export default Expense

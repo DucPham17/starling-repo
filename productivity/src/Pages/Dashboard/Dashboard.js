@@ -38,15 +38,17 @@ const Dashboard= (props)=> {
     const [earning, setEarning] = useState(0)
     
     useEffect(() => {
-        setSpending(0)
-        setEarning(0)
+        let earningAmount = 0
+        let spendingAmount = 0
         infoExpense.map((id) => {
-            if (id.amount > 0) {
-                setEarning(earning + id.amount)
+            if (id.expenseType === 'Earning') {
+                earningAmount = earningAmount + id.amount
             } else {
-                setSpending(spending + id.amount)
+                spendingAmount = spendingAmount + id.amount
             }
         })
+        setEarning(earningAmount)
+        setSpending(spendingAmount) 
     }, [infoExpense])
 
     const handleSignout = () =>{
@@ -61,52 +63,33 @@ const Dashboard= (props)=> {
                 <Col sm={4}> 
                     <div className='introduction'>
                         <p>
-                            Hello ... 
+                            {hello}
                         </p>
                         <p>
-                            Today is ...
+                            Today is {today.getMonth()}/{today.getDate()}/{today.getFullYear()}
                         </p>
                     </div>
-                    <div className='calendar'>
+                    <div className='expense'>
+                        <h5>
+                            Expense Info: 
+                        </h5>
                         <p>
-                            Expense List 
+                            Total: {spending + earning}
+                        </p>
+                        <p>
+                            Spending: {spending}
+                        </p>
+                        <p>
+                            Earning: {earning}
                         </p>
                     </div>
                 </Col>
-                <Col sm={9}>
-                    <Row> 
-                        <Col sm={4}> 
-                            <div className='introduction'>
-                                <p>
-                                    {hello}
-                                </p>
-                                <p>
-                                    Today is {today.getMonth()}/{today.getDate()}/{today.getFullYear()}
-                                </p>
-                            </div>
-                            <div className='expense'>
-                                <h5>
-                                    Expense: 
-                                </h5>
-                                <p>
-                                    Total: {spending + earning}
-                                </p>
-                                <p>
-                                    Spending: {spending}
-                                </p>
-                                <p>
-                                    Earning: {earning}
-                                </p>
-                            </div>
-                        </Col>
-                        <Col sm={8}> 
-                            <div className='todayList'>
-                                <h5>Today List:</h5>
-                            </div>
-                        </Col>
-                        </Row>          
-                    </Col>              
-            </Row>
+                <Col sm={8}> 
+                    <div className='todayList'>
+                        <h5>Today List:</h5>
+                    </div>
+                </Col>
+            </Row>          
         </div> 
     )
 }
