@@ -1,45 +1,31 @@
 const express = require("express");
+const { getAllTasks, addTask } = require("../FirebaseHelpers/tasksHelper");
 const router = express.Router();
-require("firebase/auth");
-const admin = require('firebase-admin');
-const db = admin.firestore();
 
 router.get('/gettasks', async (req, res) => {
-    var userId = req.body.userId;
-    console.log(userId)
-    var list = [];
-    const postRef = db.collection('tasks');
-    const snapshot = await postRef.get();
-    await snapshot.forEach(doc => {
-        //console.log(doc.id);
-        if (doc.data().userId === userId) {
-            list.push(doc.data());
-        }
+    const {date, userId} = req.query;
 
-    });
+    const list = await getAllTasks(userId, date);
+
     await res.send(list);
 })
 
 router.post('/addtask', async (req, res) => {
-    console.log(req);
-    var userId = req.body.userId;
-    var title = req.body.title;
-    var description = req.body.description;
-    var isCompleted = false;
-    var date = Date.now();
 
-    const temp = {
-        userId: userId,
-        title: title,
-        description: description,
-        isCompleted : isCompleted,
-        date: date
+    console.log(req);
+    const newTask = {
+        userId: req.body.userId,
+        title: req.body.title,
+        description: req.body.description,
+        isCompleted : false,
+        date: req.body.date
+
     }
 
-    await db.collection('tasks').add(temp);
-    await res.send(temp);
+    await addTask(newTask);
+
+    const allTasks = await getAllTasks(req.body.userId, req.body.date);
+    await res.send(allTasks);
 })
-
-
 
 module.exports = router;

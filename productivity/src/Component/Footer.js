@@ -1,13 +1,14 @@
 import React from 'react';
 import './style.css';
-import {Container} from 'react-bootstrap'
+import classNames from 'classnames';
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <Container className='footer' fluid bg="dark" variant="dark"> 
-            <h5> Starling Group </h5>
-            <h5> Augustana College </h5>
-        </Container>
+        <div
+            className={classNames(props.className, 'footer')}
+        > 
+            <span>2021 © Starling Group</span>
+        </div>
     )    
 }
 export default Footer

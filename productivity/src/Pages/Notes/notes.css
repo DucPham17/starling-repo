@@ -1,0 +1,20 @@
+.note-page {
+  margin: 3rem;
+}
+
+.note-wrapper {
+  display: grid;
+  grid-template-areas: "noteOptions noteContent";
+  grid-template-columns: max-content auto;
+}
+
+.note-options {
+  grid-area: noteOptions;
+  border-right: 1px solid #ddd;
+  padding-right: 3rem;
+}
+
+.note-content {
+  grid-area: noteContent;
+  margin: 0 3rem;
+}

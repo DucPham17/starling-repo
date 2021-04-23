@@ -1,7 +1,8 @@
 import { SIGNIN_ACTION_REQUEST, SIGNIN_ACTION_SUCCESS, SIGNIN_ACTION_FAIL, 
-    SIGNUP_ACTION_REQUEST, SIGNUP_ACTION_SUCCESS, SIGNUP_ACTION_FAIL, SIGNOUT_ACTION_REQUEST } from "../Constant/userConst";
+    SIGNUP_ACTION_REQUEST, SIGNUP_ACTION_SUCCESS, SIGNUP_ACTION_FAIL, SIGNOUT_ACTION_REQUEST } from "../Constant/actionTypes";
 import Axios from "axios";
 import Cookie from "js-cookie";
+import { setModal } from "./modalsAction";
 
 export const signin = (email, password) => async (dispatch) => {
     dispatch({
@@ -16,6 +17,7 @@ export const signin = (email, password) => async (dispatch) => {
             type: SIGNIN_ACTION_SUCCESS,
             payload : data
         })
+        dispatch(setModal(undefined));
         Cookie.set('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
@@ -39,6 +41,7 @@ export const signup = (email, password,name) => async (dispatch) => {
             type: SIGNUP_ACTION_SUCCESS,
             payload : data
         })
+        dispatch(setModal(undefined));
         Cookie.set('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
@@ -65,9 +68,6 @@ export const signInWithGoogle = () => async (dispatch) => {
         
     try {
         window.location.href = `http://localhost:5000/api/users/google`;
-        //window.open("http://localhost:5000/api/users/google", "_blank")
-        //ReactDOM.render(data, document.getElementById('root'));
-        //console.log(data);
         
     } catch (error) {
         dispatch({

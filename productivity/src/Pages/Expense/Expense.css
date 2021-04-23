@@ -1,0 +1,25 @@
+.deck {
+    padding: 1em;
+    background-color: aquamarine;
+    border-radius: 1em;
+    margin-right: 1em;
+}
+
+.card {
+    margin: 1em;
+}
+
+.info {
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 1em;
+    background-color: cadetblue;
+}
+
+.expenseList{
+    margin-top: 1em; 
+}
+
+.addButton {
+    margin-left: 3em;
+}

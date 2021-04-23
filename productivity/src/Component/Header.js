@@ -1,30 +1,57 @@
 import React from 'react';
-import {Navbar, NavDropdown} from 'react-bootstrap'
-import cat from '../resources/images/cat.jpg'
 import './style.css';
 import { useHistory } from 'react-router-dom';
-// import { Logo } from './common/Logo';
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Logo } from './Common/Logo';
+import Avatar from 'react-avatar';
+import { Button, Dropdown } from 'react-bootstrap';
+import { signout } from '../Action/userAction';
+import classNames from 'classnames';
 
-const Header = () => {
-    const userInfo = useSelector(state => state.user);
+const Header = (props) => {
+    const {userInfo} = useSelector(state => state.user);
     const history = useHistory();
+    const dispatch = useDispatch();
 
     return (
-        <div> 
-        <header className="grid-container--header">
-          <div className="grid-container--brand">
-            <EventAvailableIcon style={{fontSize: 40, color: '#fff', marginRight: 6}}/>
-            <div onClick={history.push('/')}>Productivity</div>
-          </div>
-          <div className='signin-title'>
-            {userInfo != null? userInfo.userInfo != null?<a href='/dashboard'>
-              {userInfo.userInfo.displayName}</a> :<a href='/signin'>Sign In</a>: <a href='/signin'>Sign In</a>}
-          </div>
-        </header>
-            
-        </div>
+      <div className={classNames(
+          props.className,
+          "p-3 d-flex justify-content-between align-items-center header"
+        )}
+      >
+        <Logo className="logo" onClick={() => history.push('/')}/>
+        <Dropdown>
+          <Dropdown.Toggle as={'div'} className='user-dropdown'>
+            <Avatar
+              name={userInfo.displayName}
+              src={userInfo.photoURL}
+              size={50}
+              round
+            />
+          </Dropdown.Toggle>
+          
+          <Dropdown.Menu as={'div'} className='p-3 d-flex flex-column dropdown-menu align-items-center'>
+            <Avatar
+              name={userInfo.displayName}
+              src={userInfo.photoURL}
+              size={80}
+              round
+            />
+            <div>
+              {userInfo.displayName}
+            </div>
+            <strong>
+              {userInfo.email}
+            </strong>
+            <div className='divider'/>
+            <Button
+              onClick={() => dispatch(signout())}
+              className='mt-4'
+              variant='outline-danger'
+            >Sign Out</Button>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
     )
 
     

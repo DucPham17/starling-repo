@@ -6,24 +6,50 @@ import {
     SIGNUP_ACTION_SUCCESS,
     SIGNUP_ACTION_FAIL,
     SIGNOUT_ACTION_REQUEST
-} from "../Constant/userConst";
+} from "../Constant/actionTypes";
 
-export const userReducer = (state = {},action) => {
+const initialState = {
+    userInfo: {}
+};
+
+export const userReducer = (state = initialState ,action) => {
     switch(action.type){
         case SIGNIN_ACTION_REQUEST:
-            return {loading : true}
+            return {
+                ...state,
+                loading : true
+            }
         case SIGNIN_ACTION_SUCCESS:
-            return {userInfo : action.payload, loading : false}
+            return {
+                ...state,
+                userInfo : action.payload,
+                loading : false
+            }
         case SIGNIN_ACTION_FAIL:
-            return {error: action.payload, loading: false}
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
         case SIGNUP_ACTION_REQUEST:
-            return {loading : true}
+            return {
+                ...state,
+                loading : true
+            }
         case SIGNUP_ACTION_SUCCESS:
-            return {userInfo : action.payload, loading : false}
+            return {
+                ...state,
+                userInfo : action.payload,
+                loading : false
+            }
         case SIGNUP_ACTION_FAIL:
-            return {error: action.payload, loading: false}
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
         case SIGNOUT_ACTION_REQUEST:
-            return {}
+            return initialState;
         default:
             return state;
     }

@@ -1,19 +1,19 @@
 .introduction {
-    background-color: aqua;
+    background-color: aquamarine;
     padding: 1em;
     margin: 1em;
     border-radius: 1em;
 }
 
-.calendar{
-    background-color: blueviolet;
+.expense {
+    background-color: pink;
     padding: 1em;
     margin: 1em;
     border-radius: 1em;
 }
 
 .todayList{
-    background-color: rgb(228, 46, 46);
+    background-color: azure;
     padding: 1em;
     margin: 1em;
     border-radius: 1em;

@@ -1,43 +1,46 @@
 const express = require("express");
 const router = express.Router();
-require("firebase/auth");
-const admin = require('firebase-admin');
-const db = admin.firestore();
+const { getAllExpenses, addExpense } = require("../FirebaseHelpers/expenseHelper");
 
-router.get('/getexpenses', async (req, res) => {
-
-    const userId = req.body.userId;
-    var list = [];
-    const postRef = db.collection('expenses');
-    const snapshot = await postRef.get();
-    await snapshot.forEach(doc => {
-        //console.log(doc.id);
-        if (doc.data().userId === userId) {
-            list.push(doc.data());
-        }
-
-    });
+router.get('/getexpenses', async (req, res) => { 
+    const userId = req.query.userId;
+    const list = await getAllExpenses(userId);
+    
     await res.send(list);
 })
 
 router.post('/addexpense', async (req, res) => {
     console.log(req.body);
-    var userId = req.body.userId;
-    var amount = req.body.amount;
-    var expenseType = req.body.expenseType;
+    const {
+        name,
+        userId,
+        amount,
+        expenseType
+    } = req.body;
     var date = Date.now();
 
-    const temp = {
-        userId: userId,
-        amount: amount,
-        expenseType: expenseType,
-        date: date
-    }
+    const expense = {
+        userId,
+        name,
+        amount,
+        expenseType,
+        date
+    };
 
-    await db.collection('expenses').add(temp);
-    await res.send(temp);
+    await addExpense(expense);
+    
+    const list = await getAllExpenses(userId);
+    await res.send(list);
 })
 
+router.delete('/deleteexpense', async (req, res) => { 
+    const date = req.query.date;
+    const userId = req.query.userId;
 
+    await deleteExpense(userId, date);
+    const list = await getAllExpenses(userId);
+    
+    await res.send(list);
+})
 
 module.exports = router;

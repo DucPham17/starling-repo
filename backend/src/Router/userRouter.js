@@ -88,17 +88,17 @@ router.get("/success", isLoggedIn, (req, res) => {
             // See the UserRecord reference doc for the contents of userRecord.
             console.log("Email existed");
             const record = userRecord.toJSON();
-            console.log(record);
+            //console.log(record);
             const jwt = sign(record, secret);
-            console.log(jwt);
+            //console.log(jwt);
             res.redirect("http://localhost:3000?token=" + jwt);
             // console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
         })
         .catch((error) => {
-            console.log(error+"runned into error");
+            //console.log(error+"runned into error");
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    console.log("aaa");
+                    //console.log("aaa");
                     // Signed in 
                     var user = userCredential.user;
                     user.updateProfile({
@@ -112,7 +112,7 @@ router.get("/success", isLoggedIn, (req, res) => {
 
                 })
                 .catch((error) => {
-                    console.log(error);
+                    //console.log(error);
                     res.redirect("http://localhost:3000");
                 });
 

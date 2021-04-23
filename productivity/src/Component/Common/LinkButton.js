@@ -6,6 +6,7 @@ export const LinkButton = (props) => {
 
     return (
         <div
+            className={props.className}
             style={{
                 cursor: 'pointer',
                 color: theme.palette.primary.main
