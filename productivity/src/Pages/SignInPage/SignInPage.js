@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {Form, Button, Card} from 'react-bootstrap';
 import { Container } from '@material-ui/core';
-import { signin } from '../../Action/userAction';
+import { signin, signInWithGoogle } from '../../Action/userAction';
 import { useHistory } from 'react-router-dom';
 import './SignIn.css';
 import { LinkButton } from '../../Component/Common/LinkButton';
@@ -22,6 +22,10 @@ function SignInPage(props) {
         e.preventDefault();
        // console.log(email);
         dispatch(signin(email,password));
+    }
+
+    const handleGoogleSignIn = () =>{
+        dispatch(signInWithGoogle());
     }
 
     return(
@@ -44,6 +48,7 @@ function SignInPage(props) {
                     </Form>
                 </Card.Body>
             </Card>
+            <LinkButton onClick={handleGoogleSignIn}>Google Sign In</LinkButton>
             <LinkButton onClick={() => history.push("/signup")}>Don't have account? Signup</LinkButton>
         </div>
         </Container>

@@ -56,3 +56,23 @@ export const signout = () => async (dispatch) => {
     })
     Cookie.set('userInfo', JSON.stringify(null))
 }
+
+export const signInWithGoogle = () => async (dispatch) => {
+    dispatch({
+        type: SIGNIN_ACTION_REQUEST,
+        payload: {loading: true}
+    });
+        
+    try {
+        window.location.href = `http://localhost:5000/api/users/google`;
+        //window.open("http://localhost:5000/api/users/google", "_blank")
+        //ReactDOM.render(data, document.getElementById('root'));
+        //console.log(data);
+        
+    } catch (error) {
+        dispatch({
+            type: SIGNIN_ACTION_FAIL,
+            payload : error
+        })
+    }
+}

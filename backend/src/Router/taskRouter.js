@@ -21,7 +21,7 @@ router.get('/gettasks', async (req, res) => {
 })
 
 router.post('/addtask', async (req, res) => {
-    console.log(req.body);
+    console.log(req);
     var userId = req.body.userId;
     var title = req.body.title;
     var description = req.body.description;
