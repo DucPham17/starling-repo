@@ -24,7 +24,7 @@ const Dashboard= (props)=> {
     })
 
     useEffect(() => {
-        dispatch(getData(info.userInfo.uid))
+        dispatch(getData(userInfo.uid))
         if (today.getHours() < 12) {
             setHello('Good Morning')
         } else if (today.getHours() > 12 && today.getHours() < 18) {

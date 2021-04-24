@@ -12,12 +12,15 @@ router.get('/gettasks', async (req, res) => {
 })
 
 router.post('/addtask', async (req, res) => {
+
+    console.log(req);
     const newTask = {
         userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
         isCompleted : false,
         date: req.body.date
+
     }
 
     await addTask(newTask);
