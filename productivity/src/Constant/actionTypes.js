@@ -11,3 +11,6 @@ export const SET_MODAL = 'SET_MODAL';
 export const SET_TODOS = 'SET_TODOS';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_SELECTED_DATE = 'SET_SELECTED_DATE';
+export const TOGGLE_TODOS = 'TOGGLE_TODOS';
+export const UPDATE_TODOS = 'UPDATE_TODOS';
+export const DELETE_TODOS = 'DELETE_TODOS';

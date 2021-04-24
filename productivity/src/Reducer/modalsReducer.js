@@ -11,6 +11,7 @@ const setModal = (state, action) => ({
     modalType: action.modalType
 });
 
+
 export const modalsReducer = (state = defaultState, action) => {
     const reducerMapper = {
         [SET_MODAL]: setModal
