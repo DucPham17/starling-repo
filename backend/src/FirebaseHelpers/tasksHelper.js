@@ -21,7 +21,29 @@ const addTask = async (task) => {
     await db.collection('tasks').add(task);
 };
 
+const toggleTask = async (userId) => {
+    await db.collection('tasks').doc(userId).update(
+        {
+        isCompleted: !isCompleted,
+        })
+}
+
+const updateTask = async () => {
+    await db.collection('tasks').doc(userId).update({
+        title: true,
+        description: true, 
+    }
+    )
+}
+
+const deleteTask = async () => {
+    await db.collection('tasks').doc(userId).delete()
+}
+
 module.exports = {
     getAllTasks,
-    addTask
+    addTask,
+    toggleTask,
+    updateTask,
+    deleteTask,
 };
