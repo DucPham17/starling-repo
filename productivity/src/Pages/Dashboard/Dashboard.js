@@ -11,11 +11,13 @@ import { addData, getData } from '../../Action/expenseAction'
 const Dashboard= (props)=> {
     const info = useSelector(state => state.user);
     const infoExpense = useSelector(state => state.expense.expense);
+    const {todos, selectedDate} = useSelector((state) => state.todos);
+
     const {loading, userInfo , error} = info;
     const dispatch = useDispatch();
     const today = new Date();
     const [hello, setHello] = useState('Hello')
-    const [todos, setTodos] = useState([]);
+
     
     useEffect(()=>{
         if(!userInfo){
@@ -42,14 +44,15 @@ const Dashboard= (props)=> {
         let spendingAmount = 0
         infoExpense.map((id) => {
             if (id.expenseType === 'Earning') {
-                earningAmount = earningAmount + id.amount
+                earningAmount = earningAmount + (-id.amount* -1)
             } else {
-                spendingAmount = spendingAmount + id.amount
+                spendingAmount = spendingAmount + (-id.amount* -1)
             }
         })
         setEarning(earningAmount)
         setSpending(spendingAmount) 
     }, [infoExpense])
+    
 
     const handleSignout = () =>{
         dispatch(signout());
@@ -74,7 +77,7 @@ const Dashboard= (props)=> {
                             Expense Info: 
                         </h5>
                         <p>
-                            Total: {spending + earning}
+                            Total: {-spending + earning}
                         </p>
                         <p>
                             Spending: {spending}

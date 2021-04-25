@@ -56,6 +56,23 @@ export const expenseReducer = (state = initialState,action) => {
                 error: action.payload,
                 loading: false
             }
+        case 'UPDATE':
+            return {
+                ...state,
+                loading : true
+            }
+        case 'UPDATE_SUCCESS':
+            return {
+                ...state,
+                expense : action.payload,
+                loading : false
+            }
+        case 'UPDATE_FAIL':
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
         default:
             return state;
     }

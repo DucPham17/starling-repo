@@ -1,5 +1,6 @@
 import Axios from "axios";
 import Cookie from "js-cookie";
+import { setModal } from "./modalsAction";
 
 export const getData = (userId) => async (dispatch) => {
     dispatch({
@@ -40,12 +41,14 @@ export const addData = (userId, name, amount, expenseType, date) => async (dispa
             type: 'ADD_SUCCESS',
             payload : data
         })
+        dispatch(setModal(undefined));
         Cookie.set('expense', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: 'ADD_FAIL',
             payload : error
         })
+        dispatch(setModal(undefined));
     }
 }
 
@@ -74,5 +77,30 @@ export const deleteData = (userId, date) => async (dispatch) => {
             type: 'DELETE_FAIL',
             payload : error
         })
+    }
+}
+
+export const updateData = (userId, date, item) => async (dispatch) => {
+    dispatch({
+        type: 'UPDATE',
+        payload: {loading: true}
+    });
+
+    try {
+        console.log('update')
+        const {data} = await Axios.post("/api/expenses/updateexpense", {userId, date, item})
+        console.log(data)
+        dispatch({
+            type: 'UPDATE_SUCCESS',
+            payload : data
+        })
+        dispatch(setModal(undefined));
+        Cookie.set('expense', JSON.stringify(data))
+    } catch (error) {
+        dispatch({
+            type: 'UPDATE_FAIL',
+            payload : error
+        })
+        dispatch(setModal(undefined));
     }
 }
