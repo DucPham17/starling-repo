@@ -1,5 +1,4 @@
 const express = require("express");
-const { updateTodo, deleteTodo } = require("../../../productivity/src/Action/todosAction");
 const { getAllTasks, addTask, toggleTask, updateTask } = require("../FirebaseHelpers/tasksHelper");
 const router = express.Router();
 
@@ -44,7 +43,7 @@ router.post('/toggleTask', async (req, res) => {
     await res.send(allTasks);
 })
 
-router.put(`/updatetask/${userId}`, async (req, res) => {
+router.put('/updatetask/', async (req, res) => {
     const updatedTask = {
         userId: req.body.userId,
         title: req.body.title,
@@ -54,6 +53,8 @@ router.put(`/updatetask/${userId}`, async (req, res) => {
     }
 
     await updateTask(updatedTask);
+    const allTasks = await getAllTasks(req.body.userId, req.body.date);
+    await res.send(allTasks);
 })
 
 router.delete('/deleteTask', async (req, res) => {

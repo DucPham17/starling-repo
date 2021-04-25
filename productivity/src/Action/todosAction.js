@@ -60,10 +60,16 @@ export const toggleTodos = (params) => async (dispatch) => {
     }
 }
 
-export const updateTodo = (params) => async (dispatch) => {
+export const updateTodo = (userId, title, description) => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-        const {data: todos} = await Axios.post("/api/tasks/updatetask", params)
+        const {data: todos} = await Axios.post("/api/tasks/updatetask", {
+            params: {
+                userId, 
+                title, 
+                description
+            }
+        })
         dispatch({
             type: UPDATE_TODOS,
             todos
@@ -77,10 +83,14 @@ export const updateTodo = (params) => async (dispatch) => {
     }
 }
 
-export const deleteTodo = (params) => async (dispatch) => {
+export const deleteTodo = (uid) => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-        const {data: todos} = await Axios.delete("/api/tasks/deletetask", params)
+        const {data: todos} = await Axios.delete("/api/tasks/deletetask", {
+            params: {
+                uid
+            }
+        })
         dispatch({
             type: DELETE_TODOS,
             todos

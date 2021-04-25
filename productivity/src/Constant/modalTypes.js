@@ -4,4 +4,6 @@ export const ModalTypes = {
     SIGN_UP: 'SIGN_UP',
     ADD_NOTE: 'ADD_NOTE',
     UPDATE_TODOS: 'UPDATE_TODOS',
+    EXPENSE: 'EXPENSE',
+    UPDATE: 'UPDATE'
 };
