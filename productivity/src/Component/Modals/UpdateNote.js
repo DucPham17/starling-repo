@@ -48,7 +48,7 @@ export const UpdateNote = (props) => {
                 <Form.Control  
                         className="edit"
                         placeholder="Edit your task.."
-                        value={props.title} 
+                        defaultValue={props.title} 
                         onChange={updateContent('title')} 
                         onKeyDown={onKeyDown}
                  /> 
@@ -58,7 +58,7 @@ export const UpdateNote = (props) => {
                      <Form.Control  
                         className="edit"
                         placeholder="Edit your task.."
-                        value={props.description} 
+                        defaultValue={props.description} 
                         onChange={updateContent('description')} 
                         onKeyDown={onKeyDown}
                  /> 

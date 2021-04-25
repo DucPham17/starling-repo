@@ -39,18 +39,6 @@ export const NoteItem = (props) => {
                 [e.target.title]: value}),
 
         }))
-        // dispatch(updateTodo({
-        //     userId: uid,
-        //     title: setState({
-        //         ...state,
-        //         [e.target.title]: value,
-        //     }),
-        //     description: setState({
-        //         ...state,
-        //         [e.target.description]: value,
-        //     })
-                 
-        // }))
         
     }
 
@@ -103,7 +91,7 @@ export const NoteItem = (props) => {
                         className="edit"
                         placeholder="Edit your task.."
                         value={props.note.title}
-                        onChange={props.updateTodos.title} 
+                        onChange={updateText} 
                         onKeyDown={onKeyDown}
                  /> 
                  </Form.Group>
@@ -113,7 +101,7 @@ export const NoteItem = (props) => {
                         className="edit"
                         placeholder="Edit your task.."
                         value={props.note.description}
-                        onChange={props.updateTodos.description} 
+                        onChange={updateText} 
                         onKeyDown={onKeyDown}
                  /> 
                  </Form.Group>
