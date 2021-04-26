@@ -29,6 +29,7 @@ export const getTodos = (userId, date) => async (dispatch) => {
 export const addTodo = (params) => async (dispatch) => {
     dispatch(setLoading(true));
     try {
+        console.log('add')
         const {data: todos} = await Axios.post("/api/tasks/addtask", params)
         dispatch({
             type: SET_TODOS,
@@ -39,14 +40,21 @@ export const addTodo = (params) => async (dispatch) => {
         console.log(e)
     } finally {  
         dispatch(setLoading(false));
-        dispatch(setModal(undefined));
     }
 }
 
-export const toggleTodos = (params) => async (dispatch) => {
-    dispatch(setLoading(true));
+export const toggleTodos = (isCompleted) => async (dispatch) => {
+    // dispatch(setLoading(true));
     try {
-        const {data: todos} = await Axios.post("/api/tasks/toggleTask", params)
+        console.log('toggle')
+
+        const {data: todos} = await Axios.post("/api/tasks/toggleTask", 
+        {
+            params: {
+                isCompleted,
+            }
+        }
+        )
         dispatch({
             type: TOGGLE_TODOS,
             todos,
@@ -56,26 +64,32 @@ export const toggleTodos = (params) => async (dispatch) => {
         console.log(e)
     } finally {  
         dispatch(setLoading(false));
-        dispatch(setModal(undefined));
     }
 }
 
-export const updateTodo = (userId, title, description) => async (dispatch) => {
-    dispatch(setLoading(true));
+export const updateTodo = (userId, date, item) => async (dispatch) => {
+    // dispatch(setLoading(true));
+
+    dispatch({
+        type: 'UPDATE',
+        payload: {loading: true}
+    });
+
     try {
-        const {data: todos} = await Axios.post("/api/tasks/updatetask", {
+        console.log('update')
+        const {data} = await Axios.post("/api/tasks/updatetasks", {
             params: {
                 userId,
-                title,
-                description,
-                
+                date, 
+                item, 
             }
         })
+        console.log(data)
         dispatch({
-            type: UPDATE_TODOS,
-            todos
+            type: 'UPDATE',
+            data,
         })
-        Cookie.set('todos', JSON.stringify(todos))
+        Cookie.set('todos', JSON.stringify(data))
     } catch (e) {
         console.log(e)
     } finally {  
@@ -84,23 +98,25 @@ export const updateTodo = (userId, title, description) => async (dispatch) => {
     }
 }
 
-export const deleteTodo = (uid) => async (dispatch) => {
-    dispatch(setLoading(true));
+export const deleteTodo = (userId, date) => async (dispatch) => {
+    // dispatch(setLoading(true));
     try {
-        const {data: todos} = await Axios.delete("/api/tasks/deletetask", {
+        console.log('delete')
+        const {data} = await Axios.delete("/api/tasks/deletetask", {
             params: {
-                uid
+                userId,
+                date
             }
         })
         dispatch({
             type: DELETE_TODOS,
-            todos
+            data,
         })
-        Cookie.set('todos', JSON.stringify(todos))
-    } catch (e) {
-        console.log(e)
+        console.log(data)
+        Cookie.set('todos', JSON.stringify(data))
+    } catch (error) {
+        console.log(error)
     } finally {  
         dispatch(setLoading(false));
-        dispatch(setModal(undefined));
     }
 }

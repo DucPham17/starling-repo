@@ -6,7 +6,8 @@ import { toISOString } from '../../Helpers/date';
 
 const defaultState = {
     title: '',
-    description: ''
+    description: '',
+    isComplete: 'false',
 };
 
 export const AddNote = (props) => {
