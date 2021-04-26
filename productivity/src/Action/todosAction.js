@@ -69,12 +69,6 @@ export const toggleTodos = (isCompleted) => async (dispatch) => {
 
 export const updateTodo = (userId, date, item) => async (dispatch) => {
     // dispatch(setLoading(true));
-
-    dispatch({
-        type: 'UPDATE',
-        payload: {loading: true}
-    });
-
     try {
         console.log('update')
         const {data} = await Axios.post("/api/tasks/updatetasks", {
@@ -86,7 +80,7 @@ export const updateTodo = (userId, date, item) => async (dispatch) => {
         })
         console.log(data)
         dispatch({
-            type: 'UPDATE',
+            type: 'UPDATE_TODOS',
             data,
         })
         Cookie.set('todos', JSON.stringify(data))

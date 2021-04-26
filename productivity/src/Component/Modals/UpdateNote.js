@@ -27,9 +27,9 @@ export const UpdateNote = (props) => {
            
     }
 
-    useEffect(() => {
-        dispatch(GetAction())        
-    }, [])
+    // useEffect(() => {
+    //     dispatch(GetAction())        
+    // }, [])
 
     console.log(todosUpdate);
     return (
