@@ -8,7 +8,7 @@ import './LandingPage.css';
 import queryString from "query-string";
 import jwt_decode from "jwt-decode";
 import {SIGNIN_ACTION_SUCCESS} from "../../Constant/userConst";
-
+import Cookie from "js-cookie";
 
 function LandingPage(props) {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ function LandingPage(props) {
         type: SIGNIN_ACTION_SUCCESS,
         payload: decoded
       })
+      Cookie.set('userInfo', JSON.stringify(decoded))
       props.history.push("/signin");
     }
   }, [])
