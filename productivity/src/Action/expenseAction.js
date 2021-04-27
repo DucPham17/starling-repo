@@ -104,3 +104,30 @@ export const updateData = (userId, date, item) => async (dispatch) => {
         dispatch(setModal(undefined));
     }
 }
+
+export const filterData = (userId, choiceDate, choiceType) => async (dispatch) => {
+    dispatch({
+        type: 'FILTER',
+        payload: {loading: true}
+    });
+    console.log('userId:', userId)
+    try {
+        const {data} = await Axios.get("/api/expenses/filterexpenses", {
+            params: {
+                userId,
+                choiceDate, 
+                choiceType
+            }
+        })
+        dispatch({
+            type: 'FILTER_SUCCESS',
+            payload : data
+        })
+        Cookie.set('expense', JSON.stringify(data))
+    } catch (error) {
+        dispatch({
+            type: 'FILTER_FAIL',
+            payload : error
+        })
+    }
+}

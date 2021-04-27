@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getAllExpenses, addExpense, deleteExpense, updateExpense} = require("../FirebaseHelpers/expenseHelper");
+const { getAllExpenses, addExpense, deleteExpense, updateExpense, filterExpenses} = require("../FirebaseHelpers/expenseHelper");
 
 router.get('/getexpenses', async (req, res) => { 
     const userId = req.query.userId;
@@ -64,6 +64,15 @@ router.post('/updateexpense', async (req, res) => {
     await updateExpense(expense);
     
     const list = await getAllExpenses(userId);
+    await res.send(list);
+})
+
+router.get('/filterexpenses', async (req, res) => { 
+    const userId = req.query.userId;
+    const choiceDate = req.query.choiceDate;
+    const choiceType = req.query.choiceType;
+    const list = await filterExpenses(userId, choiceDate, choiceType);
+    
     await res.send(list);
 })
 

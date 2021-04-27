@@ -26,21 +26,21 @@ export const Expense = (props) => {
                         <Form.Label>
                             Name of Expense 
                         </Form.Label>
-                        <Form.Control
+                        <Form.Control required
                             onChange={(e) => setName(e.target.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>
                             Amount of Expense 
                         </Form.Label>
-                        <Form.Control 
+                        <Form.Control required
                             onChange={(e) => setAmount(e.target.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>
                             Type of Expense 
                         </Form.Label>
-                        <Form.Control as='select'
+                        <Form.Control as='select' required
                             defaultValue = 'Pick one...'
                             onChange={(e) => setChoice(e.target.value)}>
                             <option>

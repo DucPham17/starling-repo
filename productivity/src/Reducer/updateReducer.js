@@ -18,6 +18,13 @@ const getModal = (state, action) => {
     }
 }
 
+const setModal = (state, action) => {
+    return {
+        ...state, 
+        [action.key]: action.value,
+    }
+}
+
 export const updateReducer = (state = initialState, action) => {
     switch(action.type){
         case 'UPDATE': {
@@ -25,6 +32,9 @@ export const updateReducer = (state = initialState, action) => {
         }  
         case 'GET': {
             return getModal(state, action)
+        } 
+        case 'SET': {
+            return setModal(state, action)
         } 
         default:
             return state;

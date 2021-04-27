@@ -53,9 +53,41 @@ const updateExpense = async (item) => {
 
 }
 
+const filterExpenses = async (userId, choiceDate, choiceType) => {
+    const list = [];
+    let choiceRef = db.collection('expenses');
+    if (choiceType == 'Spending') {
+        choiceRef = db.collection('expenses').where('expenseType', '==', 'Spending');
+    } else if (choiceType == 'Earning') {
+        choiceRef = db.collection('expenses').where('expenseType', '==', 'Earning');
+    }
+    let dateRef = choiceRef
+    if (choiceDate == '3 Recent Days') {
+        const recent = new Date().getMilliseconds - (86400000 * 3) 
+        dateRef = choiceRef.where('date', '>=', recent);
+    } else if (choiceDate == 'One week') {
+        const week = new Date().getMilliseconds - (86400000 * 7) 
+        dateRef = choiceRef.where('date', '>=', week);
+    } else if (choiceDate == 'Today') {
+        const today = new Date().getMilliseconds - (86400000)
+        dateRef = choiceRef.where('date', '>=', today); 
+    }
+    const snapshot = await dateRef.get();
+
+    await snapshot.forEach(doc => {
+        //console.log(doc.data().userId);
+        if (doc.data().userId === userId) {
+            list.push(doc.data());
+        }
+    });
+    console.log(list)
+    return list;
+}
+
 module.exports = {
     getAllExpenses,
     addExpense,
     deleteExpense,
-    updateExpense
+    updateExpense,
+    filterExpenses
 };

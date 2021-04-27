@@ -13,3 +13,12 @@ export const GetAction = (value) => {
     }
     return action
 }
+
+export const SetAction = (key, value) => {
+    const action = {
+        type: 'SET',
+        key,
+        value
+    }
+    return action
+}

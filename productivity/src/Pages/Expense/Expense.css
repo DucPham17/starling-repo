@@ -24,7 +24,14 @@
     margin-left: 3em;
 }
 
-.filter {
+#filter {
     margin-left: 3em;
-    margin-right: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+    width: 2em;
+}
+
+.intro {
+    margin:1em;
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import {Button, Row, Col, Modal, Form, Card} from 'react-bootstrap'
-import { addData, getData, deleteData, updateData } from '../../Action/expenseAction'
+import { addData, getData, deleteData, updateData, filterData } from '../../Action/expenseAction'
 import './Expense.css';
 import Lottie from 'react-lottie-player';
 import animationData from '../../resources/Lotties/cat.json';
@@ -10,20 +10,25 @@ import {setModal} from '../../Action/modalsAction';
 import {GetAction, UpdateAction} from '../../Action/updateAction';
 
 const Expense = ()=> {
-    const filterDate = ['Today', '3 Recent Days', 'One Week']
+    const filterDate = ['All', 'Today', '3 Recent Days', 'One Week']
     const filterType = ['All', 'Spending', 'Earning']
     
     const infoUser = useSelector(state => state.user);
     const infoExpense = useSelector(state => state.expense.expense);
     const infoUpdate = useSelector(state => state.update);
+    const infoFilter = useSelector(state => state.filter);
 
     const dispatch = useDispatch();
-
-    const [choice, setChoice] = useState('')
     
     useEffect(() => {
-        dispatch(getData(infoUser.userInfo.uid))
-    }, [])
+        console.log(infoFilter)
+        if (infoFilter.type == '' && infoFilter.date == '') {
+            dispatch(getData(infoUser.userInfo.uid))
+        } else {
+            dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
+        }
+        console.log(infoExpense)
+    }, [infoFilter])
 
     const handleDelete = (date) => {
         dispatch(deleteData(infoUser.userInfo.uid, date))
@@ -63,10 +68,15 @@ const Expense = ()=> {
                         <Col>
                             <Button className='addButton' variant="outline-primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}> Add New Expense </Button> 
                             
-                            <p>Filter by Date</p>
-                            <Form.Control as='select' className='filter'
-                                defaultValue = 'Today'
-                                onChange={(e) => setChoice(e.target.value)}>
+                            <p className='intro'>Filter by Date</p>
+                            <Form.Control as='select' id='filter'
+                                className="mr-sm-2"
+                                defaultValue = 'All'
+                                onChange={(e) => dispatch({
+                                    type: 'SETF',
+                                    key: 'date',
+                                    value: e.target.value,
+                                })}>
                                 {filterDate.map((id) => 
                                     <option>
                                         {id}
@@ -74,10 +84,15 @@ const Expense = ()=> {
                                 )}
                             </Form.Control>
 
-                            <p>Filter by Type</p>
-                            <Form.Control as='select' className='filter'
+                            <p className='intro'>Filter by Type</p>
+                            <Form.Control as='select' id='filter'
+                                className="mr-lg-7"
                                 defaultValue = 'All'
-                                onChange={(e) => setChoice(e.target.value)}>
+                                onChange={(e) => dispatch({
+                                    type: 'SETF',
+                                    key: 'type',
+                                    value: e.target.value,
+                                })}>
                                 {filterType.map((id) => 
                                     <option>
                                         {id}
