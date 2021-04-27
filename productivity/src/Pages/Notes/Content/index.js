@@ -10,28 +10,11 @@ import { NoteItem } from './NoteItem';
 import { NoNoteFound } from './NoNoteFound';
 
 export const Content = (props) => {
-    const {todos, selectedDate, updateTodo} = useSelector((state) => state.todos);
-    const [state, setState]= useState({title: '', description: ''});
+    const {todos, selectedDate} = useSelector((state) => state.todos);
     const dispatch = useDispatch();
-    const {uid} = useSelector((state) => state.user.userInfo);
 
     const onAddNoteClick = () => {
         dispatch(setModal(ModalTypes.ADD_NOTE))
-    }
-
-    const updateTodos = (e) => {
-        const value = e.target.value;
-        dispatch(updateTodo({
-            userId : uid,
-            title: setState({
-                ...state,
-                [e.target.title]: value}),
-
-        }))
-    }
-
-    const deleteTodos = () => {
-        dispatch(deleteTodos(uid))
     }
 
     return (
@@ -48,8 +31,6 @@ export const Content = (props) => {
                         todos.map((todo) => 
                         <NoteItem 
                         note={todo}
-                        updateTodos={updateTodos}
-                        deleteTodos={deleteTodos}
                         />) :
                         <NoNoteFound/>
                 }

@@ -8,6 +8,8 @@ import { pageStatusReducer } from "./Reducer/pageStatusReducer";
 import { todoReducer } from "./Reducer/todoReducer";
 import { updateReducer } from "./Reducer/updateReducer";
 import { filterReducer } from "./Reducer/filterReducer"
+import { updateTodoReducer} from './Reducer/updateTodoReducer';
+
 const userInfo = Cookie.getJSON("userInfo") || {};
 const initialState = {user : {userInfo}};
 
@@ -20,6 +22,7 @@ const reducer = combineReducers({
     pageStatus: pageStatusReducer,
     update: updateReducer,
     filter: filterReducer,
+    updateTodos: updateTodoReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

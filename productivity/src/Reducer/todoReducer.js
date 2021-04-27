@@ -2,6 +2,7 @@ import { SET_TODOS, SET_SELECTED_DATE, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS}
 
 const defaultState = {
   todos: [],
+  isCompleted: false,
   selectedDate: new Date()
 };
 
@@ -33,7 +34,6 @@ const updateTodos = (state, action) => {
         ...state,
         title: action.title,
         description: action.description,
-        isCompleted: false,
       }
     }
     return todo;
@@ -41,11 +41,11 @@ const updateTodos = (state, action) => {
   return newState;
 }
 
-const deleteTodos = (state, id) => {
+const deleteTodos = (state, action) => {
   const newState = state.filter(todo => {
-    console.log("test", todo);
-    return todo.id !== id;
+    return todo.id !== action.id;
   });
+
   return newState;
 }
    

@@ -10,7 +10,7 @@ import { Update } from "./Update";
 
 const modals = {
     [ModalTypes.ADD_NOTE]: AddNote,
-    [ModalTypes.UPDATE_NOTE]: UpdateNote,
+    [ModalTypes.UPDATE_TODOS]: UpdateNote,
     [ModalTypes.SIGN_UP]: SignUp,
     [ModalTypes.SIGN_IN]: SignIn,
     [ModalTypes.EXPENSE]: Expense,

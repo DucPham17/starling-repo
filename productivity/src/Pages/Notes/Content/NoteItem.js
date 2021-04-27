@@ -1,73 +1,42 @@
-import React, { useState}  from 'react';
+import React, { useState, useEffect}  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Form, Button, ListGroup, Row, Col, Modal, DropdownButton, Dropdown} from 'react-bootstrap';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { setModal } from '../../../Action/modalsAction';
-import { toggleTodos, updateTodo, deleteTodo } from '../../../Action/todosAction';
-export const NoteItem = (props) => {
+import { getTodos, toggleTodos, deleteTodo } from '../../../Action/todosAction';
+import { IoSettingsOutline } from 'react-icons/io5';
+import {GetAction, UpdateAction} from '../../../Action/updateAction';
+import {toISOString} from '../../../Helpers/date'
+export const NoteItem = ({note}) => {
 
-    const [showModal, setShow] = useState(false);
-    const {uid} = useSelector((state) => state.user.userInfo);
-    const [state, setState]= useState({title: '', description: ''});
+    const userInfo = useSelector((state) => state.user.userInfo);   
+    const {selectedDate} = useSelector((state) => state.todos); 
     const dispatch = useDispatch();
-
     const handleCheckboxClick = () => {
-        dispatch(toggleTodos(uid))
+        dispatch(toggleTodos(userInfo.uid))
+    }  
+
+    const handleDeleteTask = (date) => {
+        dispatch(deleteTodo(userInfo.uid, date));
     }
-
-    const handleClose = () => 
-    setShow(false);
-  
-
-    function editText() {
-        setShow(true);
-    }
-
-    function onKeyDown(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-          }
-    } 
-
-    const updateText = (e) => {
-        const value = e.target.value;
-
-        dispatch(updateTodo({
-            userId : uid,
-            title: setState({
-                ...state,
-                [e.target.title]: value}),
-
-        }))
-        // dispatch(updateTodo({
-        //     userId: uid,
-        //     title: setState({
-        //         ...state,
-        //         [e.target.title]: value,
-        //     }),
-        //     description: setState({
-        //         ...state,
-        //         [e.target.description]: value,
-        //     })
-                 
-        // }))
-        
-    }
-
-
-    const deleteTask = (uid) => {
-        dispatch(deleteTodo(uid));
-    }
+    
+    useEffect(() => {
+        dispatch(getTodos(userInfo.uid, toISOString(selectedDate)))
+     }, [])
 
     return (
         <div className="note-item">
             <div>
-            <ListGroup.Item style={{ textDecoration: props.note.isCompleted ? "line-through" : "" }} onDoubleClick={editText}>
+            <ListGroup.Item 
+            style={{ textDecoration: note.isCompleted ? "line-through" : "" }} 
+            onDoubleClick={() => {dispatch(UpdateAction(note.id)) ;
+                                    dispatch(setModal(ModalTypes.UPDATE_TODOS))
+            }}>
              <Form inline>
                 <div className="checkbox-holder"
                 onClick={handleCheckboxClick}
                 >
-                 {props.note.isCompleted ?
+                 {note.isCompleted ?
                  (
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -91,45 +60,10 @@ export const NoteItem = (props) => {
                 {props.note.tag}
                 </Button>  */}
                 </Form>
-                <Modal show={showModal} onHide={handleClose}>
-             <Modal.Header closeButton>
-                <Modal.Title>Update Note</Modal.Title>
-            </Modal.Header>
-            
-                <Modal.Body>
-                <Form.Group>
-                <Form.Label>Title</Form.Label>
-                <Form.Control  
-                        className="edit"
-                        placeholder="Edit your task.."
-                        value={props.note.title}
-                        onChange={props.updateTodos.title} 
-                        onKeyDown={onKeyDown}
-                 /> 
-                 </Form.Group>
-                 <Form.Group>
-                     <Form.Label>Description</Form.Label>
-                     <Form.Control  
-                        className="edit"
-                        placeholder="Edit your task.."
-                        value={props.note.description}
-                        onChange={props.updateTodos.description} 
-                        onKeyDown={onKeyDown}
-                 /> 
-                 </Form.Group>
-                 </Modal.Body>
-                 <Modal.Footer>
-                 <Button variant="primary" onClick={() => {
-                     updateTodo(state);
-                     setState({title: ''})
-                 }}>Save</Button>
-                 <Button variant="danger" onClick={deleteTask(uid)}>Delete</Button>
-                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-                 </Modal.Footer>
-                 </Modal>
                  
-            <strong>{props.note.title}</strong>
-            <p>{props.note.description}</p>
+            <strong>{note.title}</strong>
+            <p>{note.description}</p>
+            <Button variant="danger" onClick={() => handleDeleteTask(note.date)}>Delete</Button>                 
             </ListGroup.Item>
             </div>
         </div>
