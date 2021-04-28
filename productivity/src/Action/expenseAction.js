@@ -7,7 +7,6 @@ export const getData = (userId) => async (dispatch) => {
         type: 'GET',
         payload: {loading: true}
     });
-    console.log('userId:', userId)
     try {
         const {data} = await Axios.get("/api/expenses/getexpenses", {
             params: {
@@ -110,7 +109,6 @@ export const filterData = (userId, choiceDate, choiceType) => async (dispatch) =
         type: 'FILTER',
         payload: {loading: true}
     });
-    console.log('userId:', userId)
     try {
         const {data} = await Axios.get("/api/expenses/filterexpenses", {
             params: {

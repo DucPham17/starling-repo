@@ -27,27 +27,15 @@ const toggleTodos = (state, action) => {
     
 }
 
-const updateTodos = (state, action) => {
-  const newState = state.map(todo => {
-    if(todo.id === action.id) {
-      return {
-        ...state,
-        title: action.title,
-        description: action.description,
-      }
-    }
-    return todo;
-  })
-  return newState;
-}
+const updateTodos = (state, action) => ({
+  ...state,
+  todos: action.todos,
+});
 
-const deleteTodos = (state, action) => {
-  const newState = state.filter(todo => {
-    return todo.id !== action.id;
-  });
-
-  return newState;
-}
+const deleteTodos = (state, action) => ({
+  ...state,
+  todos: action.todos,
+});
    
 export const todoReducer = (state = defaultState, action) => {
   const reducerMapper = {

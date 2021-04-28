@@ -56,7 +56,7 @@ export const Expense = (props) => {
                     </Form.Group>
                 </Form>
                 <Modal.Footer>
-                    <Button variant='primary' onClick = {() => handleAdd(name, amount, choice, new Date())}> Save </Button>
+                    <Button variant='primary' onClick = {() => handleAdd(name, amount, choice, new Date().getTime())}> Save </Button>
                 </Modal.Footer>
             </Modal.Body>
         </Modal> 

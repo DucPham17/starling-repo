@@ -31,6 +31,7 @@ const deleteExpense = async (userId, date) => {
             target = doc.id;
         }
     });
+
     await db.collection('expenses').doc(target).delete()
 }
 
@@ -55,22 +56,25 @@ const updateExpense = async (item) => {
 
 const filterExpenses = async (userId, choiceDate, choiceType) => {
     const list = [];
+
     let choiceRef = db.collection('expenses');
     if (choiceType == 'Spending') {
         choiceRef = db.collection('expenses').where('expenseType', '==', 'Spending');
     } else if (choiceType == 'Earning') {
         choiceRef = db.collection('expenses').where('expenseType', '==', 'Earning');
     }
+
     let dateRef = choiceRef
+    const time = new Date()
+    const begin = new Date(time.getFullYear(), time.getMonth(), time.getDate(), 0, 0)
     if (choiceDate == '3 Recent Days') {
-        const recent = new Date().getMilliseconds - (86400000 * 3) 
+        const recent = begin.getTime() - (86400000 * 2) 
         dateRef = choiceRef.where('date', '>=', recent);
     } else if (choiceDate == 'One week') {
-        const week = new Date().getMilliseconds - (86400000 * 7) 
+        const week = begin.getTime() - (86400000 * 6) 
         dateRef = choiceRef.where('date', '>=', week);
     } else if (choiceDate == 'Today') {
-        const today = new Date().getMilliseconds - (86400000)
-        dateRef = choiceRef.where('date', '>=', today); 
+        dateRef = choiceRef.where('date', '>=', begin.getTime()); 
     }
     const snapshot = await dateRef.get();
 
@@ -80,7 +84,6 @@ const filterExpenses = async (userId, choiceDate, choiceType) => {
             list.push(doc.data());
         }
     });
-    console.log(list)
     return list;
 }
 
