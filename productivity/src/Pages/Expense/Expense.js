@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import {Button, Row, Col, Modal, Form, Card} from 'react-bootstrap'
-import { addData, getData, deleteData, updateData, filterData } from '../../Action/expenseAction'
+import { getData, deleteData, filterData } from '../../Action/expenseAction'
 import './Expense.css';
 import Lottie from 'react-lottie-player';
 import animationData from '../../resources/Lotties/cat.json';
@@ -19,16 +19,11 @@ const Expense = ()=> {
     const infoFilter = useSelector(state => state.filter);
 
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
-        console.log(infoFilter)
-        if (infoFilter.type == '' && infoFilter.date == '') {
-            dispatch(getData(infoUser.userInfo.uid))
-        } else {
-            dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
-        }
-        console.log(infoExpense)
-    }, [infoFilter])
+        dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
+        dispatch(getData(infoUser.userInfo.uid))
+    }, [infoFilter.type, infoFilter.date])
 
     const handleDelete = (date) => {
         dispatch(deleteData(infoUser.userInfo.uid, date))
@@ -70,8 +65,7 @@ const Expense = ()=> {
                             
                             <p className='intro'>Filter by Date</p>
                             <Form.Control as='select' id='filter'
-                                className="mr-sm-2"
-                                defaultValue = 'All'
+                                defaultValue = {infoFilter.date}
                                 onChange={(e) => dispatch({
                                     type: 'SETF',
                                     key: 'date',
@@ -86,8 +80,7 @@ const Expense = ()=> {
 
                             <p className='intro'>Filter by Type</p>
                             <Form.Control as='select' id='filter'
-                                className="mr-lg-7"
-                                defaultValue = 'All'
+                                defaultValue = {infoFilter.type}
                                 onChange={(e) => dispatch({
                                     type: 'SETF',
                                     key: 'type',
@@ -106,8 +99,8 @@ const Expense = ()=> {
                 <Col sm={8} className='expenseList'> 
                     <h5> Expense List </h5>
                     <div className='deck'>
-                        {infoExpense.length > 0 ?
-                         infoExpense.map((expenseItem)=> {
+                        {infoFilter.filterList.length > 0 ?
+                         infoFilter.filterList.map((expenseItem)=> {
                             const recent = new Date(expenseItem.date)
                             return (
                                 <Card className='card'> 

@@ -1,29 +1,39 @@
 const initialState = {
-    type: '',
-    date: ''
+    type: 'All',
+    date: 'All', 
+    filterList: [],
 };
-
-const getFilter = (state, action) => {
-    return {
-        ...state,
-    }
-}
-
-const setFilter = (state, action) => {
-    return {
-        ...state, 
-        [action.key]: action.value,
-    }
-}
 
 export const filterReducer = (state = initialState, action) => {
     switch(action.type){  
         case 'GETF': {
-            return getFilter(state, action)
+            return {
+                ...state,
+            }
         } 
         case 'SETF': {
-            return setFilter(state, action)
-        } 
+            return {
+                ...state, 
+                [action.key]: action.value,
+            }
+        }
+        case 'FILTER':
+            return {
+                ...state,
+                loading : true
+            }
+        case 'FILTER_SUCCESS':
+            return {
+                ...state,
+                filterList : action.payload,
+                loading : false
+            }
+        case 'FILTER_FAIL':
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
         default:
             return state;
         }

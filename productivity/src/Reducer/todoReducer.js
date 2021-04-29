@@ -25,13 +25,12 @@ const toggleTodos = (state, action) => ({
 const updateTodos = (state, action) => ({
   ...state,
   todos: action.todos,
-})
+});
 
 const deleteTodos = (state, action) => ({
   ...state,
   todos: action.todos,
-
-})
+});
    
 export const todoReducer = (state = defaultState, action) => {
   const reducerMapper = {
