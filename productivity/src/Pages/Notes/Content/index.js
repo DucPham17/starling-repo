@@ -16,7 +16,7 @@ export const Content = (props) => {
     const onAddNoteClick = () => {
         dispatch(setModal(ModalTypes.ADD_NOTE))
     }
-
+    console.log(todos)
     return (
         <div className={props.className}>
             <div className="d-flex justify-content-between w-100 mb-4">

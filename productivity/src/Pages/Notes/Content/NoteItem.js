@@ -25,13 +25,13 @@ export const NoteItem = ({note}) => {
         dispatch(getTodos(userInfo.uid, toISOString(selectedDate)))
      }, [])
 
-
+    console.log(note)
     return (
         <div className="note-item">
             <div>
             <ListGroup.Item 
             style={{ textDecoration: note.isCompleted ? "line-through" : "" }} 
-            onDoubleClick={() => {dispatch(UpdateAction(note)) ;
+            onDoubleClick={() => {dispatch(UpdateTodosAction(note)) ;
                                     dispatch(setModal(ModalTypes.UPDATE_TODOS))
             }}>
              <Form inline>

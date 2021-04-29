@@ -46,8 +46,8 @@ router.post('/toggleTask', async (req, res) => {
 router.post('/updatetask', async (req, res) => {
     const updatedTask = {
         userId: req.body.userId,
-        title: req.body.title,
-        description: req.body.description,
+        title: req.body.item.title,
+        description: req.body.item.description,
         date: req.body.date
     }
     console.log(updatedTask);
@@ -65,7 +65,8 @@ router.delete('/deleteTask', async (req, res) => {
     }
 
     await deleteTask(newTask);
-    const allTasks = await getAllTasks(req.body.userId, req.body.date);
+    const allTasks = await getAllTasks(req.query.userId, req.query.date);
+    console.log(allTasks)
     await res.send(allTasks);
 })
 
