@@ -1,7 +1,6 @@
 const initialState = {
     title: '', 
     description: '',
-    isComplete: false,
 }
 
 const updateModal = (state, action) => {
@@ -18,13 +17,24 @@ const getModal = (state, action) => {
     }
 }
 
+
+const setModal = (state, action) => {
+    return {
+        ...state, 
+        [action.key]: action.value,
+    }
+}
+
 export const updateTodoReducer = (state = initialState, action) => {
     switch(action.type){
-        case 'UPDATE_TODOS': {
+        case 'UPDATE_TASKS': {
             return updateModal(state, action)
         }  
-        case 'GET': {
+        case 'GET_TASKS': {
             return getModal(state, action)
+        } 
+        case 'SET_TASKS': {
+            return setModal(state, action)
         } 
         default:
             return state;

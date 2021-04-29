@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {Form, Button, Modal, Dropdown, DropdownButton} from 'react-bootstrap';
 import { updateTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
-import { GetAction, UpdateAction } from '../../Action/updateAction'
+import { GetAction, GetTodosAction, SetAction, SetTodosAction } from '../../Action/updateAction'
 
 export const UpdateNote = (props) => {
     const {selectedDate} = useSelector(state => state.todos);
@@ -11,27 +11,23 @@ export const UpdateNote = (props) => {
     const todosUpdate = useSelector(state => state.updateTodos);
 
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
 
-
-    const handleUpdate = (title, description) => {
+    const handleUpdate = () => {
        const item = {
-            title: title,
-            description: description,
+            title: todosUpdate.title,
+            description: todosUpdate.description,
        }
-
-       const date = toISOString(selectedDate);
-
-        dispatch(updateTodo(uid, todosUpdate.date , item))
-           
+       console.log(item);
+        dispatch(updateTodo(uid, todosUpdate.date, item))
     }
 
-    // useEffect(() => {
-    //     dispatch(GetAction())        
-    // }, [])
+    useEffect(() => {
+        dispatch(GetTodosAction())        
+    }, [])
+    
+    console.log(todosUpdate)
 
-    console.log(todosUpdate);
+
     return (
         <Modal show={props.show} onHide={props.onHide}>
              <Modal.Header closeButton>
@@ -42,23 +38,22 @@ export const UpdateNote = (props) => {
                 <Form.Group>
                 <Form.Label>Title</Form.Label>
                 <Form.Control  
-                        className="edit"
-                        placeholder="Edit your task.."
+                        required
                         defaultValue={todosUpdate.title} 
-                        onChange={(e) => setTitle(e.target.value)} 
+                        onChange={(e) => dispatch(SetTodosAction('title', e.target.value))} 
                  /> 
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label>Tag</Form.Label>
+                     <Form.Label>Description</Form.Label>
                      <Form.Control  
                         className="edit"
-                        placeholder="Add a tag"
+                        placeholder="Edit your description"
                         defaultValue={todosUpdate.description} 
-                        onChange={(e) => setDescription(e.target.value)} 
+                        onChange={(e) => dispatch(SetTodosAction('description', e.target.value))} 
                  /> 
                  </Form.Group>
                 <Modal.Footer>
-                 <Button variant="primary" onClick={() =>handleUpdate(title, description)}>Save</Button>
+                 <Button variant="primary" onClick={() => handleUpdate()}>Save</Button>
                  <Button variant="secondary" onClick={props.onHide}>Cancel</Button>                 
                 </Modal.Footer> 
                 </Modal.Body>

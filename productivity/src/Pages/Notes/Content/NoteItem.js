@@ -3,33 +3,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Form, Button, ListGroup, Row, Col, Modal, DropdownButton, Dropdown} from 'react-bootstrap';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { setModal } from '../../../Action/modalsAction';
-import { getTodos, toggleTodos, deleteTodo } from '../../../Action/todosAction';
+import { getTodos, toggleTodos, deleteTodo, updateTodos} from '../../../Action/todosAction';
 import { IoSettingsOutline } from 'react-icons/io5';
-import {GetAction, UpdateAction} from '../../../Action/updateAction';
+import {UpdateTodosAction, UpdateAction} from '../../../Action/updateAction';
 import {toISOString} from '../../../Helpers/date'
 export const NoteItem = ({note}) => {
 
     const userInfo = useSelector((state) => state.user.userInfo);   
     const {selectedDate} = useSelector((state) => state.todos); 
     const dispatch = useDispatch();
+    
     const handleCheckboxClick = () => {
         dispatch(toggleTodos(userInfo.uid))
     }  
 
-    const handleDeleteTask = (date) => {
-        dispatch(deleteTodo(userInfo.uid, date));
+    const handleDeleteTask = (title, description, date) => {
+        dispatch(deleteTodo(userInfo.uid, title, description, date));
     }
     
     useEffect(() => {
         dispatch(getTodos(userInfo.uid, toISOString(selectedDate)))
      }, [])
 
+
     return (
         <div className="note-item">
             <div>
             <ListGroup.Item 
             style={{ textDecoration: note.isCompleted ? "line-through" : "" }} 
-            onDoubleClick={() => {dispatch(UpdateAction(note.id)) ;
+            onDoubleClick={() => {dispatch(UpdateAction(note)) ;
                                     dispatch(setModal(ModalTypes.UPDATE_TODOS))
             }}>
              <Form inline>
@@ -63,7 +65,8 @@ export const NoteItem = ({note}) => {
                  
             <strong>{note.title}</strong>
             <p>{note.description}</p>
-            <Button variant="danger" onClick={() => handleDeleteTask(note.date)}>Delete</Button>                 
+
+            <Button variant="danger" onClick={() => handleDeleteTask(note.title, note.description, note.date)}>Delete</Button>                 
             </ListGroup.Item>
             </div>
         </div>

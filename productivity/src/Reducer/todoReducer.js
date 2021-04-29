@@ -1,4 +1,4 @@
-import { SET_TODOS, SET_SELECTED_DATE, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS} from "../Constant/actionTypes";
+import { SET_TODOS, SET_SELECTED_DATE, TOGGLE_TODOS, DELETE_TODOS, UPDATE_TODOS} from "../Constant/actionTypes";
 
 const defaultState = {
   todos: [],
@@ -16,38 +16,22 @@ const setSelectedDate = (state, action) => ({
   selectedDate: action.selectedDate
 })
 
-const toggleTodos = (state, action) => {
-    if(state.id === action.id){
-      return {
-        ...state,
-        isCompleted: !state.isCompleted,
-      };
-    }
-    return state;
+const toggleTodos = (state, action) => ({
+  ...state,
+  todos: action.todos,
     
-}
+})
 
-const updateTodos = (state, action) => {
-  const newState = state.map(todo => {
-    if(todo.id === action.id) {
-      return {
-        ...state,
-        title: action.title,
-        description: action.description,
-      }
-    }
-    return todo;
-  })
-  return newState;
-}
+const updateTodos = (state, action) => ({
+  ...state,
+  todos: action.todos,
+})
 
-const deleteTodos = (state, action) => {
-  const newState = state.filter(todo => {
-    return todo.id !== action.id;
-  });
+const deleteTodos = (state, action) => ({
+  ...state,
+  todos: action.todos,
 
-  return newState;
-}
+})
    
 export const todoReducer = (state = defaultState, action) => {
   const reducerMapper = {
