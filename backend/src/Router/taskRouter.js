@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllTasks, addTask, toggleTask, updateTask } = require("../FirebaseHelpers/tasksHelper");
+const { getAllTasks, addTask, toggleTask, updateTask, deleteTask } = require("../FirebaseHelpers/tasksHelper");
 const router = express.Router();
 
 router.get('/gettasks', async (req, res) => {
@@ -17,7 +17,7 @@ router.post('/addtask', async (req, res) => {
         userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
-        isCompleted : false,
+        // isCompleted : req.body.isCompleted,
         date: req.body.date
 
     }
@@ -33,7 +33,7 @@ router.post('/toggleTask', async (req, res) => {
         userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
-        isCompleted : true,
+        isCompleted : req.body.isCompleted,
         date: req.body.date
     }
 
@@ -43,15 +43,14 @@ router.post('/toggleTask', async (req, res) => {
     await res.send(allTasks);
 })
 
-router.put('/updatetask/', async (req, res) => {
+router.post('/updatetask', async (req, res) => {
     const updatedTask = {
         userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
-        isCompleted : true,
         date: req.body.date
     }
-
+    console.log(updatedTask);
     await updateTask(updatedTask);
     const allTasks = await getAllTasks(req.body.userId, req.body.date);
     await res.send(allTasks);
@@ -59,11 +58,10 @@ router.put('/updatetask/', async (req, res) => {
 
 router.delete('/deleteTask', async (req, res) => {
     const newTask = {
-        userId: req.body.userId,
-        title: req.body.title,
-        description: req.body.description,
-        isCompleted : false,
-        date: req.body.date
+        userId: req.query.userId,
+        title: req.query.title,
+        description: req.query.description,
+        date: req.query.date
     }
 
     await deleteTask(newTask);

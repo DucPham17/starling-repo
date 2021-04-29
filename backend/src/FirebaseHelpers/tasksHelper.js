@@ -21,23 +21,61 @@ const addTask = async (task) => {
     await db.collection('tasks').add(task);
 };
 
-const toggleTask = async (userId) => {
-    await db.collection('tasks').doc(userId).update(
-        {
+const toggleTask = async (task) => {
+    const postRef = db.collection('tasks');
+    const snapshot = await postRef.get();
+    var target = null;
+    await snapshot.forEach(doc => {
+        const data = doc.data();
+        if (data.userId === task.userId && data.date === task.date) {
+            target = doc.id;
+        }
+    });
+    await db.collection('tasks').doc(target).update(
+        {   
         isCompleted: !isCompleted,
         })
 }
 
-const updateTask = async () => {
-    await db.collection('tasks').doc(userId).update({
-        title: true,
-        description: true, 
+const updateTask = async (item) => {
+    const postRef = db.collection('tasks');
+    const snapshot = await postRef.get();
+    var target = null;
+
+    await snapshot.forEach(doc => {
+        const data = doc.data();
+        if (data.userId === item.userId && data.date === item.date){
+            target = doc.id;
+        }
+    })
+
+    if (target !== null){
+        await db.collection('tasks').doc(target).update({
+            title: item.title,
+            description: item.description, 
+    })
+
     }
-    )
+   
 }
 
-const deleteTask = async () => {
-    await db.collection('tasks').doc(userId).delete()
+const deleteTask = async (item) => {
+    const postRef = db.collection('tasks');
+    const snapshot = await postRef.get();
+    var target = null;
+
+    await snapshot.forEach(doc => {
+        const data = doc.data();
+        if (data.userId === item.userId && data.date === item.date && data.title === item.title 
+            && data.description === item.description){
+            target = doc.id;
+        }
+    })
+    if (target !== null){
+        await db.collection('tasks').doc(target).delete()
+    }
+    
+   
 }
 
 module.exports = {
