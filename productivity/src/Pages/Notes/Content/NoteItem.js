@@ -25,7 +25,7 @@ export const NoteItem = ({note}) => {
         dispatch(getTodos(userInfo.uid, toISOString(selectedDate)))
      }, [])
 
-
+    console.log(note)
     return (
         <div className="note-item">
             <div>

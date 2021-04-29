@@ -72,9 +72,7 @@ const deleteTask = async (item) => {
             target = doc.id;
         }
     })
-    if (target !== null){
-        await db.collection('tasks').doc(target).delete()
-    }
+    await db.collection('tasks').doc(target).delete()
     
    
 }

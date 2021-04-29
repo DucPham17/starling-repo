@@ -72,8 +72,8 @@ export const updateTodo = (userId, date, item) => async (dispatch) => {
     // dispatch(setLoading(true));
     try {
         console.log('update')
-        const {data: todos} = await Axios.post("/api/tasks/updatetask", {userId, date, item, 
-        })
+        console.log(item.title)
+        const {data: todos} = await Axios.post("/api/tasks/updatetask", {userId, date, item})
         dispatch({
             type: UPDATE_TODOS,
             todos,

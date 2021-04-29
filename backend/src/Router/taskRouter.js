@@ -65,7 +65,12 @@ router.delete('/deleteTask', async (req, res) => {
     }
 
     await deleteTask(newTask);
+<<<<<<< HEAD
     const allTasks = await getAllTasks(userId, date);
+=======
+    const allTasks = await getAllTasks(req.query.userId, req.query.date);
+    console.log(allTasks)
+>>>>>>> 111d5f7c406b14945d0a81cd1b06ff3c512b3e90
     await res.send(allTasks);
 })
 
