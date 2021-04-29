@@ -13,8 +13,8 @@ export const NoteItem = ({note}) => {
     const {selectedDate} = useSelector((state) => state.todos); 
     const dispatch = useDispatch();
     
-    const handleCheckboxClick = () => {
-        dispatch(toggleTodos(userInfo.uid))
+    const handleCheckboxClick = (title, description, date, isCompleted) => {
+        dispatch(toggleTodos(userInfo.uid, title, description, date, isCompleted))
     }  
 
     const handleDeleteTask = (title, description, date) => {
@@ -31,12 +31,12 @@ export const NoteItem = ({note}) => {
             <div>
             <ListGroup.Item 
             style={{ textDecoration: note.isCompleted ? "line-through" : "" }} 
-            onDoubleClick={() => {dispatch(UpdateAction(note)) ;
+            onDoubleClick={() => {dispatch(UpdateTodosAction(note)) ;
                                     dispatch(setModal(ModalTypes.UPDATE_TODOS))
             }}>
              <Form inline>
                 <div className="checkbox-holder"
-                onClick={handleCheckboxClick}
+                onClick={() => handleCheckboxClick(note.title, note.description, note.date, note.isCompleted)}
                 >
                  {note.isCompleted ?
                  (
