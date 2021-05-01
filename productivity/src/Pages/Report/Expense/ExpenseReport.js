@@ -1,25 +1,22 @@
-import {Nav, Tab,Tabs} from 'react-bootstrap'
+import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
 import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux"
-import './Report.css';
-import { getData, deleteData, filterData } from '../../Action/expenseAction'
-import { getTodos, toggleTodos, deleteTodo } from '../../Action/todosAction';
-import ToDoReport from './ToDoReport'
-import ExpenseReport from './Expense/ExpenseReport'
+import '../Report.css';
+import ExpenseGraph from './ExpenseGraph'
+import ExpenseInfo from './ExpenseInfo'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 const routes = [
     {
-        href: '/report/expense',
-        label: 'Expense'
+        href: '/report/expense/3recentdays',
+        label: '3 Recent Days'
     },
     {
-        href: '/report/todo',
-        label: 'Todos'
+        href: '/report/expense/OneWeek',
+        label: 'One Week'
     }
 ]
 
-const Report = () => {
+const ExpenseReport = () => {
     const history = useHistory();
     const location = useLocation();
 
@@ -41,10 +38,10 @@ const Report = () => {
                 }
             </Nav>
             <Switch>
-                <Route path="/report/expense" component={ExpenseReport}/>
-                <Route path="/report/todo" component={ToDoReport}/>
+                <Route path="/report/expense/:id" component={ExpenseGraph}/>
             </Switch>
         </div> 
+        
     )
 }
-export default Report
+export default ExpenseReport

@@ -16,11 +16,11 @@ export const getMainRoutes = () => (
         <Menu className='appMenu'/>
         <div className='appContent'>
             <Switch>
-                <Route exact path="/" component={Dashboard} /> 
+                <Route exact path="/dashboard" component={Dashboard} /> 
                 <Route path="/report" component={Report} /> 
                 <Route path="/notes" component={Notes} /> 
                 <Route path="/expense" component={Expense}/> 
-                <Redirect to='/'/>
+                <Redirect to='/dashboard'/>
             </Switch>
         </div>
         <Footer className='appFooter'/>
