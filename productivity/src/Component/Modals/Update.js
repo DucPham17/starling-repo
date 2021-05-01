@@ -15,14 +15,12 @@ export const Update = (props) => {
             amount: infoUpdate.amount, 
             expenseType: infoUpdate.expenseType
         }
-        console.log(item)
         dispatch(updateData(infoUser.userInfo.uid, infoUpdate.date, item))
     }
     
     useEffect(() => {
         dispatch(GetAction())        
     }, [])
-    console.log(infoUpdate)
 
     return (
         <Modal show={props.show} onHide={props.onHide} centered>

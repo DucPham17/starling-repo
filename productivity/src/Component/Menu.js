@@ -12,8 +12,8 @@ const Menu = (props) => {
         <div className={props.className}>
             {routes.map((route) => 
                 <div
-                    className={classNames('nav-item', {
-                        'nav-active': location.pathname === route.href
+                    className={classNames('nav-item-custom', {
+                        'nav-active': location.pathname.startsWith(route.href)
                     })}
                     onClick={() => history.push(route.href)}
                 >

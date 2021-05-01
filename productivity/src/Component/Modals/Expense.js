@@ -27,6 +27,7 @@ export const Expense = (props) => {
                             Name of Expense 
                         </Form.Label>
                         <Form.Control required
+                            type="text"
                             onChange={(e) => setName(e.target.value)}/>
                     </Form.Group>
                     <Form.Group>
@@ -34,7 +35,11 @@ export const Expense = (props) => {
                             Amount of Expense 
                         </Form.Label>
                         <Form.Control required
+                            type="number"
                             onChange={(e) => setAmount(e.target.value)}/>
+                        <Form.Control.Feedback type="invalid">
+                            Please type a number
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>
