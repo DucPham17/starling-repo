@@ -1,13 +1,11 @@
-import React, { useState}  from 'react';
+import React  from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import './content.css';
 import { IoAdd } from "react-icons/io5";
 import { setModal } from '../../../Action/modalsAction';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { dateToPresentableString } from '../../../Helpers/date';
-import { NoteItem } from './NoteItem';
-import { NoNoteFound } from './NoNoteFound';
+import { NoteCard } from './NoteCard';
 
 export const Content = (props) => {
     const {todos, selectedDate} = useSelector((state) => state.todos);
@@ -25,16 +23,7 @@ export const Content = (props) => {
                     <IoAdd/> Add Note
                 </Button>
             </div>
-            <div className='notes-content-card'>
-                {
-                    todos.length > 0 ?
-                        todos.map((todo) => 
-                        <NoteItem 
-                        note={todo}
-                        />) :
-                        <NoNoteFound/>
-                }
-            </div>
+            <NoteCard todos={todos}/>
         </div>
     )
 }

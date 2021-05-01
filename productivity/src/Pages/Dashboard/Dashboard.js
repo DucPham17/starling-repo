@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from 'react';
-import {Col, Container, Row} from 'react-bootstrap'
-import { useSelector, useDispatch } from "react-redux";
-import { signout } from '../../Action/userAction';
+import React, { useEffect} from 'react';
+import {Col, Row} from 'react-bootstrap'
+import { useDispatch } from "react-redux";
 import './Dashboard.css';
 import { setupDashboard } from '../../Action/dashboardAction';
 import { WelcomeModule } from './WelcomeModule';
 import { ExpenseModule } from './ExpenseModule';
+import { TodosModule } from './TodosModule';
 
 const Dashboard= (props)=> {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Dashboard= (props)=> {
     }, [])
     
     return (
-        <div fluid className='w-100 v-100 p-5'>
+        <div className='w-100 v-100 p-5'>
             <h1>Today at a Glance</h1>
             <Row> 
                 <Col sm={12}>
@@ -25,9 +25,7 @@ const Dashboard= (props)=> {
                     <ExpenseModule/>
                 </Col>
                 <Col sm={9}> 
-                    <div className='todayList'>
-                        <h5>Today List:</h5>
-                    </div>
+                    <TodosModule/>
                 </Col>
             </Row>          
         </div> 

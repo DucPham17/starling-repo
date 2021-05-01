@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SETUP_DASHBOARD } from '../Constant/actionTypes';
-import { getToday, toISOString } from '../Helpers/date';
+import { toISOString } from '../Helpers/date';
 import { setLoading } from './pageStatusAction';
 
 export const setupDashboard = () => async (dispatch, getState) => {
