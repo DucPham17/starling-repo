@@ -43,17 +43,18 @@ export const addTodo = (params) => async (dispatch) => {
     }
 }
 
-export const toggleTodos = (isCompleted) => async (dispatch) => {
+export const toggleTodos = (userId, title, description, date, isCompleted) => async (dispatch) => {
     // dispatch(setLoading(true));
     try {
         console.log('toggle')
 
-        const {data: todos} = await Axios.post("/api/tasks/toggleTask", 
-        {
-            params: {
-                isCompleted,
+        const {data: todos} = await Axios.post("/api/tasks/toggleTask", {
+                userId,
+                title,
+                description,
+                date,
+                isCompleted
             }
-        }
         )
         dispatch({
             type: TOGGLE_TODOS,
@@ -68,7 +69,7 @@ export const toggleTodos = (isCompleted) => async (dispatch) => {
 }
 
 export const updateTodo = (userId, date, item) => async (dispatch) => {
-    dispatch(setLoading(true));
+    // dispatch(setLoading(true));
     try {
         console.log('update')
         console.log(item.title)

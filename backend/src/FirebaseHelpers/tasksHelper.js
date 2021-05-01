@@ -27,13 +27,14 @@ const toggleTask = async (task) => {
     var target = null;
     await snapshot.forEach(doc => {
         const data = doc.data();
-        if (data.userId === task.userId && data.date === task.date) {
+        if (data.userId === task.userId && data.date === task.date && data.title === task.title &&
+            data.description === task.description && data.isCompleted === task.isCompleted) {
             target = doc.id;
         }
     });
     await db.collection('tasks').doc(target).update(
         {   
-        isCompleted: !isCompleted,
+        isCompleted: !task.isCompleted,
         })
 }
 

@@ -22,7 +22,7 @@ export const UpdateNote = (props) => {
     }
 
     useEffect(() => {
-        dispatch(GetTodosAction())        
+        dispatch(GetAction())        
     }, [])
     
     console.log(todosUpdate)
@@ -39,6 +39,7 @@ export const UpdateNote = (props) => {
                 <Form.Label>Title</Form.Label>
                 <Form.Control  
                         required
+                        placeholder="Edit your title"
                         defaultValue={todosUpdate.title} 
                         onChange={(e) => dispatch(SetTodosAction('title', e.target.value))} 
                  /> 

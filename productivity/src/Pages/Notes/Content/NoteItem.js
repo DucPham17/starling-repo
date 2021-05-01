@@ -13,8 +13,8 @@ export const NoteItem = ({note}) => {
     const {selectedDate} = useSelector((state) => state.todos); 
     const dispatch = useDispatch();
     
-    const handleCheckboxClick = () => {
-        dispatch(toggleTodos(userInfo.uid))
+    const handleCheckboxClick = (title, description, date, isCompleted) => {
+        dispatch(toggleTodos(userInfo.uid, title, description, date, isCompleted))
     }  
 
     const handleDeleteTask = (title, description, date) => {
@@ -36,7 +36,7 @@ export const NoteItem = ({note}) => {
             }}>
              <Form inline>
                 <div className="checkbox-holder"
-                onClick={handleCheckboxClick}
+                onClick={() => handleCheckboxClick(note.title, note.description, note.date, note.isCompleted)}
                 >
                  {note.isCompleted ?
                  (
