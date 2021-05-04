@@ -4,7 +4,7 @@
 
 .note-wrapper {
   display: grid;
-  grid-template-areas: "noteOptions noteContent";
+  grid-template-areas: "noteOptions noteContent ";
   grid-template-columns: max-content auto;
 }
 
@@ -17,4 +17,9 @@
 .note-content {
   grid-area: noteContent;
   margin: 0 3rem;
+}
+
+.note-filters {
+  border-radius: 0.3em;
+  background-color: rgb(218, 255, 131);
 }

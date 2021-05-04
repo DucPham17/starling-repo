@@ -1,7 +1,7 @@
 {
     "name": "backend",
     "version": "1.0.0",
-    "description": "backend is the ultimate backend solution",
+    "tag": "backend is the ultimate backend solution",
     "main": "src/server.js",
     "scripts": {
         "setup": "npm install && npm update",

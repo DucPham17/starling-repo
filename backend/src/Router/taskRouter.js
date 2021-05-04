@@ -16,7 +16,7 @@ router.post('/addtask', async (req, res) => {
     const newTask = {
         userId: req.body.userId,
         title: req.body.title,
-        description: req.body.description,
+        tag: req.body.tag,
         // isCompleted : req.body.isCompleted,
         date: req.body.date
 
@@ -32,7 +32,7 @@ router.post('/toggleTask', async (req, res) => {
     const newTask = {
         userId: req.body.userId,
         title: req.body.title,
-        description: req.body.description,
+        tag: req.body.tag,
         isCompleted : req.body.isCompleted,
         date: req.body.date
     }
@@ -47,7 +47,7 @@ router.post('/updatetask', async (req, res) => {
     const updatedTask = {
         userId: req.body.userId,
         title: req.body.item.title,
-        description: req.body.item.description,
+        tag: req.body.item.tag,
         date: req.body.date
     }
     console.log(updatedTask);
@@ -60,17 +60,13 @@ router.delete('/deleteTask', async (req, res) => {
     const newTask = {
         userId: req.query.userId,
         title: req.query.title,
-        description: req.query.description,
+        tag: req.query.tag,
         date: req.query.date
     }
 
     await deleteTask(newTask);
-<<<<<<< HEAD
-    const allTasks = await getAllTasks(userId, date);
-=======
     const allTasks = await getAllTasks(req.query.userId, req.query.date);
     console.log(allTasks)
->>>>>>> 111d5f7c406b14945d0a81cd1b06ff3c512b3e90
     await res.send(allTasks);
 })
 

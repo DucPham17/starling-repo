@@ -1,6 +1,6 @@
 const initialState = {
     title: '', 
-    description: '',
+    tag: '',
 }
 
 const updateModal = (state, action) => {

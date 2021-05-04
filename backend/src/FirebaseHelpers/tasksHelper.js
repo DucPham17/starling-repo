@@ -19,6 +19,7 @@ const getAllTasks = async (userId, date) => {
 
 const addTask = async (task) => {
     await db.collection('tasks').add(task);
+    
 };
 
 const toggleTask = async (task) => {
@@ -28,7 +29,7 @@ const toggleTask = async (task) => {
     await snapshot.forEach(doc => {
         const data = doc.data();
         if (data.userId === task.userId && data.date === task.date && data.title === task.title &&
-            data.description === task.description && data.isCompleted === task.isCompleted) {
+            data.tag === task.tag && data.isCompleted === task.isCompleted) {
             target = doc.id;
         }
     });
@@ -53,7 +54,7 @@ const updateTask = async (item) => {
     if (target !== null){
         await db.collection('tasks').doc(target).update({
             title: item.title,
-            description: item.description, 
+            tag: item.tag, 
     })
 
     }
@@ -68,7 +69,7 @@ const deleteTask = async (item) => {
     await snapshot.forEach(doc => {
         const data = doc.data();
         if (data.userId === item.userId && data.date === item.date && data.title === item.title 
-            && data.description === item.description){
+            && data.tag === item.tag){
             target = doc.id;
         }
     })

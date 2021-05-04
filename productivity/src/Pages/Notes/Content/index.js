@@ -9,13 +9,18 @@ import { dateToPresentableString } from '../../../Helpers/date';
 import { NoteItem } from './NoteItem';
 import { NoNoteFound } from './NoNoteFound';
 
+
 export const Content = (props) => {
     const {todos, selectedDate} = useSelector((state) => state.todos);
+    const tagFilter = useSelector(state => state.todos);
     const dispatch = useDispatch();
 
     const onAddNoteClick = () => {
         dispatch(setModal(ModalTypes.ADD_NOTE))
     }
+
+    var todosFiltered = todos.filter(todo => todo.tag === tagFilter.selectedTag)
+
     console.log(todos)
     return (
         <div className={props.className}>
@@ -26,15 +31,17 @@ export const Content = (props) => {
                 </Button>
             </div>
             <div className='notes-content-card'>
-                {
-                    todos.length > 0 ?
-                        todos.map((todo) => 
-                        <NoteItem 
-                        note={todo}
-                        />) :
-                        <NoNoteFound/>
-                }
+            {tagFilter.selectedTag && todos.length > 0 ?
+            todosFiltered.map((todo) => 
+                <NoteItem 
+                key={todo.id}
+                note={todo}
+                />
+            ):
+            <NoNoteFound />
+            } 
             </div>
+
         </div>
     )
 }

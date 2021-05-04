@@ -1,21 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {Form, Button, Modal} from 'react-bootstrap';
 import { addTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
+import CreatableSelect from 'react-select/creatable';
+import {colourStyles} from './colourStyles';
+import Select from 'react-select';
+
+
+const tags = [
+    {label: 'Select a tag', value: 'Select', color : '#000000'},
+    {label: 'Work', value: 'Work', color: '#5243AA'},
+    {label: 'Errands', value: 'Errands', color: '#FF5630'},
+    {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
+    {label: 'Personal', value: 'Personal', color: '#FFC400'},
+]
 
 const defaultState = {
     title: '',
-    description: '',
+    tag: '',
     isComplete: 'false',
 };
 
 export const AddNote = (props) => {
     const [state, setState] = useState(defaultState);
+    const [category, setCategory] = useState('Select');
     const {uid} = useSelector(state => state.user.userInfo);
     const {selectedDate} = useSelector(state => state.todos);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();   
 
+    let selectedCategory = tags.find((tag => tag.value === category))
+
+    const handleChange = (e) => {
+        setCategory(e.value);
+    };
+
+
+
+    // // const handleChange = (options, value) => {
+    // //     switch (options) {
+    // //       case 'tags':
+    // //         setCategory(value)
+    // //         break
+    
+    // //       default:
+    // //         break
+    // //     }
+    // //   }
+
+    // const handleKeyDown = event => {
+    //     if (!tagInputValue) return;
+        
+    //     switch(event.key) {
+    //         case 'Enter':
+    //             setTagValue([...tagValue, createOption(tagInputValue)])
+    //             setTagInputValue('')
+    //             event.preventDefault();
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
+
+    // const createOption = (label) => ({
+    //     label,
+    //     value: label,
+    // });
+
+    // const handleInputChange = (value) => {
+    //     setTagInputValue(value);
+    // }
 
     const onChange = (key) => (e) => {
         setState({
@@ -25,16 +79,17 @@ export const AddNote = (props) => {
     };
 
     const onSubmit = (e) =>{
-        e.preventDefault();
+        e.preventDefault()
         dispatch(addTodo({
             userId: uid,
             title: state.title,
-            description: state.description,
-            date: toISOString(selectedDate)
+            tag: selectedCategory.value,
+            date: toISOString(selectedDate),
         }));
     }
 
     return(
+        
         <Modal show={props.show} onHide={props.onHide}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Note</Modal.Title>
@@ -47,8 +102,26 @@ export const AddNote = (props) => {
                         <Form.Control onChange={onChange('title')} required></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control as='textarea' onChange={onChange('description')} required></Form.Control>
+                        <Form.Label>Tag(s)</Form.Label>
+                        <Select 
+                        placeholder='Select a tag'
+                        value={selectedCategory}
+                        options={tags}
+                        onChange={handleChange}
+                        styles={colourStyles}
+                        /> 
+                         {/* <CreatableSelect 
+                            isClearable
+                            options={tags}
+                            inputValue={tagInputValue}
+                            placeholder='Create or select a tag'
+                            onInputChange={handleInputChange}
+                            onKeyDown={handleKeyDown}
+                            onChange={handleChange}
+                            value={selectedCategory}
+                            styles={colourStyles}
+                        >
+                        </CreatableSelect> */}
                     </Form.Group>
                     <Button type="submit">Add</Button>
                 </Form>

@@ -4,6 +4,19 @@ import {Form, Button, Modal, Dropdown, DropdownButton} from 'react-bootstrap';
 import { updateTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
 import { GetAction, GetTodosAction, SetAction, SetTodosAction } from '../../Action/updateAction'
+import CreatableSelect from 'react-select/creatable';
+import {colourStyles} from './colourStyles';
+
+
+import Select from 'react-select';
+
+const tags = [
+    {label: 'Select a tag', value: 'Select', color : '#000000'},
+    {label: 'Work', value: 'Work', color: '#5243AA'},
+    {label: 'Errands', value: 'Errands', color: '#FF5630'},
+    {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
+    {label: 'Personal', value: 'Personal', color: '#FFC400'},
+]
 
 export const UpdateNote = (props) => {
     const {selectedDate} = useSelector(state => state.todos);
@@ -15,7 +28,7 @@ export const UpdateNote = (props) => {
     const handleUpdate = () => {
        const item = {
             title: todosUpdate.title,
-            description: todosUpdate.description,
+            tag: todosUpdate.tag,
        }
        console.log(item);
         dispatch(updateTodo(uid, todosUpdate.date, item))
@@ -45,13 +58,15 @@ export const UpdateNote = (props) => {
                  /> 
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label>Description</Form.Label>
-                     <Form.Control  
-                        className="edit"
-                        placeholder="Edit your description"
-                        defaultValue={todosUpdate.description} 
-                        onChange={(e) => dispatch(SetTodosAction('description', e.target.value))} 
-                 /> 
+                     <Form.Label>Tag</Form.Label>
+                        <Select 
+                        isClearable
+                        placeholder='Select a tag'
+                        defaultValue ={todosUpdate.tag}
+                        options={tags}
+                        onChange={(e) => dispatch(SetTodosAction('tag', e.value))}
+                        styles={colourStyles}>
+                        </Select>
                  </Form.Group>
                 <Modal.Footer>
                  <Button variant="primary" onClick={() => handleUpdate()}>Save</Button>

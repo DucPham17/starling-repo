@@ -16,7 +16,7 @@ export const getTodos = (userId, date) => async (dispatch) => {
         })
         dispatch({
             type: SET_TODOS,
-            todos
+            todos,
         })
         Cookie.set('todos', JSON.stringify(todos))
     } catch (e) {
@@ -27,7 +27,7 @@ export const getTodos = (userId, date) => async (dispatch) => {
 };
 
 export const addTodo = (params) => async (dispatch) => {
-    dispatch(setLoading(true));
+    // dispatch(setLoading(true));
     try {
         console.log('add')
         const {data: todos} = await Axios.post("/api/tasks/addtask", params)
@@ -43,15 +43,15 @@ export const addTodo = (params) => async (dispatch) => {
     }
 }
 
-export const toggleTodos = (userId, title, description, date, isCompleted) => async (dispatch) => {
-    // dispatch(setLoading(true));
+export const toggleTodos = (userId, title, tag, date, isCompleted) => async (dispatch) => {
+    dispatch(setLoading(true));
     try {
         console.log('toggle')
 
         const {data: todos} = await Axios.post("/api/tasks/toggleTask", {
                 userId,
                 title,
-                description,
+                tag,
                 date,
                 isCompleted
             }
@@ -87,14 +87,14 @@ export const updateTodo = (userId, date, item) => async (dispatch) => {
     }
 }
 
-export const deleteTodo = (userId, title, description, date) => async (dispatch) => {
+export const deleteTodo = (userId, title, tag, date) => async (dispatch) => {
     // dispatch(setLoading(true));
     try {
         console.log('delete')
         const {data: todos} = await Axios.delete("/api/tasks/deletetask", {
             params: {
                 title, 
-                description,
+                tag,
                 userId,
                 date
             }

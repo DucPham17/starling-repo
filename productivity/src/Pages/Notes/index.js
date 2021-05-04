@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodos } from "../../Action/todosAction";
 import { toISOString } from "../../Helpers/date";
+import {Filter} from "./Filter";
 
 export const Notes = () => {
     const {selectedDate} = useSelector((state) => state.todos);
@@ -20,6 +21,8 @@ export const Notes = () => {
             <h1>Notes</h1>
             <div className="note-wrapper">
                 <Options className="note-options"/>
+                <Filter className="note-filters"
+                />
                 <Content className="note-content"/>
             </div>
         </div>
