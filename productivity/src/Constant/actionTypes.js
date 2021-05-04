@@ -15,3 +15,4 @@ export const SET_SELECTED_TAG = 'SET_SELECTED_TAG';
 export const TOGGLE_TODOS = 'TOGGLE_TODOS';
 export const UPDATE_TODOS = 'UPDATE_TODOS';
 export const DELETE_TODOS = 'DELETE_TODOS';
+export const SETUP_DASHBOARD = 'SETUP_DASHBOARD';

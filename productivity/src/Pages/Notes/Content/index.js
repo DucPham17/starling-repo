@@ -1,13 +1,13 @@
-import React, { useState}  from 'react';
+import React  from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import './content.css';
 import { IoAdd } from "react-icons/io5";
 import { setModal } from '../../../Action/modalsAction';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { dateToPresentableString } from '../../../Helpers/date';
+import { NoteCard } from './NoteCard';
 import { NoteItem } from './NoteItem';
-import { NoNoteFound } from './NoNoteFound';
+import {NoNoteFound} from './NoNoteFound';
 
 
 export const Content = (props) => {

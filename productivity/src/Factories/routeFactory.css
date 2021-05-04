@@ -17,14 +17,15 @@
 
 .appMenu {
   grid-area: menu;
-  width: 20rem;
-  padding: 2rem;
+  width: 15rem;
+  padding: 1.5rem;
   background-color: #f7f7f7;
 }
 
 .appContent {
   grid-area: content;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .appFooter {

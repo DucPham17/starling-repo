@@ -1,19 +1,20 @@
 .deck {
     padding: 1em;
-    background-color: aquamarine;
+    background-color: #ade8f4;
     border-radius: 1em;
     margin-right: 1em;
 }
 
 .card {
     margin: 1em;
+    border-radius: 2em;
 }
 
 .info {
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
-    background-color: cadetblue;
+    background-color: #f5cac3;
 }
 
 .expenseList{

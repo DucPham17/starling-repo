@@ -73,23 +73,6 @@ export const expenseReducer = (state = initialState,action) => {
                 error: action.payload,
                 loading: false
             }
-        // case 'FILTER':
-        //     return {
-        //         ...state,
-        //         loading : true
-        //     }
-        // case 'FILTER_SUCCESS':
-        //     return {
-        //         ...state,
-        //         expense : action.payload,
-        //         loading : false
-        //     }
-        // case 'FILTER_FAIL':
-        //     return {
-        //         ...state,
-        //         error: action.payload,
-        //         loading: false
-        //     }
         default:
             return state;
     }

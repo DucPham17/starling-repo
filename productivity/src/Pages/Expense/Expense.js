@@ -7,7 +7,8 @@ import Lottie from 'react-lottie-player';
 import animationData from '../../resources/Lotties/cat.json';
 import { ModalTypes } from '../../Constant/modalTypes';
 import {setModal} from '../../Action/modalsAction';
-import {GetAction, UpdateAction} from '../../Action/updateAction';
+import CardItem from './CardItem'
+import AddIcon from '@material-ui/icons/Add';
 
 const Expense = ()=> {
     const filterDate = ['All', 'Today', '3 Recent Days', 'One Week']
@@ -18,28 +19,34 @@ const Expense = ()=> {
     const infoUpdate = useSelector(state => state.update);
     const infoFilter = useSelector(state => state.filter);
 
+    const [spending, setSpending] = useState(0)
+    const [earning, setEarning] = useState(0)
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
-        dispatch(getData(infoUser.userInfo.uid))
+        dispatch(getData(infoUser.userInfo.uid)) 
+    }, [infoExpense.expense])
+    
+    useEffect(() => {
+        dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
+        //dispatch(getData(infoUser.userInfo.uid))    
     }, [infoFilter.type, infoFilter.date])
 
-    const handleDelete = (date) => {
-        dispatch(deleteData(infoUser.userInfo.uid, date))
-    }
-
-    const [spending, setSpending] = useState(0)
-    const [earning, setEarning] = useState(0)
+    useEffect(() => {
+        dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
+        dispatch(getData(infoUser.userInfo.uid))   
+    }, [spending, earning])
 
     useEffect(() => {
         let earningAmount = 0
         let spendingAmount = 0
         infoExpense.map((id) => {
             if (id.expenseType === 'Earning') {
-                earningAmount = earningAmount + (-id.amount* -1)
+                earningAmount = earningAmount + (-id.amount * -1)
             } else {
-                spendingAmount = spendingAmount + (-id.amount* -1)
+                spendingAmount = spendingAmount + (-id.amount * -1)
             }
         })
         setEarning(earningAmount)
@@ -47,6 +54,7 @@ const Expense = ()=> {
     }, [infoExpense])
     
     return (
+        
         <div>
             <Row> 
                 <Col sm={4}>
@@ -61,7 +69,9 @@ const Expense = ()=> {
                     </Row>
                     <Row> 
                         <Col>
-                            <Button className='addButton' variant="outline-primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}> Add New Expense </Button> 
+                            <Button className='addButton' variant="outline-primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}> 
+                                <AddIcon/>Add New Expense 
+                            </Button> 
                             
                             <p className='intro'>Filter by Date</p>
                             <Form.Control as='select' id='filter'
@@ -92,37 +102,16 @@ const Expense = ()=> {
                                     </option>
                                 )}
                             </Form.Control>
-                        </Col>
-                        
+                        </Col>    
                     </Row>    
                 </Col>
                 <Col sm={8} className='expenseList'> 
                     <h5> Expense List </h5>
                     <div className='deck'>
                         {infoFilter.filterList.length > 0 ?
-                         infoFilter.filterList.map((expenseItem)=> {
-                            const recent = new Date(expenseItem.date)
-                            return (
-                                <Card className='card'> 
-                                    <Card.Body>
-                                        <Card.Header>
-                                            {recent.getMonth()}/{recent.getDate()}/{recent.getFullYear()}
-                                        </Card.Header>
-                                        <Card.Title> 
-                                            {expenseItem.name}
-                                        </Card.Title>
-                                        <Card.Text>
-                                            <p>{expenseItem.amount}</p>
-                                            <p>{expenseItem.expenseType}</p>
-                                        </Card.Text>
-                                        <Card.Footer> 
-                                            <Button onClick={() => {dispatch(UpdateAction(expenseItem)); dispatch(setModal(ModalTypes.UPDATE))}}> Edit </Button>
-                                            <Button onClick={()=> handleDelete(expenseItem.date)}> Delete </Button>
-                                        </Card.Footer>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        }) :
+                         infoFilter.filterList.map((expenseItem)=> 
+                            <CardItem item={expenseItem}/>
+                        ) :
                             <div>
                                 <Lottie
                                     animationData={animationData}

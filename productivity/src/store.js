@@ -9,12 +9,14 @@ import { todoReducer } from "./Reducer/todoReducer";
 import { updateReducer } from "./Reducer/updateReducer";
 import { filterReducer } from "./Reducer/filterReducer"
 import { updateTodoReducer} from './Reducer/updateTodoReducer';
+import { dashboardReducer } from "./Reducer/dashboardReducer";
 
 const userInfo = Cookie.getJSON("userInfo") || {};
 const initialState = {user : {userInfo}};
 
 // here is where you combine reducers
 const reducer = combineReducers({
+    dashboard: dashboardReducer,
     modals: modalsReducer,
     user : userReducer, 
     expense: expenseReducer,

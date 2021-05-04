@@ -84,6 +84,16 @@ const filterExpenses = async (userId, choiceDate, choiceType) => {
             list.push(doc.data());
         }
     });
+
+    //order help by this
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort?fbclid=IwAR0zBbQnAEbZ5iepQp0cSSarH5bb1p0aZYc_2P6rVM9yRgom9AZHW88kLgE
+
+    list.sort(function (a, b) {
+        let aTime = new Date(a.date).getTime()
+        let bTime = new Date(b.date).getTime()
+        return bTime - aTime;
+    });
+    console.log(list)
     return list;
 }
 
