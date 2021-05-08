@@ -2,13 +2,11 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Select from 'react-select';
 import {colourStyles} from '../../../Component/Modals/colourStyles';
-import { DELETE_TODOS, SET_SELECTED_TAG } from "../../../Constant/actionTypes";
-import { NoNoteFound } from '../Content/NoNoteFound';
-import { NoteItem } from '../Content/NoteItem';
-import './filter.css'
+import { SET_SELECTED_TAG } from "../../../Constant/actionTypes";
+import './filter.css';
 
 const tags = [
-    {label: 'All', value: 'Select', color: '#5243AA'},
+    {label: 'All', value: '', color: '#5243AA'},
     {label: 'Work', value: 'Work', color: '#5243AA'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
@@ -18,8 +16,7 @@ const tags = [
 
 export const Filter = () => {
     
-    const {todos} = useSelector((state) => state.todos);
-    const tagFilter = useSelector(state => state.todos);
+    const {todos, selectedTag} = useSelector((state) => state.todos);
 
     const dispatch = useDispatch();
    
@@ -31,8 +28,10 @@ export const Filter = () => {
         })
     }
 
-    var tagsFiltered =  tags.map((tag) => tag.label === tagFilter.selectedTag)
-    console.log(tagsFiltered);
+    // var tagsFiltered =  tags.map((tag) => tag.label === tagFilter.selectedTag)
+    // console.log(tagsFiltered);
+
+    
 
 
     return (
@@ -40,13 +39,11 @@ export const Filter = () => {
             <b>Filter by tags: </b>
             <Select 
              options={tags}
-             defaultValue={tagFilter.selectedTag}
+             defaultValue={selectedTag}
              placeholder='Select a tag'
-             onChange={onChange}
+             onChange={(e) => onChange(e)}
              styles={colourStyles}
              >
-            {tags.map((tag) => tag.label === tagFilter.selectedTag)}
-
             </Select>
 
         </div>

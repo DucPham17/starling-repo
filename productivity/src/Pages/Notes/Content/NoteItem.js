@@ -1,9 +1,9 @@
 import React, { useState, useEffect}  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Form, Button, ListGroup, Row, Col, Modal, DropdownButton, Dropdown} from 'react-bootstrap';
+import {Form, Button, ListGroup, Nav, Card, Row, Col, Modal, DropdownButton, Dropdown} from 'react-bootstrap';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { setModal } from '../../../Action/modalsAction';
-import { getTodos, toggleTodos, deleteTodo, updateTodos} from '../../../Action/todosAction';
+import { getTodos, toggleTodos, deleteTodo, updateTodos, filterTodosByTag } from '../../../Action/todosAction';
 import { IoSettingsOutline } from 'react-icons/io5';
 import {UpdateTodosAction, UpdateAction} from '../../../Action/updateAction';
 import {toISOString} from '../../../Helpers/date';
@@ -14,7 +14,7 @@ import Select from 'react-select';
 export const NoteItem = ({note}) => {
 
     const userInfo = useSelector((state) => state.user.userInfo);   
-    const {selectedDate} = useSelector((state) => state.todos); 
+
     const dispatch = useDispatch();
     
     const handleCheckboxClick = (title, tag, date, isCompleted) => {
@@ -25,20 +25,16 @@ export const NoteItem = ({note}) => {
         dispatch(deleteTodo(userInfo.uid, title, tag, date));
     }
     
-    useEffect(() => {
-        dispatch(getTodos(userInfo.uid, toISOString(selectedDate)))
-     }, [])
 
     console.log(note)
     return (
         <div className="note-item">
-            <div>
             <ListGroup.Item 
             style={{ textDecoration: note.isCompleted ? "line-through" : "" }} 
             onDoubleClick={() => {dispatch(UpdateTodosAction(note)) ;
                                     dispatch(setModal(ModalTypes.UPDATE_TODOS))
             }}>
-             <Form inline>
+                 <Form inline>
                 <div className="checkbox-holder"
                 onClick={() => handleCheckboxClick(note.title, note.tag, note.date, note.isCompleted)}
                 >
@@ -67,10 +63,11 @@ export const NoteItem = ({note}) => {
                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                 </svg>
-                </Button>                 
+                </Button>   
             </Form>
             </ListGroup.Item>
-            </div>
         </div>
+       
+            
     )
 }

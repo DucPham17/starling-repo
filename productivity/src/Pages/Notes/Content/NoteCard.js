@@ -1,13 +1,44 @@
 import { NoNoteFound } from "./NoNoteFound"
 import { NoteItem } from "./NoteItem"
+import {Card, Nav} from "react-bootstrap";
+import React, {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {useParams} from "react-router-dom";
 import './content.css';
+import {filterTodosByTag } from '../../../Action/todosAction';
+import {toISOString} from '../../../Helpers/date';
 
-export const NoteCard = (props) => {
+export const NoteCard = () => {
+
+    const {todos, selectedDate, selectedTag} = useSelector((state) => state.todos);
+    const {uid} = useSelector((state) => state.user.userInfo);
+    const dispatch = useDispatch();
+
+    let {type} = useParams();
+    
+    // useEffect(() => {
+    //     dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
+    //  }, [selectedDate])
+
+    
+    //  useEffect(() => {
+    //     dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
+    //  }, [selectedTag])
+
+
+    useEffect(() => {
+        dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
+     }, [])
+
+     console.log(todos)
+     console.log(type);
+
     return (
+
         <div className='notes-content-card'>
         {
-            props.todos.length > 0 ?
-                props.todos.map((todo) => 
+            todos.length > 0 ?
+                todos.map((todo) => 
                 <NoteItem 
                 note={todo}
                 />) :

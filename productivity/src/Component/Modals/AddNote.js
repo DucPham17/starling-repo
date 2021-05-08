@@ -9,7 +9,7 @@ import Select from 'react-select';
 
 
 const tags = [
-    {label: 'Select a tag', value: 'Select', color : '#000000'},
+    // {label: 'Select a tag', value: 'Select', color : '#000000'},
     {label: 'Work', value: 'Work', color: '#5243AA'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
@@ -19,12 +19,12 @@ const tags = [
 const defaultState = {
     title: '',
     tag: '',
-    isComplete: 'false',
+    isCompleted: false,
 };
 
 export const AddNote = (props) => {
     const [state, setState] = useState(defaultState);
-    const [category, setCategory] = useState('Select');
+    const [category, setCategory] = useState('All');
     const {uid} = useSelector(state => state.user.userInfo);
     const {selectedDate} = useSelector(state => state.todos);
     const dispatch = useDispatch();   
@@ -83,8 +83,10 @@ export const AddNote = (props) => {
         dispatch(addTodo({
             userId: uid,
             title: state.title,
+            isCompleted: false,
             tag: selectedCategory.value,
             date: toISOString(selectedDate),
+
         }));
     }
 

@@ -11,7 +11,6 @@ import {colourStyles} from './colourStyles';
 import Select from 'react-select';
 
 const tags = [
-    {label: 'Select a tag', value: 'Select', color : '#000000'},
     {label: 'Work', value: 'Work', color: '#5243AA'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
