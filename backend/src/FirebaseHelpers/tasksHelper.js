@@ -78,10 +78,48 @@ const deleteTask = async (item) => {
    
 }
 
+const filterTodosByTags = async (userId, tag, status, date) => {
+    const listTodos = [];
+
+    let tagRef = db.collection('tasks');
+
+    if (tag === 'Work'){
+        tagRef = db.collection('tasks').where('tag', '==', 'Work');
+    } else if (tag === 'Shopping') {
+        tagRef = db.collection('tasks').where('tag', '==', 'Shopping');
+    } else if (tag === 'Errands'){
+        tagRef = db.collection('tasks').where('tag', '==', 'Errands');
+    } else if (tag === 'Personal') {
+        tagRef = db.collection('tasks').where('tag', '==', 'Personal');
+    }
+
+    console.log(status);
+    let filterComplete = tagRef;
+
+    if (status === 'active'){
+        filterComplete= tagRef.where('isCompleted', '==', false)
+    } else if (status === 'completed'){
+        filterComplete = tagRef.where('isCompleted', '==', true)
+    }
+
+    const snapshot = await filterComplete.get();
+
+    await snapshot.forEach(doc => {
+        if (doc.data().userId === userId && doc.data().date === date) {
+            listTodos.push(doc.data());
+        }
+    });
+
+    console.log(listTodos)
+    return listTodos;
+}
+
 module.exports = {
     getAllTasks,
     addTask,
     toggleTask,
     updateTask,
     deleteTask,
+    filterTodosByTags,
+
 };

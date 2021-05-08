@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllTasks, addTask, toggleTask, updateTask, deleteTask } = require("../FirebaseHelpers/tasksHelper");
+const { getAllTasks, addTask, toggleTask, updateTask, deleteTask, filterTodosByTags } = require("../FirebaseHelpers/tasksHelper");
 const router = express.Router();
 
 router.get('/gettasks', async (req, res) => {
@@ -68,6 +68,15 @@ router.delete('/deleteTask', async (req, res) => {
     const allTasks = await getAllTasks(req.query.userId, req.query.date);
     console.log(allTasks)
     await res.send(allTasks);
+})
+
+router.get('/filterTodosByTag', async (req, res) => {
+    const userId = req.query.userId;
+    const tag = req.query.tag;
+    const date = req.query.date;
+    const status = req.query.status;
+    const list = await filterTodosByTags(userId, tag, status, date);
+    await res.send(list);
 })
 
 module.exports = router;
