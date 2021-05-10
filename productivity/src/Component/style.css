@@ -1,0 +1,61 @@
+/* Header */
+.logoImage {
+  width: 2rem;
+  height: 2rem;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.header {
+  background-color: #eee;
+}
+
+.user-dropdown {
+  cursor: pointer;
+}
+
+.user-dropdown > * {
+  margin-right: 0.5rem;
+}
+
+.dropdown-menu {
+  width: 20rem;
+}
+
+.divider {
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Footer */
+.footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 0.5em;
+}
+/* Menu */
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  text-align: center;
+}
+
+.nav-item-custom {
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.nav-active {
+  border-radius: 20px;
+  background-color: #b2dfdb;
+  font-weight: bold;
+}

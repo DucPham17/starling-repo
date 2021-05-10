@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
+html {
+    box-sizing: border-box;
+}
+
+.notes-content-card {
+  background-color: #fcf4a3;
+  border-radius: 1rem;
+}
+
+.notes-content-card-header {
+  background-color: #fcf4a3;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.note-item {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+
+.checkbox-holder {
+  margin-right: 10px;
+}
+
+.title{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.tag{
+  margin:auto;
+  font-size:0.8rem;
+  font-family: monospace;
+  color:#ec0a0a;
+}
+
+.note-filters {
+  border-radius: 0.3em;
+  background-color: rgb(218, 255, 131);
+}
+
