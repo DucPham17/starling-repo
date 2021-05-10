@@ -25,20 +25,16 @@ export const UpdateNote = (props) => {
     const dispatch = useDispatch();
 
     const handleUpdate = () => {
-       const item = {
-            title: todosUpdate.title,
-            tag: todosUpdate.tag,
-       }
-       console.log(item);
+        const item = {
+                title: todosUpdate.title,
+                tag: todosUpdate.tag,
+        }
         dispatch(updateTodo(uid, todosUpdate.date, item))
     }
 
     useEffect(() => {
         dispatch(GetAction())        
     }, [])
-    
-    console.log(todosUpdate)
-
 
     return (
         <Modal show={props.show} onHide={props.onHide}>

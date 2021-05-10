@@ -17,15 +17,14 @@ export const Notes = () => {
         dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
     }, [selectedDate]);
 
-    console.log(selectedTag);
 
-     useEffect(() => {
-        dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
-     }, [selectedTag])
+    useEffect(() => {
+    dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
+    }, [selectedTag])
 
-     useEffect(() => {
-        dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
-     }, [selectByCompletion])
+    useEffect(() => {
+    dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
+    }, [selectByCompletion])
 
     return (
         <div className="note-page">

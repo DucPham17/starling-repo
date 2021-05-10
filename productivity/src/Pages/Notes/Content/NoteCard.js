@@ -28,7 +28,7 @@ export const NoteCard = () => {
 
     useEffect(() => {
         dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
-     }, [])
+     }, [type])
 
      console.log(todos)
      console.log(type);

@@ -23,7 +23,6 @@ const filters = [
 
 ]
 
-
 export const Content = (props) => {
     const {todos, selectedDate, selectedTag, selectByCompletion} = useSelector((state) => state.todos);
     // const [status, setStatus] = useState(selectByCompletion);

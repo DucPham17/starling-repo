@@ -1,25 +1,25 @@
-import {Nav, Tab,Tabs} from 'react-bootstrap'
+import {Button, Row, Col, Modal, Form, Card, Nav} from 'react-bootstrap'
 import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux"
-import './Report.css';
-import { getData, deleteData, filterData } from '../../Action/expenseAction'
-import { getTodos, toggleTodos, deleteTodo } from '../../Action/todosAction';
-import ToDoReport from './ToDo/ToDoReport'
-import ExpenseReport from './Expense/ExpenseReport'
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import '../Report.css';
+import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
+import ToDoGraph from './ToDoGraph'
 
 const routes = [
     {
-        href: '/report/expense',
-        label: 'Expense'
+        href: '/report/todo/3recentdays',
+        label: '3 Recent Days'
     },
     {
-        href: '/report/todo',
-        label: 'Todos'
+        href: '/report/todo/OneWeek',
+        label: 'One Week'
+    },
+    {
+        href: '/report/todo/ComingSoon',
+        label: 'Coming Soon'
     }
 ]
 
-const Report = () => {
+const ToDoReport = () => {
     const history = useHistory();
     const location = useLocation();
 
@@ -41,10 +41,9 @@ const Report = () => {
                 }
             </Nav>
             <Switch>
-                <Route path="/report/expense" component={ExpenseReport}/>
-                <Route path="/report/todo" component={ToDoReport}/>
+                <Route path="/report/todo/:id" component={ToDoGraph}/>
             </Switch>
         </div> 
     )
 }
-export default Report
+export default ToDoReport

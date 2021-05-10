@@ -25,8 +25,6 @@ export const NoteItem = ({note}) => {
         dispatch(deleteTodo(userInfo.uid, title, tag, date));
     }
     
-
-    console.log(note)
     return (
         <div className="note-item">
             <ListGroup.Item 

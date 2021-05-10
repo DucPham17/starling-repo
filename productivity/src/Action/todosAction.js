@@ -136,3 +136,26 @@ export const filterTodosByTag = (userId, tag, status, date) => async (dispatch) 
         dispatch(setLoading(false));
     }
 }
+
+export const filterTodosByDate = (userId, choice, recent) => async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+        console.log('graph')
+        const {data: todos} = await Axios.get("/api/tasks/filterTodosByDate", {
+            params: {
+                userId,
+                choice, 
+                recent
+            }
+        })
+        dispatch({
+            type: SET_TODOS,
+            todos
+        })
+        Cookie.set('todos', JSON.stringify(todos))
+    } catch (error) {
+        console.log(error)
+    } finally {  
+        dispatch(setLoading(false));
+    }
+}

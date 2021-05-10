@@ -8,7 +8,6 @@ const getAllExpenses = async (userId) => {
     const snapshot = await postRef.get();
 
     await snapshot.forEach(doc => {
-        //console.log(doc.data().userId);
         if (doc.data().userId === userId) {
             list.push(doc.data());
         }
@@ -39,7 +38,6 @@ const updateExpense = async (item) => {
     const postRef = db.collection('expenses');
     const snapshot = await postRef.get();
     var target = null;
-    console.log('here')
 
     await snapshot.forEach(doc => {
         if (doc.data().date == item.date && doc.data().userId == item.userId) {
@@ -79,7 +77,6 @@ const filterExpenses = async (userId, choiceDate, choiceType) => {
     const snapshot = await dateRef.get();
 
     await snapshot.forEach(doc => {
-        //console.log(doc.data().userId);
         if (doc.data().userId === userId) {
             list.push(doc.data());
         }
@@ -93,7 +90,6 @@ const filterExpenses = async (userId, choiceDate, choiceType) => {
         let bTime = new Date(b.date).getTime()
         return bTime - aTime;
     });
-    console.log(list)
     return list;
 }
 
