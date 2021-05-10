@@ -25,8 +25,6 @@ const defaultState = {
 export const AddNote = (props) => {
     const [state, setState] = useState(defaultState);
     const [category, setCategory] = useState('All');
-    const [tagValue, setTagValue] = useState('');
-    const [tagInputValue, setTagInputValue] = useState('');
     const {uid} = useSelector(state => state.user.userInfo);
     const {selectedDate} = useSelector(state => state.todos);
     const dispatch = useDispatch();   
@@ -37,6 +35,41 @@ export const AddNote = (props) => {
         setCategory(e.value);
     };
 
+
+
+    // // const handleChange = (options, value) => {
+    // //     switch (options) {
+    // //       case 'tags':
+    // //         setCategory(value)
+    // //         break
+    
+    // //       default:
+    // //         break
+    // //     }
+    // //   }
+
+    // const handleKeyDown = event => {
+    //     if (!tagInputValue) return;
+        
+    //     switch(event.key) {
+    //         case 'Enter':
+    //             setTagValue([...tagValue, createOption(tagInputValue)])
+    //             setTagInputValue('')
+    //             event.preventDefault();
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
+
+    // const createOption = (label) => ({
+    //     label,
+    //     value: label,
+    // });
+
+    // const handleInputChange = (value) => {
+    //     setTagInputValue(value);
+    // }
 
     const onChange = (key) => (e) => {
         setState({
@@ -88,9 +121,9 @@ export const AddNote = (props) => {
                             onKeyDown={handleKeyDown}
                             onChange={handleChange}
                             value={selectedCategory}
-                            // styles={colourStyles}
-                        > */}
-                        {/* </CreatableSelect> */}
+                            styles={colourStyles}
+                        >
+                        </CreatableSelect> */}
                     </Form.Group>
                     <Button type="submit">Add</Button>
                 </Form>

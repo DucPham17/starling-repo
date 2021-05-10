@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Cookie from "js-cookie";
-import { SET_TODOS, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS, SET_SELECTED_TAG} from "../Constant/actionTypes";
+import { SET_TODOS, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS} from "../Constant/actionTypes";
 import { setModal } from "./modalsAction";
 import { setLoading } from "./pageStatusAction";
 
@@ -123,6 +123,29 @@ export const filterTodosByTag = (userId, tag, status, date) => async (dispatch) 
                 tag, 
                 status,
                 date,
+            }
+        })
+        dispatch({
+            type: SET_TODOS,
+            todos
+        })
+        Cookie.set('todos', JSON.stringify(todos))
+    } catch (error) {
+        console.log(error)
+    } finally {  
+        dispatch(setLoading(false));
+    }
+}
+
+export const filterTodosByDate = (userId, choice, recent) => async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+        console.log('graph')
+        const {data: todos} = await Axios.get("/api/tasks/filterTodosByDate", {
+            params: {
+                userId,
+                choice, 
+                recent
             }
         })
         dispatch({

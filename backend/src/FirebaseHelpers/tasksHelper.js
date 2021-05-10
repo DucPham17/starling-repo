@@ -8,7 +8,6 @@ const getAllTasks = async (userId, date) => {
     const snapshot = await postRef.get();
     await snapshot.forEach(doc => {
         const data = doc.data();
-
         if (data.userId === userId && data.date === date) {
             list.push(data);
         }
@@ -93,7 +92,6 @@ const filterTodosByTags = async (userId, tag, status, date) => {
         tagRef = db.collection('tasks').where('tag', '==', 'Personal');
     }
 
-    console.log(status);
     let filterComplete = tagRef;
 
     if (status === 'active'){
@@ -110,7 +108,35 @@ const filterTodosByTags = async (userId, tag, status, date) => {
         }
     });
 
-    console.log(listTodos)
+    return listTodos;
+}
+
+const filterTodosByDate = async (userId, choice, recent) => {
+    const listTodos = [];
+
+    let tagRef = db.collection('tasks').where('userId', '==', userId);
+    
+    const snapshot = await tagRef.get();
+    const time = new Date(recent).getTime();
+
+    await snapshot.forEach(doc => {
+        const day = new Date(doc.data().date).getTime()
+        if (choice == '3 Recent Days') {
+            if (day <= time && day > (time - (86400000 * 2)) ) {
+                listTodos.push(doc.data());
+            }
+        } else if (choice == 'Coming Soon') {
+            if (day > time) {
+                listTodos.push(doc.data());
+            }
+        }else {
+            if (day <= time && day > (time - (86400000 * 6)) ) {
+                listTodos.push(doc.data());
+            }
+        }
+        
+    });
+
     return listTodos;
 }
 
@@ -121,5 +147,5 @@ module.exports = {
     updateTask,
     deleteTask,
     filterTodosByTags,
-
+    filterTodosByDate
 };

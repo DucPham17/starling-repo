@@ -32,11 +32,11 @@ const ExpenseGraph = (props) => {
         const sumEarningSpending = earning + spending;
         return [
             {
-                name: 'Earning',
+                name: 'Earning Amount',
                 value: Math.round((earning*100)/sumEarningSpending)
             },
             {
-                name: 'Spending',
+                name: 'Spending Amount',
                 value: Math.round((spending*100)/sumEarningSpending)
             }
         ];
@@ -74,6 +74,7 @@ const ExpenseGraph = (props) => {
     };
 
     const list = getList(earning, spending)
+    console.log(list)
 
     return (
         <div>
@@ -82,6 +83,33 @@ const ExpenseGraph = (props) => {
                     <ExpenseInfo/> 
                 </Col>
                 <Col>
+                    {infoFilter.filterList.length > 0 ?
+                        <div>
+                            <h5> Graph of Earning and Spending</h5>
+                            <PieChart width={700} height={500}>
+                                <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
+                                    {
+                                        list.map((entry, index) => 
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                                    
+                                    }
+                                </Pie>
+                                <Tooltip content={<CustomTooltip/>} />
+                                <Legend />
+                            </PieChart>   
+                        </div> 
+                        
+                        :
+                        <div>
+                            <h5> 
+                                You have not made any expense {id.toLowerCase()}
+                            </h5>
+                            <p> 
+                                Add new expense to see the data
+                            </p>
+                        </div>     
+                    }
+                    {/* <h5> Graph of Earning and Spending</h5>
                     <PieChart width={700} height={500}>
                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
                             {
@@ -92,7 +120,7 @@ const ExpenseGraph = (props) => {
                         </Pie>
                         <Tooltip content={<CustomTooltip/>} />
                         <Legend />
-                    </PieChart>    
+                    </PieChart>     */}
                 </Col>
             </Row>
             

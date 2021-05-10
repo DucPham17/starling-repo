@@ -12,6 +12,7 @@ import {filterTodosByTag } from '../../../Action/todosAction';
 import {toISOString} from '../../../Helpers/date';
 import {Card, Nav} from 'react-bootstrap';
 import './content.css';
+import { SET_SELECTED_COMPLETION } from '../../../Constant/actionTypes';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 
 
@@ -23,7 +24,10 @@ const filters = [
 ]
 
 export const Content = (props) => {
-    const {selectedDate} = useSelector((state) => state.todos);
+    const {todos, selectedDate, selectedTag, selectByCompletion} = useSelector((state) => state.todos);
+    // const [status, setStatus] = useState(selectByCompletion);
+
+    const {uid} = useSelector((state) => state.user.userInfo);
     const dispatch = useDispatch();
 
     const onAddNoteClick = () => {
@@ -32,6 +36,33 @@ export const Content = (props) => {
 
     const history = useHistory();
     const location = useLocation();
+
+    // let selectedStatus = filters.find((filter => filter.label === status))
+    // console.log(selectedStatus.label);
+
+    // var todosFiltered = todos.filter(todo => todo.tag === selectedTag)
+
+    const onChange =  () => {
+        dispatch({
+            type: SET_SELECTED_COMPLETION,
+            selectByCompletion,
+        })    
+    }
+    
+    // useEffect(() => {
+    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
+    //  }, [selectedDate])
+
+    
+    //  useEffect(() => {
+    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
+    //  }, [selectedTag])
+
+    //  useEffect(() => {
+    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
+    //  }, [selectByCompletion])
+
+    // console.log(todos)
 
     return (
         <div className={props.className}>
