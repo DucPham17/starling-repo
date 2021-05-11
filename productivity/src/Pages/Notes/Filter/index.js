@@ -8,15 +8,17 @@ import './filter.css';
 const tags = [
     {label: 'All', value: '', color: '#5243AA'},
     {label: 'Work', value: 'Work', color: '#5243AA'},
+    {label: 'Schoolwork', value: 'Schoolwork', color: '#007bff'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
     {label: 'Personal', value: 'Personal', color: '#FFC400'},
+    {label: 'Others', value: 'Others', color: '#e83e8c'},
 ]
 
 
 export const Filter = () => {
     
-    const {todos, selectedTag} = useSelector((state) => state.todos);
+    const {selectedTag} = useSelector((state) => state.todos);
 
     const dispatch = useDispatch();
    
@@ -27,12 +29,6 @@ export const Filter = () => {
             value: e.value,
         })
     }
-
-    // var tagsFiltered =  tags.map((tag) => tag.label === tagFilter.selectedTag)
-    // console.log(tagsFiltered);
-
-    
-
 
     return (
         <div>
