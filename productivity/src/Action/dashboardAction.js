@@ -21,25 +21,40 @@ export const setupDashboard = () => async (dispatch, getState) => {
                 choiceDate: 'Today'
             }
         });
-
-        const {data: weather} = await axios.get("/api/weather", {
-            params: {
-                lat: 41.5,
-                lng: -90.547
-            }
-        });
-
-        dispatch({
-            type: SETUP_DASHBOARD,
-            payload: {
-                todos,
-                expenses,
-                weather: {
-                    ...weather.weather[0],
-                    ...weather.main
+        
+        
+        await navigator.geolocation.getCurrentPosition(async (pos) => {
+            
+            var lat = pos.coords.longitude
+            var lng = pos.coords.latitude
+            
+            console.log(lat);
+            console.log(lng);
+            const {data: weather} = await axios.get("/api/weather", {
+                params: {
+                    lat: lat === null? 41.5 : lat,
+                    lng: lng === null? -90.547 : lng
                 }
-            }
+            });
+            
+            dispatch({
+                type: SETUP_DASHBOARD,
+                payload: {
+                    todos,
+                    expenses,
+                    weather: {
+                        ...weather.weather[0],
+                        ...weather.main
+                    }
+                }
+            })
         })
+
+       
+
+        
+
+        
     } catch (e) {
         console.log(e)
     } finally {
