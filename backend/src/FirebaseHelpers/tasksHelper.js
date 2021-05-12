@@ -84,12 +84,16 @@ const filterTodosByTags = async (userId, tag, status, date) => {
 
     if (tag === 'Work'){
         tagRef = db.collection('tasks').where('tag', '==', 'Work');
+    } else if (tag === 'Schoolwork') {
+        tagRef = db.collection('tasks').where('tag', '==', 'Schoolwork');
     } else if (tag === 'Shopping') {
         tagRef = db.collection('tasks').where('tag', '==', 'Shopping');
     } else if (tag === 'Errands'){
         tagRef = db.collection('tasks').where('tag', '==', 'Errands');
     } else if (tag === 'Personal') {
         tagRef = db.collection('tasks').where('tag', '==', 'Personal');
+    } else if (tag === 'Others') {
+        tagRef = db.collection('tasks').where('tag', '==', 'Others');
     }
 
     let filterComplete = tagRef;

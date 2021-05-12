@@ -12,9 +12,11 @@ import Select from 'react-select';
 
 const tags = [
     {label: 'Work', value: 'Work', color: '#5243AA'},
+    {label: 'Schoolwork', value: 'Schoolwork', color: '#007bff'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
     {label: 'Personal', value: 'Personal', color: '#FFC400'},
+    {label: 'Others', value: 'Others', color: '#e83e8c'},
 ]
 
 export const UpdateNote = (props) => {
@@ -36,6 +38,9 @@ export const UpdateNote = (props) => {
         dispatch(GetAction())        
     }, [])
 
+    let selectedCategory = tags.find((tag => tag.value === todosUpdate.tag))
+
+
     return (
         <Modal show={props.show} onHide={props.onHide}>
              <Modal.Header closeButton>
@@ -55,9 +60,8 @@ export const UpdateNote = (props) => {
                  <Form.Group>
                      <Form.Label>Tag</Form.Label>
                         <Select 
-                        isClearable
-                        placeholder='Select a tag'
-                        defaultValue ={todosUpdate.tag}
+                        placeholder="Edit your tag"
+                        value={selectedCategory}
                         options={tags}
                         onChange={(e) => dispatch(SetTodosAction('tag', e.value))}
                         styles={colourStyles}>

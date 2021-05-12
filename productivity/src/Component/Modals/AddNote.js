@@ -3,17 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import {Form, Button, Modal} from 'react-bootstrap';
 import { addTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
-import CreatableSelect from 'react-select/creatable';
 import {colourStyles} from './colourStyles';
 import Select from 'react-select';
 
 
 const tags = [
-    // {label: 'Select a tag', value: 'Select', color : '#000000'},
     {label: 'Work', value: 'Work', color: '#5243AA'},
+    {label: 'Schoolwork', value: 'Schoolwork', color: '#007bff'},
     {label: 'Errands', value: 'Errands', color: '#FF5630'},
     {label: 'Shopping', value: 'Shopping', color: '#36B37E'},
     {label: 'Personal', value: 'Personal', color: '#FFC400'},
+    {label: 'Others', value: 'Others', color: '#e83e8c'},
+
 ]
 
 const defaultState = {
@@ -34,42 +35,6 @@ export const AddNote = (props) => {
     const handleChange = (e) => {
         setCategory(e.value);
     };
-
-
-
-    // // const handleChange = (options, value) => {
-    // //     switch (options) {
-    // //       case 'tags':
-    // //         setCategory(value)
-    // //         break
-    
-    // //       default:
-    // //         break
-    // //     }
-    // //   }
-
-    // const handleKeyDown = event => {
-    //     if (!tagInputValue) return;
-        
-    //     switch(event.key) {
-    //         case 'Enter':
-    //             setTagValue([...tagValue, createOption(tagInputValue)])
-    //             setTagInputValue('')
-    //             event.preventDefault();
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }
-
-    // const createOption = (label) => ({
-    //     label,
-    //     value: label,
-    // });
-
-    // const handleInputChange = (value) => {
-    //     setTagInputValue(value);
-    // }
 
     const onChange = (key) => (e) => {
         setState({

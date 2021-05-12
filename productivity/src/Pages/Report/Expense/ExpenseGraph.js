@@ -28,7 +28,6 @@ const ExpenseGraph = (props) => {
 
     const COLORS = ['#0088FE', '#00C49F', '#ffafcc', '#560bad', '#ff6b6b', '#f9c74f']
     COLORS.sort(() => Math.random()-0.5)
-
     const getList = (earning, spending) => {
         const sumEarningSpending = earning + spending;
         return [

@@ -32,7 +32,7 @@ router.post('/toggleTask', async (req, res) => {
         title: req.body.title,
         tag: req.body.tag,
         isCompleted : req.body.isCompleted,
-        date: req.body.date
+        date: req.body.date,
     }
 
     await toggleTask(newTask);
@@ -46,7 +46,7 @@ router.post('/updatetask', async (req, res) => {
         userId: req.body.userId,
         title: req.body.item.title,
         tag: req.body.item.tag,
-        date: req.body.date
+        date: req.body.date,
     }
     console.log(updatedTask);
     await updateTask(updatedTask);

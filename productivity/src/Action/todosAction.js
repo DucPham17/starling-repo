@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Cookie from "js-cookie";
-import { SET_TODOS, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS, SET_SELECTED_TAG} from "../Constant/actionTypes";
+import { SET_TODOS, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS} from "../Constant/actionTypes";
 import { setModal } from "./modalsAction";
 import { setLoading } from "./pageStatusAction";
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, XAxis, YAxis, CartesianGrid, Line} from 'recharts';
 import { useParams } from "react-router-dom";
 import {filterTodosByDate } from '../../../Action/todosAction';
 
@@ -40,7 +40,7 @@ const Completion = (props) => {
                 value: Math.round((completed*100)/sum)
             },
             {
-                name: 'Uncompleted Tasks',
+                name: 'In Progress Tasks',
                 value: Math.round((uncompleted*100)/sum)
             }
         ];

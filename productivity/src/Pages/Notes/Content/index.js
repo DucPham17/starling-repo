@@ -6,28 +6,20 @@ import { setModal } from '../../../Action/modalsAction';
 import { ModalTypes } from '../../../Constant/modalTypes';
 import { dateToPresentableString } from '../../../Helpers/date';
 import { NoteCard } from './NoteCard';
-import { NoteItem } from './NoteItem';
-import {NoNoteFound} from './NoNoteFound';
-import {filterTodosByTag } from '../../../Action/todosAction';
-import {toISOString} from '../../../Helpers/date';
 import {Card, Nav} from 'react-bootstrap';
 import './content.css';
-import { SET_SELECTED_COMPLETION } from '../../../Constant/actionTypes';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 
 
 const filters = [
     { href: '/notes/all', label: 'All'},
     { href: '/notes/active', label: 'In Progress'}, 
-    { href: '/notes/completed', label: 'Complete'}
+    { href: '/notes/completed', label: 'Completed'}
 
 ]
 
 export const Content = (props) => {
-    const {todos, selectedDate, selectedTag, selectByCompletion} = useSelector((state) => state.todos);
-    // const [status, setStatus] = useState(selectByCompletion);
-
-    const {uid} = useSelector((state) => state.user.userInfo);
+    const {selectedDate} = useSelector((state) => state.todos);
     const dispatch = useDispatch();
 
     const onAddNoteClick = () => {
@@ -36,33 +28,6 @@ export const Content = (props) => {
 
     const history = useHistory();
     const location = useLocation();
-
-    // let selectedStatus = filters.find((filter => filter.label === status))
-    // console.log(selectedStatus.label);
-
-    // var todosFiltered = todos.filter(todo => todo.tag === selectedTag)
-
-    const onChange =  () => {
-        dispatch({
-            type: SET_SELECTED_COMPLETION,
-            selectByCompletion,
-        })    
-    }
-    
-    // useEffect(() => {
-    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
-    //  }, [selectedDate])
-
-    
-    //  useEffect(() => {
-    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
-    //  }, [selectedTag])
-
-    //  useEffect(() => {
-    //     dispatch(filterTodosByTag(uid, selectedTag, selectByCompletion, toISOString(selectedDate)))
-    //  }, [selectByCompletion])
-
-    // console.log(todos)
 
     return (
         <div className={props.className}>
@@ -75,11 +40,11 @@ export const Content = (props) => {
 
              <Nav fill variant="pills" className="notes-content-card-header">
                  {filters.map((filter) => (
-                <Nav.Item>
+            <Nav.Item className="notes-content-card-header">
                     <Nav.Link key={filter.href} 
                             active={location.pathname.startsWith(filter.href)}
                             onClick={() => {history.push(filter.href)}}
-                            >
+                            className="notes-content-card-header">
                             {filter.label}
                     </Nav.Link>
             </Nav.Item>
