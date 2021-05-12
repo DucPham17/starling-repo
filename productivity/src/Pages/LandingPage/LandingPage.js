@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setModal } from '../../Action/modalsAction';
-import { Logo } from '../../Component/Common/Logo';
+import { LinkButton } from '../../Component/Common/LinkButton';
 import { ModalTypes } from '../../Constant/modalTypes';
 import './LandingPage.css';
 import queryString from "query-string";
 import jwt_decode from "jwt-decode";
 import {SIGNIN_ACTION_SUCCESS} from "../../Constant/userConst";
 import Cookie from "js-cookie";
+import { CommonButton } from '../../Component/Common/CommonButton';
+import { useTheme } from '@material-ui/core';
+import { GoogleSignInButton } from './GoogleSignInButton';
+import { FacebookSignInButton } from './FacebookSignInButton';
 
 function LandingPage(props) {
+  const theme = useTheme();
   const dispatch = useDispatch();
+
   useEffect(() => {
     var query = queryString.parse(props.location.search);
     console.log(query);
@@ -27,29 +33,46 @@ function LandingPage(props) {
     }
   }, [])
 
+  const handleClickSignUp = () => {
+    dispatch(setModal(ModalTypes.SIGN_UP));
+  };
 
-  const handleClickSignIn = () =>{
+
+  const handleClickSignIn = () => {
     dispatch(setModal(ModalTypes.SIGN_IN));
-  }
+  };
 
   return (
-    <div className='wrapper d-flex flex-column justify-content-between'>
-      <div className='pt-5 pl-5'>
-        <Logo />
-      </div>
-      <Container className='wrapper-container' fluid="xl">
+    <div className='wrapper d-flex flex-column justify-content-center align-items-start'>
+      <Container
+        className='wrapper-container'
+        fluid="xl"
+        style={{
+          marginTop: '5rem',
+          color: theme.palette.primary.main
+        }}
+      >
         <h1>
-          Ready to
-              <br />
-              Get Productive?
-          </h1>
+          <strong>Welcome to our workspace</strong>
+        </h1>
+        <div>
+          <p>
+            Wasting time and energy trying to stay organized?
+            <br/>
+            We can help. Manage your schedule, tasks, expeneses, and more.
+            <br/>
+            Everything is well-designed just for you.
+          </p>
+        </div>
         <div className='button-wrapper'>
-          <Button variant="primary" onClick={() => props.history.push('/dashboard')}>Get Started</Button>
-          <Button variant="secondary" onClick={handleClickSignIn}>Have an account? Login</Button>
-          {/* <Button variant="secondary" onClick={handleTestClick}>Test</Button> */}
+          <CommonButton variant="primary" onClick={handleClickSignUp}>Try our Workspace</CommonButton>
+          <LinkButton onClick={handleClickSignIn}>Already have an account? Sign in</LinkButton>
+        </div>
+        <div className='social-wrapper my-5'>
+          <FacebookSignInButton/>
+          <GoogleSignInButton/>
         </div>
       </Container>
-      <div />
     </div>
   );
 };

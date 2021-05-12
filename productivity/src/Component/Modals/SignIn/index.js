@@ -12,13 +12,8 @@ function SignInPage(props) {
     const [password, setPassword] = useState('');
     const info = useSelector(state => state.user);
     const dispatch = useDispatch();
-    const { loading, userInfo, error } = info;
+    const { loading, error } = info;
 
-    console.log(userInfo);
-
-    const handleGoogleSignIn = () => {
-        dispatch(signInWithGoogle());
-    }
     const handleSignin = (e) => {
         e.preventDefault();
         // console.log(email);
@@ -32,7 +27,6 @@ function SignInPage(props) {
             </Modal.Header>
 
             <Modal.Body>
-                <Button className='w-100' className='pt-2' onClick={handleGoogleSignIn}>Google SignIn</Button>
                 <Form onSubmit={handleSignin}>
                     <Form.Group id='email'>
                         <Form.Label>Email</Form.Label>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256.497" height="747.18" viewBox="0 0 256.497 747.18">
+  <g id="Symbols" transform="translate(0 0)">
+    <g id="Scene_Home" data-name="Scene/Home" transform="translate(0 0)">
+      <g id="Lamp" transform="translate(0 0)">
+        <path id="Body" d="M185.188,53.787,157.516,19.622c-4.655-5.746-12.2-5.748-16.861,0l0,0L66.981,110.565A33.235,33.235,0,0,0,60,131.364V733.711" transform="translate(-16.78 4.527)" fill="none" stroke="#cbcbcb" stroke-width="8" fill-rule="evenodd"/>
+        <rect id="Lamp-Base" width="87.93" height="10.432" rx="3" transform="translate(0 736.748)" fill="#afb9c5"/>
+        <g id="Lamp-Top" transform="translate(256.686 70.145) rotate(135)">
+          <path id="Lamp-2" data-name="Lamp" d="M49.181,90.911h0A49.181,49.181,0,0,0,98.363,41.73V0H0V41.73A49.181,49.181,0,0,0,49.181,90.911Z" transform="translate(0 8.289)" fill="#c5cfd6" fill-rule="evenodd"/>
+          <ellipse id="Lamp-3" data-name="Lamp" cx="49.181" cy="9.687" rx="49.181" ry="9.687" transform="translate(0.266 0)" fill="#f2f2f2"/>
+        </g>
+      </g>
+    </g>
+    <path id="Path_23" data-name="Path 23" d="M13.5,0A13.5,13.5,0,1,1,0,13.5,13.5,13.5,0,0,1,13.5,0Z" transform="translate(202.686 89.18)" fill="#fefefe"/>
+  </g>
+</svg>
