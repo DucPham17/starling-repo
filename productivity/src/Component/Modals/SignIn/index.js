@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Form, Button, Modal } from 'react-bootstrap';
-import { signin, signInWithGoogle } from '../../../Action/userAction';
+import { Form, Modal } from 'react-bootstrap';
+import { signin } from '../../../Action/userAction';
 import './SignIn.css';
-import { LinkButton } from '../../../Component/Common/LinkButton';
-import { setModal } from '../../../Action/modalsAction';
-import { ModalTypes } from '../../../Constant/modalTypes';
+import { CommonButton } from '../../Common/CommonButton';
 
 function SignInPage(props) {
     const [email, setEmail] = useState('');
@@ -37,8 +35,7 @@ function SignInPage(props) {
                         <Form.Control type="password" onChange={(event) => { setPassword(event.target.value) }} required></Form.Control>
                     </Form.Group>
                     {loading ? <div>Loading...</div> : error ? <div>Wrong in email or password</div> : null}
-                    <Button className='w-100' type='submit' >Sign in</Button>
-                    <LinkButton className='pt-2' onClick={() => dispatch(setModal(ModalTypes.SIGN_UP))}>Don't have account? Click here to Sign Up</LinkButton>
+                    <CommonButton className='w-100' type='submit' >Sign in</CommonButton>
                 </Form>
             </Modal.Body>
         </Modal>

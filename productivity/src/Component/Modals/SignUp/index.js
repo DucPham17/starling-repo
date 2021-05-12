@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Form, Button, Modal} from 'react-bootstrap';
+import {Form, Modal} from 'react-bootstrap';
 import { signup } from '../../../Action/userAction';
 import './SignUp.css';
-import { LinkButton } from '../../../Component/Common/LinkButton';
-import { setModal } from '../../../Action/modalsAction';
-import { ModalTypes } from '../../../Constant/modalTypes';
+import { CommonButton } from '../../Common/CommonButton';
 
 function SignUpPage(props) {
     const[email, setEmail] = useState('');
@@ -25,7 +23,7 @@ function SignUpPage(props) {
     return(
         <Modal show={props.show} onHide={props.onHide}>
             <Modal.Header closeButton>
-                <Modal.Title>Sign In</Modal.Title>
+                <Modal.Title>Sign Up</Modal.Title>
             </Modal.Header>
             
             <Modal.Body>
@@ -43,8 +41,7 @@ function SignUpPage(props) {
                         <Form.Control type="text" onChange={(event) => {setName(event.target.value)}} required></Form.Control>
                     </Form.Group>
                     {loading? <div>Loading...</div> : error? <div>There was a problem</div> : null}
-                    <Button className='w-100' onClick={handleSignin} >Sign up</Button>
-                    <LinkButton className='pt-2' onClick={() => dispatch(setModal(ModalTypes.SIGN_IN))}>Aready have an account? Click here to Sign In</LinkButton>
+                    <CommonButton className='w-100' onClick={handleSignin} >Sign up</CommonButton>
                 </Form>
             </Modal.Body>
         </Modal>

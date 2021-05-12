@@ -5,17 +5,19 @@ export const CommonButton = (props) => {
     const theme = useTheme();
 
     return (
-        <div
+        <button
             style={{
+                textAlign: 'center',
                 backgroundColor: theme.palette.primary.main,
                 padding: '1rem',
                 borderRadius: '50rem',
                 cursor: 'pointer',
-                color: theme.palette.primary.contrastText
+                color: theme.palette.primary.contrastText,
+                border: 'none',
             }}
             {...props}
         >
             {props.children}
-        </div>
+        </button>
     );
 };
