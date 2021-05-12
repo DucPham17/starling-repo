@@ -7,14 +7,13 @@
 
 .card {
     margin: 1em;
-    border-radius: 2em;
 }
 
 .info {
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
-    background-color: #f5cac3;
+    border-color: gray;
 }
 
 .expenseList{

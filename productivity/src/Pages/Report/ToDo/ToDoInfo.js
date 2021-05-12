@@ -30,11 +30,15 @@ const ToDoInfo = (props) => {
 
     return (
         <div>
-            <div>
-                <h5> Info </h5>
-                <p>Amount of Completed tasks: {completed}</p>
-                <p>Amount of Uncompleted tasks: {uncompleted}</p>
-            </div>
+            <Card>
+                <Card.Header>
+                    Info
+                </Card.Header>
+                <Card.Body>
+                    <p>Amount of Completed tasks: {completed}</p>
+                    <p>Amount of Uncompleted tasks: {uncompleted}</p>
+                </Card.Body>
+            </Card>
         </div> 
     )
 }

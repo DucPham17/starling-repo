@@ -37,7 +37,7 @@ const ToDoGraph = () => {
                     <ToDoInfo todos={todos}/>
                 </Col>
                 {todos.length > 0 ?
-                    <Row>
+                    <Row style={{display:'inlineblock', margin:'2em'}}>
                         <Col sm={6}>
                             <Type todos={todos}/>
                         </Col>

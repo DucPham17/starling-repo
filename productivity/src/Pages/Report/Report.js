@@ -28,7 +28,7 @@ const Report = () => {
             <Nav variant="tabs">
                 {
                     routes.map((route) => (
-                        <Nav.Item>
+                        <Nav.Item style={{fontSize:'18px'}}>
                             <Nav.Link 
                                 key={route.href}
                                 active={location.pathname.startsWith(route.href)}
