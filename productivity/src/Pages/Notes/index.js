@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterTodosByTag, getTodos } from "../../Action/todosAction";
 import { toISOString } from "../../Helpers/date";
 import {Filter} from "./Filter";
+import { Card } from "react-bootstrap";
 
 export const Notes = () => {
     const {selectedDate, selectedTag, selectByCompletion} = useSelector((state) => state.todos);
@@ -28,11 +29,8 @@ export const Notes = () => {
 
     return (
         <div className="note-page">
-            <h1>Notes</h1>
             <div className="note-wrapper">
                 <Options className="note-options"/>
-                <Filter className="note-filters"
-                />
                 <Content className="note-content"/>
             </div>
         </div>

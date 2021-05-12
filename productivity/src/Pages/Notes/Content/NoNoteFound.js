@@ -8,7 +8,7 @@ export const NoNoteFound = () => {
                 animationData={animationData}
                 loop
                 play
-                style={{ width: '30rem', height: '30rem' }}
+                style={{ width: '15rem', height: '15rem' }}
             />
             <h5>Nothing for today. Click add note to add more notes</h5>
         </div>

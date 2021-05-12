@@ -21,10 +21,10 @@ const Dashboard= (props)=> {
                     <Col sm={12}>
                         <WelcomeModule/>
                     </Col>
-                    <Col md={12} lg={7} xl={8}> 
+                    <Col md={12} lg={6} xl={6}> 
                         <TodosModule/>
                     </Col>
-                    <Col md={12} lg={5} xl={4}> 
+                    <Col md={12} lg={6} xl={6}> 
                         <ExpenseModule/>
                     </Col>
                 </Row> 

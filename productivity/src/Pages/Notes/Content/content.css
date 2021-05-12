@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Noto+Sans+JP:wght@100;300;500&family=Rubik:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Noto+Sans+JP:wght@100;300;500&family=Rubik:wght@300;400;500&display=swap");
 
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .notes-content-card {
-  background-color: #fcf4a3;
   margin: 1rem 0;
   border-radius: 0.8rem;
 }
 
 .notes-content-card-header {
-  font-family: 'Rubik', sans-serif;  
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   background-color: #fcf4a3;
-  color:#2b2a30;
+  color: #2b2a30;
   border-radius: 0.8rem;
   padding: 0.4rem;
 }
@@ -25,33 +24,34 @@ html {
   border-radius: 1.5rem;
 }
 
-.note-item {
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 1rem;
+.note-item:hover {
+  border: 1px #2b2a30;
 }
 
 .checkbox-holder {
   margin-right: 10px;
 }
 
-.title{
-  font-family: 'Rubik', sans-serif;  
+.title {
+  font-family: "Rubik", sans-serif;
   font-size: 0.9em;
 }
 
-.tag{
-  margin:auto;
-  font-size: 0.7em;
-  font-family: 'Rubik', sans-serif;  
-  color:#ffffff;
+.tag {
+  margin: auto;
+  font-size: 0.9em;
+  font-family: "Rubik", sans-serif;
+  color: #ffffff;
   background-color: rgb(23, 209, 122);
   height: 26px;
   line-height: 26px;
   border-radius: 0.8rem;
   padding: 0 20px 0 20px;
+}
 
+.note-item:hover {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .note-filters {
@@ -59,3 +59,6 @@ html {
   background-color: rgb(218, 255, 131);
 }
 
+.delete-btn {
+  font-size: 2rem;
+}

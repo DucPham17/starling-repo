@@ -48,6 +48,7 @@ passport.use(new GoogleStrategy({
 const userRouter = require('./src/Router/userRouter')
 const expenseRouter = require('./src/Router/expenseRouter')
 const taskRouter = require('./src/Router/taskRouter')
+const weatherRouter = require('./src/Router/weatherRouter')
 
 
 app.use(cookieSession({
@@ -61,6 +62,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/expenses", expenseRouter);
 app.use("/api/tasks", taskRouter);
+app.use("/api/weather", weatherRouter);
 app.listen(5000, () => {
   console.log("server started at port 5000")
 })

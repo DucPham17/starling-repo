@@ -50,9 +50,11 @@ export const Content = (props) => {
             </Nav.Item>
                  ))}
             </Nav>  
-            <Switch>
-                <Route path="/notes/:type" component={NoteCard}/>
-            </Switch>
+            <Card className="p-3 m-0">
+                <Switch>
+                    <Route path="/notes/:type" component={NoteCard}/>
+                </Switch>
+            </Card>
 
         </div>
     )

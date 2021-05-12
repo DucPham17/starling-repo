@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { LinkButton } from "../../../Component/Common/LinkButton";
@@ -11,7 +11,14 @@ export const TodosModule = () => {
     return (
         <Card>
             <Card.Body>
-                <h2>To-do list</h2>
+                <div className="d-flex flex-row justify-content-between">
+                    <h2>To-do list</h2>
+                    <div>
+                        <Badge pill className="bg-warning">
+                            Due today
+                        </Badge>
+                    </div>
+                </div>
                 <NoteCard todos={todos}/>
             </Card.Body>
             <div className="divider"/>

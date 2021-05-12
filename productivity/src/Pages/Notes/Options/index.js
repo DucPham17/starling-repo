@@ -2,6 +2,7 @@ import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SELECTED_DATE } from "../../../Constant/actionTypes";
 import { toISOString } from '../../../Helpers/date';
+import { Filter } from "../Filter";
 
 export const Options = (props) => {
     const {selectedDate} = useSelector((state) => state.todos);
@@ -21,6 +22,8 @@ export const Options = (props) => {
                 selected={selectedDate}
                 onChange={onChange}
                 inline
+            />
+            <Filter className="note-filters"
             />
         </div>
     );

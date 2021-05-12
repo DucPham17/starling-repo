@@ -38,7 +38,7 @@ const Header = (props) => {
             <Avatar
               name={userInfo.displayName}
               src={userInfo.photoURL}
-              size={50}
+              size={40}
               round
             />
           </Dropdown.Toggle>
