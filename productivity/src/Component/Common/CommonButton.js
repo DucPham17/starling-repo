@@ -11,7 +11,7 @@ export const CommonButton = (props) => {
                 backgroundColor: theme.palette.primary.main,
                 padding: '1rem',
                 borderRadius: '50rem',
-                cursor: 'pointer',
+                cursor: props.disabled ? 'not-allowed' : 'pointer',
                 color: theme.palette.primary.contrastText,
                 border: 'none',
             }}

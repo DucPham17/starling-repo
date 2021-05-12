@@ -20,12 +20,24 @@ export const setupDashboard = () => async (dispatch, getState) => {
                 userId: uid,
                 choiceDate: 'Today'
             }
-        })
+        });
+
+        const {data: weather} = await axios.get("/api/weather", {
+            params: {
+                lat: 41.5,
+                lng: -90.547
+            }
+        });
+
         dispatch({
             type: SETUP_DASHBOARD,
             payload: {
                 todos,
-                expenses
+                expenses,
+                weather: {
+                    ...weather.weather[0],
+                    ...weather.main
+                }
             }
         })
     } catch (e) {

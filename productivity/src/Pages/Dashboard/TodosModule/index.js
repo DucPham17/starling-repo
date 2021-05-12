@@ -1,6 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { LinkButton } from "../../../Component/Common/LinkButton";
 import { NoteCard } from "../../Notes/Content/NoteCard";
 
 export const TodosModule = () => {
@@ -9,13 +10,14 @@ export const TodosModule = () => {
 
     return (
         <Card>
-            <Card.Header as="h5">Today's Todo List</Card.Header>
             <Card.Body>
+                <h2>To-do list</h2>
                 <NoteCard todos={todos}/>
             </Card.Body>
-            <Card.Footer> 
-                <Button onClick={() => history.push('/notes')}>More details</Button>
-            </Card.Footer>
+            <div className="divider"/>
+            <Card.Body className="d-flex justify-content-center"> 
+                <LinkButton onClick={() => history.push('/notes')}>View all</LinkButton>
+            </Card.Body>
         </Card>
     );
 }

@@ -15,8 +15,7 @@ const Dashboard= (props)=> {
     }, [])
     
     return (
-        <div className='w-100 v-100 p-5'>
-            <h1 className="px-3">At a Glance</h1>
+        <div className='w-100 v-100'>
             <Container fluid className='p-0'>
                 <Row> 
                     <Col sm={12}>

@@ -1,4 +1,5 @@
 .appWrapper {
+  background-color: #fafafa;
   display: grid;
   width: 100vw;
   height: 100vh;
@@ -17,9 +18,8 @@
 
 .appMenu {
   grid-area: menu;
-  width: 15rem;
+  width: 12rem;
   padding: 1.5rem;
-  background-color: #f7f7f7;
 }
 
 .appContent {

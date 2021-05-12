@@ -5,15 +5,17 @@ export const LinkButton = (props) => {
     const theme = useTheme();
 
     return (
-        <div
+        <button
             className={props.className}
             style={{
                 cursor: 'pointer',
-                color: theme.palette.primary.main
+                color: theme.palette.primary.main,
+                backgroundColor: 'transparent',
+                border: 'none'
             }}
             onClick={props.onClick}
         >
             {props.children}
-        </div>
+        </button>
     );
 };

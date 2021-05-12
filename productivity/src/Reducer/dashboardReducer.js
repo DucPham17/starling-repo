@@ -2,7 +2,10 @@ import { SETUP_DASHBOARD } from "../Constant/actionTypes";
 
 const defaultState = {
   todos: [],
-  expenses: []
+  expenses: [],
+  weather: {
+    temp: 0
+  }
 };
 
 const setupDashboard = (state, action) => ({

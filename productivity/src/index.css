@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "SVN_Anastasia";
+  src: local("SVN_Anastasia"),
+    url(./resources/Fonts/SVN-Anastasia.ttf) format("truetype");
+}
+
+.card {
+  border: none !important;
+  border-radius: 1.5rem !important;
+}
+
+.card .card-header {
+  border-top-left-radius: 1.5rem !important;
+  border-top-right-radius: 1.5rem !important;
+}

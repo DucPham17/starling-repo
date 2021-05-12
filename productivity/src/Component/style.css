@@ -1,15 +1,10 @@
 /* Header */
-.logoImage {
-  width: 2rem;
-  height: 2rem;
-}
 
 .logo {
   cursor: pointer;
 }
 
 .header {
-  background-color: #eee;
 }
 
 .user-dropdown {
@@ -32,7 +27,6 @@
 
 /* Footer */
 .footer {
-  background-color: #eee;
   text-align: center;
   padding: 0.5em;
 }
@@ -48,6 +42,7 @@
 }
 
 .nav-item-custom {
+  text-align: right;
   font-size: 1rem;
   padding: 0.7rem 1rem;
   cursor: pointer;
@@ -55,7 +50,5 @@
 }
 
 .nav-active {
-  border-radius: 20px;
-  background-color: #b2dfdb;
   font-weight: bold;
 }

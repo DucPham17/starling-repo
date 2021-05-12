@@ -12,6 +12,18 @@ const Header = (props) => {
     const {userInfo} = useSelector(state => state.user);
     const history = useHistory();
     const dispatch = useDispatch();
+    const date = new Date();
+    
+    const getWelcome = () => {
+      if (date.getHours() < 12) {
+          return 'Good Morning';
+      } else if (date.getHours() < 18) {
+          return 'Good Afternoon'
+      } else {
+          return 'Good Evening';
+      }
+    };
+
 
     return (
       <div className={classNames(
@@ -22,6 +34,7 @@ const Header = (props) => {
         <Logo className="logo" onClick={() => history.push('/')}/>
         <Dropdown>
           <Dropdown.Toggle as={'div'} className='user-dropdown'>
+            <span>{`${getWelcome()}, ${userInfo.displayName}`}</span>
             <Avatar
               name={userInfo.displayName}
               src={userInfo.photoURL}
