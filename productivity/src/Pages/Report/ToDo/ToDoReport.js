@@ -1,5 +1,5 @@
-import {Button, Row, Col, Modal, Form, Card, Nav} from 'react-bootstrap'
-import React, {useState, useEffect} from 'react'
+import {Nav} from 'react-bootstrap'
+import React from 'react'
 import '../Report.css';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import ToDoGraph from './ToDoGraph'
@@ -28,7 +28,7 @@ const ToDoReport = () => {
             <Nav variant="tabs">
                 {
                     routes.map((route) => (
-                        <Nav.Item style={{fontSize:'18px'}}>
+                        <Nav.Item variant='light' style={{fontSize:'18px'}}>
                             <Nav.Link 
                                 key={route.href}
                                 active={location.pathname.startsWith(route.href)}

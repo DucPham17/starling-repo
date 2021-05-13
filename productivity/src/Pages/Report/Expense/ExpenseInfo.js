@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import './Expense.css';
 import {Card} from 'react-bootstrap'
-import { getData, deleteData, filterData } from '../../../Action/expenseAction'
+import { filterData } from '../../../Action/expenseAction'
 import { useParams } from "react-router-dom";
 
 const ExpenseInfo = (props) => {
@@ -53,8 +53,8 @@ const ExpenseInfo = (props) => {
 
     return (
         <div >
-            <Card>
-                <Card.Header>
+            <Card style={{margin:'2em'}}>
+                <Card.Header className='introG'>
                     {id} Info
                 </Card.Header>
                 <Card.Body>
@@ -65,19 +65,7 @@ const ExpenseInfo = (props) => {
                     <p> Number of Spending made: {spendingNumber} </p>
                     <p> Number of Earning made: {earningNumber} </p>
                 </Card.Body>
-            </Card>
-            {/* <h5 className='intro'>
-                {id} Info
-            </h5>
-            <div className='infoBox'>
-                <p> Balance: {spending + earning}</p>
-                <p> Spending Amount: {spending} </p>
-                <p> Earning Amount: {earning} </p>
-                <p> Total transactions: {spendingNumber + earningNumber} </p>
-                <p> Number of Spending made: {spendingNumber} </p>
-                <p> Number of Earning made: {earningNumber} </p>
-            </div> */}
-            
+            </Card>            
         </div>
     )
 }

@@ -84,7 +84,7 @@ const ExpenseGraph = (props) => {
                 </Col>
                 <Col>
                     {infoFilter.filterList.length > 0 ?
-                        <div>
+                        <div className='graphBox'>
                             <h5> Graph of Earning and Spending</h5>
                             <PieChart width={700} height={500}>
                                 <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
@@ -100,7 +100,7 @@ const ExpenseGraph = (props) => {
                         </div> 
                         
                         :
-                        <div>
+                        <div className='graphBox'>
                             <h5> 
                                 You have not made any expense {id.toLowerCase()}
                             </h5>
@@ -109,21 +109,8 @@ const ExpenseGraph = (props) => {
                             </p>
                         </div>     
                     }
-                    {/* <h5> Graph of Earning and Spending</h5>
-                    <PieChart width={700} height={500}>
-                        <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
-                            {
-                                list.map((entry, index) => 
-                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                            
-                            }
-                        </Pie>
-                        <Tooltip content={<CustomTooltip/>} />
-                        <Legend />
-                    </PieChart>     */}
                 </Col>
-            </Row>
-            
+            </Row> 
         </div> 
     )
 }

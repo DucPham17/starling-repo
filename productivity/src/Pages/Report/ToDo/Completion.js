@@ -60,10 +60,10 @@ const Completion = (props) => {
     const list = getList(completed, uncompleted)
 
     return (
-        <div>
+        <div className='graphBox'>
             <Row>
                 <Col> 
-                    <h5> Graph of Completed and Uncompleted Tasks </h5>
+                    <h5> Graph of Completed and In Progress Tasks </h5>
                     <PieChart width={500} height={500}>
                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
                             {
@@ -77,7 +77,6 @@ const Completion = (props) => {
                     </PieChart>    
                 </Col>
             </Row>
-            
         </div> 
     )
 }

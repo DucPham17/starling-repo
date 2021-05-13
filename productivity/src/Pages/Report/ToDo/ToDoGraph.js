@@ -46,7 +46,7 @@ const ToDoGraph = () => {
                         </Col>
                     </Row>   
                     :
-                    <Row>
+                    <Row className='graphBox'>
                         <Col>
                         <h5> 
                             You have not made any expense in {id.toLowerCase()}
@@ -56,8 +56,7 @@ const ToDoGraph = () => {
                         </p>
                         </Col>
                     </Row>
-                }
-                
+                }   
             </Row>
         </div> 
     )

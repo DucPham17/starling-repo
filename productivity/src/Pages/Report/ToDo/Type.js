@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
-import { useSelector, useDispatch } from "react-redux"
+import {Row, Col} from 'react-bootstrap'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import { useParams } from "react-router-dom";
-import {filterTodosByDate } from '../../../Action/todosAction';
 
 //Graph making
 //https://www.freakyjolly.com/react-charts-examples/
@@ -13,12 +10,16 @@ const Type = (props) => {
     const [errand, setErrand] = useState(0)
     const [shopping, setShopping] = useState(0)
     const [personal, setPersonal] = useState(0)
-    
+    const [schoolwork, setSchoolwork] = useState(0)
+    const [others, setOthers] = useState(0)
+
     useEffect(()=> {
         let workAmount = 0
         let errandAmount = 0
         let shoppingAmount = 0
         let personalAmount = 0
+        let schoolworkAmount = 0
+        let othersAmount = 0
 
         if (props.todos.length > 0) {
             props.todos.map((id) => {
@@ -28,22 +29,30 @@ const Type = (props) => {
                     errandAmount = errandAmount + 1
                 } else if (id.tag === 'Shopping') {
                     shoppingAmount = shoppingAmount + 1
+                } else if (id.tag === 'Schoolwork') {
+                    schoolworkAmount = schoolworkAmount + 1
+                } else if (id.tag === 'Others') {
+                    othersAmount = othersAmount + 1
                 } else {
                     personalAmount = personalAmount + 1
-                }    
+                }
+                
         })
         setWork(workAmount)
         setErrand(errandAmount) 
         setShopping(shoppingAmount)
         setPersonal(personalAmount)
+        setSchoolwork(schoolworkAmount)
+        setOthers(othersAmount)
         }
+
     })
 
     const COLORS = ['#0088FE', '#00C49F', '#ffafcc', '#560bad', '#ff6b6b', '#f9c74f']
     COLORS.sort(() => Math.random()-0.5)
     
-    const getList = (work, errand, shopping, personal) => {
-        const sum = work + shopping + errand + personal;
+    const getList = (work, errand, shopping, personal, schoolwork, others) => {
+        const sum = work + shopping + errand + personal + schoolwork + others;
         return [
             {
                 name: 'Work',
@@ -61,6 +70,14 @@ const Type = (props) => {
                 name: 'Personal',
                 value: Math.round((personal*100)/sum)
             }, 
+            {
+                name: 'Schoolwork',
+                value: Math.round((schoolwork*100)/sum)
+            }, 
+            {
+                name: 'Others',
+                value: Math.round((others*100)/sum)
+            }, 
         ];
     }
     
@@ -75,10 +92,10 @@ const Type = (props) => {
         return null;
     };
 
-    const list = getList(work, errand, shopping, personal)
+    const list = getList(work, errand, shopping, personal, schoolwork, others)
 
     return (
-        <div>
+        <div className='graphBox'>
             <Row>
                 <Col> 
                     <h5> Graph of Tags </h5>

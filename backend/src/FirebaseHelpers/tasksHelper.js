@@ -130,10 +130,10 @@ const filterTodosByDate = async (userId, choice, recent) => {
                 listTodos.push(doc.data());
             }
         } else if (choice == 'Coming Soon') {
-            if (day > time) {
+            if (day > (time + 86400000)) {
                 listTodos.push(doc.data());
             }
-        }else {
+        } else {
             if (day <= time && day > (time - (86400000 * 6)) ) {
                 listTodos.push(doc.data());
             }

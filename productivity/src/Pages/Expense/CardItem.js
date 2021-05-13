@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from "react-redux"
-import { getData, deleteData, filterData } from '../../Action/expenseAction'
+import {deleteData} from '../../Action/expenseAction'
 import './Expense.css';
 import { ModalTypes } from '../../Constant/modalTypes';
 import {setModal} from '../../Action/modalsAction';
-import {GetAction, UpdateAction} from '../../Action/updateAction';
+import {UpdateAction} from '../../Action/updateAction';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 

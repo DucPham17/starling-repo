@@ -1,8 +1,7 @@
-import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
-import React, {useState, useEffect} from 'react'
+import {Nav} from 'react-bootstrap'
+import React from 'react'
 import '../Report.css';
 import ExpenseGraph from './ExpenseGraph'
-import ExpenseInfo from './ExpenseInfo'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 const routes = [
@@ -25,7 +24,7 @@ const ExpenseReport = () => {
             <Nav variant="tabs" >
                 {
                     routes.map((route) => (
-                        <Nav.Item style={{fontSize:'18px'}}>
+                        <Nav.Item variant='light' style={{fontSize:'18px'}}>
                             <Nav.Link 
                                 key={route.href}
                                 active={location.pathname.startsWith(route.href)}

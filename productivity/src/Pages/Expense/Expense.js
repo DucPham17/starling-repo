@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
-import {Button, Row, Col, Modal, Form, Card, Table} from 'react-bootstrap'
-import { getData, deleteData, filterData } from '../../Action/expenseAction'
+import {Button, Row, Col, Form, Card, Table} from 'react-bootstrap'
+import { getData, filterData } from '../../Action/expenseAction'
 import './Expense.css';
 import Lottie from 'react-lottie-player';
 import animationData from '../../resources/Lotties/cat.json';
@@ -30,8 +30,7 @@ const Expense = ()=> {
     }, [infoExpense.expense])
     
     useEffect(() => {
-        dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type))
-        //dispatch(getData(infoUser.userInfo.uid))    
+        dispatch(filterData(infoUser.userInfo.uid, infoFilter.date, infoFilter.type)) 
     }, [infoFilter.type, infoFilter.date])
 
     useEffect(() => {
@@ -65,11 +64,6 @@ const Expense = ()=> {
                                 <p> Earning: {earning} </p>
                             </Card.Body>
                         </Card>
-                        {/* <div className='info'> 
-                            <h5> Total: {-spending + earning}</h5>
-                            <p> Spending: {spending}</p>
-                            <p> Earning: {earning} </p>
-                        </div>  */}
                     </Col>
                     <Col>
                         <p className='intro'>Filter by Date</p>
@@ -79,6 +73,7 @@ const Expense = ()=> {
                                 type: 'SETF',
                                 key: 'date',
                                 value: e.target.value,
+                                
                             })}>
                             {filterDate.map((id) => 
                                 <option>
@@ -95,6 +90,7 @@ const Expense = ()=> {
                                 type: 'SETF',
                                 key: 'type',
                                 value: e.target.value,
+                                
                             })}>
                             {filterType.map((id) => 
                                 <option>
@@ -107,7 +103,7 @@ const Expense = ()=> {
             </div>
             <div>
                 <Card className='card'>
-                    <Card.Header style={{fontSize:'25px'}}> 
+                    <Card.Header style={{fontSize:'25px', backgroundColor:'#fcf4a3'}}> 
                         Finance
                         <Button className='addButton' variant="outline-primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}
                             style={{float:'right'}}> 
@@ -144,16 +140,10 @@ const Expense = ()=> {
                                      
                                     </div>    
                                     }
-                            
                         </Table>
                     </Card.Body>
                 </Card>  
-            </div>
-            
-                <Row className='expenseList'>
-                    
-                </Row>
-        
+            </div>       
         </div>
     )
 }

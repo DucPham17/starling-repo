@@ -1,9 +1,6 @@
-import {Nav, Tab,Tabs} from 'react-bootstrap'
-import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux"
+import {Nav} from 'react-bootstrap'
+import React from 'react'
 import './Report.css';
-import { getData, deleteData, filterData } from '../../Action/expenseAction'
-import { getTodos, toggleTodos, deleteTodo } from '../../Action/todosAction';
 import ToDoReport from './ToDo/ToDoReport'
 import ExpenseReport from './Expense/ExpenseReport'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
@@ -28,7 +25,7 @@ const Report = () => {
             <Nav variant="tabs">
                 {
                     routes.map((route) => (
-                        <Nav.Item style={{fontSize:'18px'}}>
+                        <Nav.Item variant='light' style={{fontSize:'18px'}}>
                             <Nav.Link 
                                 key={route.href}
                                 active={location.pathname.startsWith(route.href)}
