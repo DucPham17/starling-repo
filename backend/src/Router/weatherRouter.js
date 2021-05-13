@@ -10,7 +10,11 @@ router.get('/', async (req, res) => {
 
     const {data: weather} = await getWeather(lat, lng);
 
-    await res.send(weather);
+    try {
+        await res.send(weather);
+    } catch(e) {
+        console.log(e)
+    }
 })
 
 module.exports = router;

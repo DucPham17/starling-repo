@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { SETUP_DASHBOARD } from '../Constant/actionTypes';
 import { toISOString } from '../Helpers/date';
+import { getPosition } from '../Helpers/weather';
 import { setLoading } from './pageStatusAction';
 
 export const setupDashboard = () => async (dispatch, getState) => {
@@ -22,39 +23,30 @@ export const setupDashboard = () => async (dispatch, getState) => {
             }
         });
         
+        const {
+            latitude,
+            longitude
+        } = await getPosition();
         
-        await navigator.geolocation.getCurrentPosition(async (pos) => {
-            
-            var lat = pos.coords.longitude
-            var lng = pos.coords.latitude
-            
-            console.log(lat);
-            console.log(lng);
-            const {data: weather} = await axios.get("/api/weather", {
-                params: {
-                    lat: lat === null? 41.5 : lat,
-                    lng: lng === null? -90.547 : lng
+        const {data: weather} = await axios.get("/api/weather", {
+            params: {
+                lat: latitude,
+                lng: longitude
+            }
+        });
+        
+        dispatch({
+            type: SETUP_DASHBOARD,
+            payload: {
+                todos,
+                expenses,
+                weather: {
+                    ...weather.weather[0],
+                    ...weather.main,
+                    location: weather.name
                 }
-            });
-            
-            dispatch({
-                type: SETUP_DASHBOARD,
-                payload: {
-                    todos,
-                    expenses,
-                    weather: {
-                        ...weather.weather[0],
-                        ...weather.main
-                    }
-                }
-            })
-        })
-
-       
-
-        
-
-        
+            }
+        });  
     } catch (e) {
         console.log(e)
     } finally {

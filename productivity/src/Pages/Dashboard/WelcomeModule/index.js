@@ -14,7 +14,11 @@ import {
 
 export const WelcomeModule = () => {
     const {date, time} = useDate();
-    const {temp, main} = useSelector((state) => state.dashboard.weather);
+    const {
+        temp,
+        main,
+        location
+    } = useSelector((state) => state.dashboard.weather);
 
     const WeatherIcon = {
         Clear: WiNightClear,
@@ -39,9 +43,9 @@ export const WelcomeModule = () => {
                                 // size={'6rem'}
                             />
                             <div className="d-flex flex-column align-items-start">
-                                <div className="display-4">{`${temp}°F`}</div>
+                                <div className="display-4">{`${Math.round(temp)}°F`}</div>
                                 <span>{main}</span>
-                                <span>Rock Island, IL</span>
+                                <span>{location}</span>
                             </div>
                         </div>
                     </Col>
