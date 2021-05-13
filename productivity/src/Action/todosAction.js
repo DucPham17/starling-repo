@@ -138,7 +138,7 @@ export const filterTodosByTag = (userId, tag, status, date) => async (dispatch) 
 }
 
 export const filterTodosByDate = (userId, choice, recent) => async (dispatch) => {
-    dispatch(setLoading(true));
+    //dispatch(setLoading(true));
     try {
         console.log('graph')
         const {data: todos} = await Axios.get("/api/tasks/filterTodosByDate", {

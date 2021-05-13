@@ -24,12 +24,12 @@ export const NoteItem = ({note}) => {
         dispatch(toggleTodos(userInfo.uid, title, tag, date, isCompleted))
     } 
 
-    useEffect(() => {
-        dispatch(filterTodosByTag(userInfo.uid, selectedTag, type, toISOString(selectedDate)))
-    }, [type]
-    )
+    // useEffect(() => {
+    //     dispatch(filterTodosByTag(userInfo.uid, selectedTag, type, toISOString(selectedDate)))
+    // }, [])
 
-    const handleDeleteTask = (title, tag, date) => {
+    const handleDeleteTask = (e, title, tag, date) => {
+        e.preventDefault();
         dispatch(deleteTodo(userInfo.uid, title, tag, date));
     }
 
@@ -63,7 +63,7 @@ export const NoteItem = ({note}) => {
                     <p className="tag">
                         {note.tag}
                     </p>
-                    <LinkButton className="ml-5 text-danger delete-btn text-align-center" onClick={() => handleDeleteTask(note.title, note.tag, note.date)}>
+                    <LinkButton className="ml-5 text-danger delete-btn text-align-center" onClick={(e) => handleDeleteTask(e, note.title, note.tag, note.date)}>
                         <IoTrashOutline/>
                     </LinkButton>  
                 </div>

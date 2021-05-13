@@ -4,17 +4,17 @@ const routes = [
         label: 'Dashboard'
     },
     {
-        href: '/report',
-        label: 'Report'
-    },
-    {
         href: '/notes',
         label: 'Notes'
     },
     {
         href: '/expense',
         label: 'Expense'
-    }
+    },
+    {
+        href: '/report',
+        label: 'Report'
+    },
     
 ];
 export default routes

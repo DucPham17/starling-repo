@@ -55,7 +55,7 @@ const Expense = ()=> {
     
     return (
         <div>
-            <Row>
+            <Row style={{margin:'1em'}}>
                 <Col sm={3}> 
                     <Card>
                         <Card.Header style={{fontSize:'25px', fontWeight:'bold'}}>
@@ -72,7 +72,40 @@ const Expense = ()=> {
                             />
                         </Card.Body>
                     </Card>
-                    <p className='intro'>Filter by Date</p>
+                    <Card> 
+                        <Card.Body>
+                            <p className='intro'>Filter by Date</p>
+                            <Form.Control as='select' id='filter1'
+                                value = {infoFilter.date}
+                                defaultValue = {filterDate[0]}
+                                onChange={(e) => dispatch({
+                                    type: 'SETF',
+                                    key: 'date',
+                                    value: e.target.value,    
+                                })}>
+                                {filterDate.map((id) => 
+                                    <option>
+                                        {id}
+                                    </option>
+                                )}
+                            </Form.Control>
+                            <p className='intro'>Filter by Type</p>
+                            <Form.Control as='select' id='filter2'
+                                defaultValue = {infoFilter.type}
+                                onChange={(e) => dispatch({
+                                    type: 'SETF',
+                                    key: 'type',
+                                    value: e.target.value,
+                                })}>
+                                {filterType.map((id) => 
+                                    <option>
+                                        {id}
+                                    </option>
+                                )}
+                            </Form.Control>
+                        </Card.Body>
+                    </Card>
+                    {/* <p className='intro'>Filter by Date</p>
                     <Form.Control as='select' id='filter'
                         defaultValue = {infoFilter.date}
                         onChange={(e) => dispatch({
@@ -101,7 +134,7 @@ const Expense = ()=> {
                                 {id}
                             </option>
                         )}
-                    </Form.Control>
+                    </Form.Control> */}
                 </Col>
                 <Col sm={9}> 
                     <Card className='card'>
