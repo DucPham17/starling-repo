@@ -15,23 +15,10 @@ export const NoteCard = () => {
     const dispatch = useDispatch();
 
     let {type} = useParams();
-    
-    // useEffect(() => {
-    //     dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
-    //  }, [selectedDate])
-
-    
-    //  useEffect(() => {
-    //     dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
-    //  }, [selectedTag])
-
 
     useEffect(() => {
         dispatch(filterTodosByTag(uid, selectedTag, type, toISOString(selectedDate)))
-     }, [type])
-
-     console.log(todos)
-     console.log(type);
+    }, [])
 
     return (
 

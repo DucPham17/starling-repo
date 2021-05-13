@@ -40,14 +40,14 @@ export const Content = (props) => {
 
              <Nav fill variant="pills" className="notes-content-card-header">
                  {filters.map((filter) => (
-            <Nav.Item className="notes-content-card-header">
-                    <Nav.Link key={filter.href} 
-                            active={location.pathname.startsWith(filter.href)}
-                            onClick={() => {history.push(filter.href)}}
-                            className="notes-content-card-header">
-                            {filter.label}
-                    </Nav.Link>
-            </Nav.Item>
+                <Nav.Item className="notes-content-card-header">
+                        <Nav.Link key={filter.href} 
+                                active={location.pathname.startsWith(filter.href)}
+                                onClick={() => {history.push(filter.href)}}
+                                className="notes-content-card-header">
+                                {filter.label}
+                        </Nav.Link>
+                </Nav.Item>
                  ))}
             </Nav>  
             <Card className="p-3 m-0">

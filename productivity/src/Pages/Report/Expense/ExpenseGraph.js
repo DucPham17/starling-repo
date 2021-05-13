@@ -32,11 +32,11 @@ const ExpenseGraph = (props) => {
         const sumEarningSpending = earning + spending;
         return [
             {
-                name: 'Earning Amount',
+                name: 'Earning',
                 value: Math.round((earning*100)/sumEarningSpending)
             },
             {
-                name: 'Spending Amount',
+                name: 'Spending',
                 value: Math.round((spending*100)/sumEarningSpending)
             }
         ];
@@ -98,7 +98,6 @@ const ExpenseGraph = (props) => {
                                 <Legend />
                             </PieChart>   
                         </div> 
-                        
                         :
                         <div className='graphBox'>
                             <h5> 
