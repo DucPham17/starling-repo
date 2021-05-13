@@ -16,8 +16,8 @@ const ToDoGraph = () => {
     let {id} = useParams()
     if (id == 'OneWeek'){
         id = 'One Week'  
-    } else if (id == 'ComingSoon') {
-        id = 'Coming Soon' 
+    } else if (id == 'Upcoming Tasks') {
+        id = 'Upcoming Tasks' 
     } else {
         id = '3 Recent Days'
     }

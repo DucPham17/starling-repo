@@ -14,8 +14,8 @@ const routes = [
         label: 'One Week'
     },
     {
-        href: '/report/todo/ComingSoon',
-        label: 'Coming Soon'
+        href: '/report/todo/UpcomingTasks',
+        label: 'Upcoming Tasks'
     }
 ]
 

@@ -98,7 +98,7 @@ const Type = (props) => {
         <div className='graphBox'>
             <Row>
                 <Col> 
-                    <h5> Graph of Tags </h5>
+                    <h5> Trends by Categories </h5>
                     <PieChart width={500} height={500}>
                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
                             {

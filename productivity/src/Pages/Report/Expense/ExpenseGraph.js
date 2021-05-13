@@ -85,7 +85,7 @@ const ExpenseGraph = (props) => {
                 <Col>
                     {infoFilter.filterList.length > 0 ?
                         <div className='graphBox'>
-                            <h5> Graph of Earning and Spending</h5>
+                            <h5> Charting Earnings vs Spendings</h5>
                             <PieChart width={700} height={500}>
                                 <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
                                     {
