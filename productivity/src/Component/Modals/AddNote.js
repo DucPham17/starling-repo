@@ -25,7 +25,7 @@ const defaultState = {
 
 export const AddNote = (props) => {
     const [state, setState] = useState(defaultState);
-    const [category, setCategory] = useState('All');
+    const [category, setCategory] = useState(tags[0].value);
     const {uid} = useSelector(state => state.user.userInfo);
     const {selectedDate} = useSelector(state => state.todos);
     const dispatch = useDispatch();   

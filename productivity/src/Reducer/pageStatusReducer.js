@@ -3,12 +3,12 @@ import {
 } from "../Constant/actionTypes";
 
 
-export const pageStatusReducer = (state = {loading: false}, action) => {
+export const pageStatusReducer = (state = {loadingQueue: 0}, action) => {
     switch(action.type){
         case SET_LOADING:
             return {
                 ...state,
-                loading:action.loading
+                loadingQueue: action.loadingQueue
             }
         default:
             return state;

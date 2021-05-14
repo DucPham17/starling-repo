@@ -3,6 +3,10 @@ import { SETUP_DASHBOARD } from "../Constant/actionTypes";
 const defaultState = {
   todos: [],
   expenses: [],
+  location: {
+    latitude: 41.5,
+    longitude: -90.547
+  },
   weather: {
     temp: 0
   }

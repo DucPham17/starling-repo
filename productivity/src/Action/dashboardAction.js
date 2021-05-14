@@ -40,6 +40,10 @@ export const setupDashboard = () => async (dispatch, getState) => {
             payload: {
                 todos,
                 expenses,
+                location: {
+                    latitude,
+                    longitude
+                },
                 weather: {
                     ...weather.weather[0],
                     ...weather.main,

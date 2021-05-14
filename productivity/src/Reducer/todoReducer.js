@@ -4,7 +4,7 @@ const defaultState = {
   todos: [],
   isCompleted: false,
   selectedDate: new Date(),
-  selectedTag: "All",
+  selectedTag: '',
 };
 
 const setTodos = (state, action) => ({
