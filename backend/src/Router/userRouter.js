@@ -66,87 +66,34 @@ router.get("/signout", (req, res) => {
     res.send("abc");
 })
 
+router.post('/google-signin', async (req, res) => {
+    const {idToken} = req.body;
+    
+    const credentials = await firebase.auth.GoogleAuthProvider.credential(idToken);
+ 
+    try {
+        const userCredential = await firebase.auth().signInWithCredential(credentials);
+        
+        res.send(userCredential.user);
+    } catch (e) {
+        console.log(e);
+        res.status(401).send("Unauthorized");
+    };
+});
 
-
-router.get("/failed", (req, res) => {
-    console.log("failed to sign in with google")
-    res.redirect("http://localhost:3000");
-})
-router.get("/success", isLoggedIn, (req, res) => {
-    //console.log(req.user);
-    const email = req.user.profile.email;
-    const displayName = req.user.profile.displayName;
-    const password = '123456';
-    //console.log(email);
-    //console.log(displayName);
-    //console.log(req.user.profile);
-    const secret = 'secret';
-    admin
-        .auth()
-        .getUserByEmail(req.user.profile.email)
-        .then((userRecord) => {
-            // See the UserRecord reference doc for the contents of userRecord.
-            console.log("Email existed");
-            const record = userRecord.toJSON();
-            //console.log(record);
-            const jwt = sign(record, secret);
-            //console.log(jwt);
-            res.redirect("http://localhost:3000?token=" + jwt);
-            // console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
-        })
-        .catch((error) => {
-            //console.log(error+"runned into error");
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    //console.log("aaa");
-                    // Signed in 
-                    var user = userCredential.user;
-                    user.updateProfile({
-                        displayName: displayName,
-                    }).then(function () {
-                        const jwt = sign(user, secret);
-                        res.redirect("http://localhost:3000?token=" + jwt);
-                    }).catch(function (error) {
-                        // An error happened.
-                    });
-
-                })
-                .catch((error) => {
-                    //console.log(error);
-                    res.redirect("http://localhost:3000");
-                });
-
-        });
-})
-
-router.get('/google',
-    passport.authenticate('google', {
-        scope:
-            ['email', 'profile']
-    }
-    ));
-
-router.get('/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: '/api/users/failed',
-    }),
-    function (req, res) {
-        res.redirect('/api/users/success')
-
-    }
-);
-
-router.get("/logoutGoogle", (req, res) => {
-    console.log("logging out")
-    req.session = null;
-    req.logout();
-    res.redirect('/api/users/signout')
-})
-
-
-
-
-
-
+router.post('/facebook-signin', async (req, res) => {
+    const {accessToken} = req.body;
+    
+    const credentials = await firebase.auth.FacebookAuthProvider.credential(accessToken);
+ 
+    try {
+        const userCredential = await firebase.auth().signInWithCredential(credentials);
+        
+        res.send(userCredential.user);
+    } catch (e) {
+        console.log(e);
+        res.status(401).send("Unauthorized");
+    };
+});
 
 module.exports = router;
