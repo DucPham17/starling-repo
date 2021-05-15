@@ -48,7 +48,7 @@ router.post('/updatetask', async (req, res) => {
         tag: req.body.item.tag,
         date: req.body.date,
     }
-    console.log(updatedTask);
+
     await updateTask(updatedTask);
     const allTasks = await getAllTasks(req.body.userId, req.body.date);
     await res.send(allTasks);
@@ -64,8 +64,6 @@ router.delete('/deleteTask', async (req, res) => {
 
     await deleteTask(newTask);
     const allTasks = await getAllTasks(req.query.userId, req.query.date);
-    console.log('delete')
-    console.log(allTasks)
     await res.send(allTasks);
 })
 
@@ -76,7 +74,6 @@ router.get('/filterTodosByTag', async (req, res) => {
     const status = req.query.status;
 
     const list = await filterTodosByTags(userId, tag, status, date);
-    console.log(list)
     await res.send(list);
 })
 

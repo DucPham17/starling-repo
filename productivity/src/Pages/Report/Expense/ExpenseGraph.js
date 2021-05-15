@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
+import {Row, Col} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
 import './Expense.css';
-import { getData, deleteData, filterData } from '../../../Action/expenseAction'
+import { filterData } from '../../../Action/expenseAction'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import ExpenseInfo from './ExpenseInfo'
 import { useParams } from "react-router-dom";
 
-//Graph making
+//Graph making tutorial
 //https://www.freakyjolly.com/react-charts-examples/
 
 const ExpenseGraph = (props) => {

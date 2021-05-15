@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import {Button, Modal, Form} from 'react-bootstrap'
+import React, { useEffect} from 'react';
+import { Modal, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
-import { addData, updateData } from '../../Action/expenseAction'
-import { GetAction, UpdateAction, SetAction } from '../../Action/updateAction'
+import { updateData } from '../../Action/expenseAction'
+import { GetAction, SetAction } from '../../Action/updateAction'
 import { CommonButton } from '../Common/CommonButton';
 
 export const Update = (props) => {
@@ -43,8 +43,12 @@ export const Update = (props) => {
                             Amount of Expense 
                         </Form.Label>
                         <Form.Control required
+                            type="number"
                             defaultValue={infoUpdate.amount} 
                             onChange={(e) => dispatch(SetAction('amount', e.target.value))}/>
+                        <Form.Control.Feedback type="invalid">
+                            Please type a number
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>

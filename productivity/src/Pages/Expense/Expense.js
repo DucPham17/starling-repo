@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
-import {Button, Row, Col, Form, Card, Table} from 'react-bootstrap'
+import { Row, Col, Form, Card, Table} from 'react-bootstrap'
 import { getData, filterData } from '../../Action/expenseAction'
 import './Expense.css';
-import Lottie from 'react-lottie-player';
-import animationData from '../../resources/Lotties/cat.json';
 import { ModalTypes } from '../../Constant/modalTypes';
 import {setModal} from '../../Action/modalsAction';
 import CardItem from './CardItem'
@@ -60,7 +58,7 @@ const Expense = ()=> {
                 <Col sm={3}> 
                     <Card>
                         <Card.Header style={{fontSize:'25px', fontWeight:'bold'}}>
-                            Expense Information
+                            Information
                         </Card.Header>
                         <Card.Body>
                             <Money label={'Earning'} amount={earning}/>
@@ -106,36 +104,6 @@ const Expense = ()=> {
                             </Form.Control>
                         </Card.Body>
                     </Card>
-                    {/* <p className='intro'>Filter by Date</p>
-                    <Form.Control as='select' id='filter'
-                        defaultValue = {infoFilter.date}
-                        onChange={(e) => dispatch({
-                            type: 'SETF',
-                            key: 'date',
-                            value: e.target.value,
-                            
-                        })}>
-                        {filterDate.map((id) => 
-                            <option>
-                                {id}
-                            </option>
-                        )}
-                    </Form.Control>
-                    <p className='intro'>Filter by Type</p>
-                    <Form.Control as='select' id='filter'
-                        defaultValue = {infoFilter.type}
-                        onChange={(e) => dispatch({
-                            type: 'SETF',
-                            key: 'type',
-                            value: e.target.value,
-                            
-                        })}>
-                        {filterType.map((id) => 
-                            <option>
-                                {id}
-                            </option>
-                        )}
-                    </Form.Control> */}
                 </Col>
                 <Col sm={9}> 
                     <Card className='card'>
@@ -164,12 +132,6 @@ const Expense = ()=> {
                                                 <CardItem item={expenseItem}/>
                                             ) : (<tr>
                                                     <td align="center" colspan="6">
-                                                        <Lottie
-                                                            animationData={animationData}
-                                                            loop
-                                                            play
-                                                            style={{ width: '30rem', height: '30rem' }}
-                                                        />
                                                         <p style = {{fontSize:'20px', fontStyle:'bold', marginLeft:'2em'}}> Your Expense List is empty. Add New Expense to start </p>
                                                     </td>
                                                 </tr>
