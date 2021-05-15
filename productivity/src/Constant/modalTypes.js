@@ -1,6 +1,8 @@
 
 export const ModalTypes = {
+    ATTRIBUTIONS: 'ATTRIBUTIONS',
     SIGN_IN: 'SIGN_IN',
+    SIGN_IN_ERROR: 'SIGN_IN_ERROR',
     SIGN_UP: 'SIGN_UP',
     ADD_NOTE: 'ADD_NOTE',
     UPDATE_TODOS: 'UPDATE_TODOS',

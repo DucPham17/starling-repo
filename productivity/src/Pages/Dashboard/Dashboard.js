@@ -16,7 +16,7 @@ const Dashboard= (props)=> {
     
     return (
         <div className='w-100 v-100'>
-            <Container fluid className='p-0'>
+            <Container fluid className='px-5'>
                 <Row> 
                     <Col sm={12}>
                         <WelcomeModule/>

@@ -71,7 +71,7 @@ export const toggleTodos = (userId, title, tag, date, isCompleted) => async (dis
 }
 
 export const updateTodo = (userId, date, item) => async (dispatch) => {
-    // dispatch(setLoading(true));
+    dispatch(setLoading(true));
     try {
         console.log('update')
         console.log(item.title)
@@ -90,7 +90,7 @@ export const updateTodo = (userId, date, item) => async (dispatch) => {
 }
 
 export const deleteTodo = (userId, title, tag, date) => async (dispatch) => {
-    // dispatch(setLoading(true));
+    dispatch(setLoading(true));
     try {
         console.log('delete')
         const {data: todos} = await Axios.delete("/api/tasks/deletetask", {
