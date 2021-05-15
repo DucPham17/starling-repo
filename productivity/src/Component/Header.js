@@ -4,9 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Logo } from './Common/Logo';
 import Avatar from 'react-avatar';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { signout } from '../Action/userAction';
 import classNames from 'classnames';
+import { CommonButton } from './Common/CommonButton';
 
 const Header = (props) => {
     const {userInfo} = useSelector(state => state.user);
@@ -57,11 +58,11 @@ const Header = (props) => {
               {userInfo.email}
             </strong>
             <div className='divider'/>
-            <Button
+            <CommonButton
               onClick={() => dispatch(signout())}
               className='mt-4'
-              variant='outline-danger'
-            >Sign Out</Button>
+              variant='danger'
+            >Sign Out</CommonButton>
           </Dropdown.Menu>
         </Dropdown>
       </div>

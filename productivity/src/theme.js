@@ -5,11 +5,20 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#2D3436',
-      contrastText: '#fff',
+      contrastText: '#DFE6E9',
     },
     secondary: {
-      main: '#b2dfdb',
+      main: '#DFE6E9',
+      contrastText: '#2D3436',
     },
+    danger: {
+      main: '#FF7373',
+      contrastText: '#fff',
+    },
+    warning: {
+      main: '#FFE24E',
+      contrastText: '#2D3436',
+    }
   },
 });
 

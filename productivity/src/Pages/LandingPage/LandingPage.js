@@ -65,7 +65,7 @@ function LandingPage(props) {
           </p>
         </div>
         <div className='button-wrapper'>
-          <CommonButton variant="primary" onClick={handleClickSignUp}>Try our Workspace</CommonButton>
+          <CommonButton variant="primary" className="py-3" onClick={handleClickSignUp}>Try our Workspace</CommonButton>
           <LinkButton onClick={handleClickSignIn}>Already have an account? Sign in</LinkButton>
         </div>
         <div className='social-wrapper my-5'>

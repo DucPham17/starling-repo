@@ -4,7 +4,7 @@ const routes = [
         label: 'Home'
     },
     {
-        href: '/notes',
+        href: '/notes/all',
         label: 'Notes'
     },
     {

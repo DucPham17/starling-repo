@@ -7,11 +7,11 @@ import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 const routes = [
     {
-        href: '/report/expense',
+        href: '/report/expense/3recentdays',
         label: 'Expense'
     },
     {
-        href: '/report/todo',
+        href: '/report/todo/3recentdays',
         label: 'Todos'
     }
 ]

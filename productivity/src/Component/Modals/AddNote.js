@@ -5,6 +5,7 @@ import { addTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
 import {colourStyles} from './colourStyles';
 import Select from 'react-select';
+import { CommonButton } from '../Common/CommonButton';
 
 
 const tags = [
@@ -90,7 +91,7 @@ export const AddNote = (props) => {
                         >
                         </CreatableSelect> */}
                     </Form.Group>
-                    <Button type="submit">Add</Button>
+                    <CommonButton type="submit">Add</CommonButton>
                 </Form>
             </Modal.Body>
         </Modal>

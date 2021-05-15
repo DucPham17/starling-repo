@@ -10,6 +10,7 @@ import {setModal} from '../../Action/modalsAction';
 import CardItem from './CardItem'
 import AddIcon from '@material-ui/icons/Add';
 import { Money } from "../Dashboard/ExpenseModule/Money";
+import { CommonButton } from '../../Component/Common/CommonButton';
 
 const Expense = ()=> {
     const filterDate = ['All', 'Today', '3 Recent Days', 'One Week']
@@ -138,12 +139,12 @@ const Expense = ()=> {
                 </Col>
                 <Col sm={9}> 
                     <Card className='card'>
-                        <Card.Header style={{fontSize:'25px', backgroundColor:'#fcf4a3', fontWeight:'bold'}}> 
-                            Finance
-                            <Button className='addButton' variant="outline-primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}
+                        <Card.Header style={{backgroundColor:'#fcf4a3'}} className="d-flex justify-content-between"> 
+                            <h3>Finance</h3>
+                            <CommonButton className='addButton' variant="primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}
                                 style={{float:'right'}}> 
                                 <AddIcon/>Add New Expense 
-                            </Button> 
+                            </CommonButton> 
                         </Card.Header>
                         <Card.Body>
                             <Table>
@@ -157,24 +158,24 @@ const Expense = ()=> {
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
-                                    {infoFilter.filterList.length > 0 ?
+                                    
                                         <tbody>
-                                            {infoFilter.filterList.map((expenseItem) =>
+                                            {infoFilter.filterList.length > 0 ? infoFilter.filterList.map((expenseItem) =>
                                                 <CardItem item={expenseItem}/>
+                                            ) : (<tr>
+                                                    <td align="center" colspan="6">
+                                                        <Lottie
+                                                            animationData={animationData}
+                                                            loop
+                                                            play
+                                                            style={{ width: '30rem', height: '30rem' }}
+                                                        />
+                                                        <p style = {{fontSize:'20px', fontStyle:'bold', marginLeft:'2em'}}> Your Expense List is empty. Add New Expense to start </p>
+                                                    </td>
+                                                </tr>
+                                                 
                                             )}
                                         </tbody>
-                                            :
-                                        <div>
-                                            <Lottie
-                                                animationData={animationData}
-                                                loop
-                                                play
-                                                style={{ width: '30rem', height: '30rem' }}
-                                            />
-                                            <p style = {{fontSize:'20px', fontStyle:'bold', marginLeft:'2em'}}> Your Expense List is empty. Add New Expense to start </p>
-                                        
-                                        </div>    
-                                        }
                             </Table>
                         </Card.Body>
                     </Card>  

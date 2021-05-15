@@ -3,6 +3,7 @@ import {Button, Modal, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
 import { addData, updateData } from '../../Action/expenseAction'
 import { GetAction, UpdateAction, SetAction } from '../../Action/updateAction'
+import { CommonButton } from '../Common/CommonButton';
 
 export const Update = (props) => {
     const infoUser = useSelector(state => state.user);
@@ -62,7 +63,7 @@ export const Update = (props) => {
                     </Form.Group>
                 </Form>
                 <Modal.Footer>
-                    <Button variant='primary' onClick = {() => handleUpdate()}> Save </Button>
+                    <CommonButton variant='primary' onClick = {() => handleUpdate()}> Save </CommonButton>
                 </Modal.Footer>
             </Modal.Body>
         </Modal> 
