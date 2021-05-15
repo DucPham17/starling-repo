@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
+import React, {useEffect} from 'react'
+import {Row, Col} from 'react-bootstrap'
 import '../Report.css';
 import { useParams } from "react-router-dom";
 import ToDoInfo from './ToDoInfo'

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import {Button, Modal, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
-import { addData, updateData } from '../../Action/expenseAction'
-import { GetAction, UpdateAction, SetAction } from '../../Action/updateAction'
+import { updateData } from '../../Action/expenseAction'
+import { GetAction, SetAction } from '../../Action/updateAction'
 
 export const Update = (props) => {
     const infoUser = useSelector(state => state.user);
@@ -42,8 +42,12 @@ export const Update = (props) => {
                             Amount of Expense 
                         </Form.Label>
                         <Form.Control required
+                            type="number"
                             defaultValue={infoUpdate.amount} 
                             onChange={(e) => dispatch(SetAction('amount', e.target.value))}/>
+                        <Form.Control.Feedback type="invalid">
+                            Please type a number
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>

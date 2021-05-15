@@ -82,7 +82,7 @@ const filterExpenses = async (userId, choiceDate, choiceType) => {
         }
     });
 
-    //order help by this
+    //order by time from this web
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort?fbclid=IwAR0zBbQnAEbZ5iepQp0cSSarH5bb1p0aZYc_2P6rVM9yRgom9AZHW88kLgE
 
     list.sort(function (a, b) {

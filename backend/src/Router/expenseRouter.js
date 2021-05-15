@@ -59,8 +59,6 @@ router.post('/updateexpense', async (req, res) => {
         date
     };
 
-    console.log(expense)
-
     await updateExpense(expense);
     
     const list = await getAllExpenses(userId);
