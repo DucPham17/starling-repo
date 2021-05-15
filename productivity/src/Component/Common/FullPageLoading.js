@@ -25,9 +25,9 @@ const styles = {
 }
 
 export const FullPageLoading = () => {
-    const {loading} = useSelector((state) => state.pageStatus);
+    const {loadingQueue} = useSelector((state) => state.pageStatus);
 
-    return loading && 
+    return Boolean(loadingQueue > 0) && 
         <div style={styles.wrapper}>
             <div style={styles.innerWrapper}>
                 <Spinner

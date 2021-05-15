@@ -13,7 +13,11 @@ import {
 } from "react-icons/wi";
 
 export const WelcomeModule = () => {
-    const {date, time} = useDate();
+    const {
+        date,
+        time, 
+        timezone
+    } = useDate();
     const {
         temp,
         main,
@@ -37,10 +41,9 @@ export const WelcomeModule = () => {
                         <div className="d-flex align-items-start">
                             <WeatherIcon
                                 style={{
-                                    fontSize: '10rem',
                                     strokeWidth: "0"
                                 }}
-                                // size={'6rem'}
+                                size={'10rem'}
                             />
                             <div className="d-flex flex-column align-items-start">
                                 <div className="display-4">{`${Math.round(temp)}°F`}</div>
@@ -52,7 +55,7 @@ export const WelcomeModule = () => {
                     <Col md={6} className="d-flex flex-column align-items-end">
                         <div className="display-4">{time}</div>
                         <div>{dateToPresentableString(date)}</div>
-                        <div>(CDT)</div>
+                        <div>{timezone}</div>
                     </Col>
                 </Row>
             </Card.Body>

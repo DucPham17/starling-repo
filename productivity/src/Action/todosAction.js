@@ -27,7 +27,7 @@ export const getTodos = (userId, date) => async (dispatch) => {
 };
 
 export const addTodo = (params) => async (dispatch) => {
-    // dispatch(setLoading(true));
+    dispatch(setLoading(true));
     try {
         console.log('add')
         const {data: todos} = await Axios.post("/api/tasks/addtask", params)
@@ -115,7 +115,7 @@ export const deleteTodo = (userId, title, tag, date) => async (dispatch) => {
 }
 
 export const filterTodosByTag = (userId, tag, status, date) => async (dispatch) => {
-// dispatch(setLoading(true));
+    dispatch(setLoading(true));
     try {
         const {data: todos} = await Axios.get("/api/tasks/filterTodosByTag", {
             params: {
@@ -138,7 +138,7 @@ export const filterTodosByTag = (userId, tag, status, date) => async (dispatch) 
 }
 
 export const filterTodosByDate = (userId, choice, recent) => async (dispatch) => {
-    //dispatch(setLoading(true));
+    dispatch(setLoading(true));
     try {
         console.log('graph')
         const {data: todos} = await Axios.get("/api/tasks/filterTodosByDate", {
