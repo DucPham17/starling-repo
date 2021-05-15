@@ -4,4 +4,4 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 export const convertToDisplayMoney = (amount) =>
-    formatter.format(parseFloat(amount)).substring(1);
+    formatter.format(parseFloat(amount)).replace('$', '');

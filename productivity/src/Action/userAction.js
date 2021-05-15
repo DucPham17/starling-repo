@@ -4,6 +4,7 @@ import Axios from "axios";
 import Cookie from "js-cookie";
 import { setModal } from "./modalsAction";
 import { setLoading } from "./pageStatusAction";
+import { ModalTypes } from "../Constant/modalTypes";
 
 export const signin = (email, password) => async (dispatch) => {
     dispatch({
@@ -76,6 +77,10 @@ export const signInWithIdToken = (idToken) => async (dispatch) => {
         dispatch(setModal(undefined));
         Cookie.set('userInfo', JSON.stringify(data))
     } catch (error) {
+        if (error.message.includes('401')) {
+            dispatch(setModal(ModalTypes.SIGN_IN_ERROR));
+        }
+        console.log(JSON.stringify(error))
         dispatch({
             type: SIGNIN_ACTION_FAIL,
             payload: error
@@ -100,7 +105,10 @@ export const signInFacebookWithAccessToken = (accessToken) => async (dispatch) =
         dispatch(setModal(undefined));
         Cookie.set('userInfo', JSON.stringify(data))
     } catch (error) {
-        console.log(error)
+        if (error.message.includes('401')) {
+            dispatch(setModal(ModalTypes.SIGN_IN_ERROR));
+        }
+        console.log(JSON.stringify(error))
         dispatch({
             type: SIGNIN_ACTION_FAIL,
             payload: error
