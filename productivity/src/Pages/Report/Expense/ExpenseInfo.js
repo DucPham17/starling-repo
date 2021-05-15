@@ -3,29 +3,17 @@ import { useSelector, useDispatch } from "react-redux"
 import './Expense.css';
 import {Card} from 'react-bootstrap'
 import { filterData } from '../../../Action/expenseAction'
-import { useParams } from "react-router-dom";
 
 const ExpenseInfo = (props) => {
-    let {id} = useParams()   
-    if (id == 'OneWeek'){
-        id = 'One Week'  
-    } else {
-        id = '3 Recent Days'
-    }
-
     const infoUser = useSelector(state => state.user);
     const infoExpense = useSelector(state => state.expense.expense);
     const infoFilter = useSelector(state => state.filter);
-    const dispatch = useDispatch();
 
     const [spending, setSpending] = useState(0)
     const [earning, setEarning] = useState(0)
     const [spendingNumber, setSpendingNumber] = useState(0)
     const [earningNumber, setEarningNumber] = useState(0)
 
-    useEffect(async() => {
-        await dispatch(filterData(infoUser.userInfo.uid, id, 'All'))
-    }, [])
 
     useEffect(() => {
         let earningAmount = 0
@@ -49,13 +37,13 @@ const ExpenseInfo = (props) => {
             setSpendingNumber(spendingCount)
             setEarningNumber(earningCount)
         }
-    })
+    }, [infoFilter]);
 
     return (
         <div >
             <Card style={{margin:'2em'}}>
                 <Card.Header className='introG'>
-                    {id} Info
+                    {props.period} Info
                 </Card.Header>
                 <Card.Body>
                     <p> Balance: {spending + earning}</p>

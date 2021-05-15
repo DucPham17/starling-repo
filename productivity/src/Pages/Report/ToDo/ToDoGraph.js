@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import {Row, Col} from 'react-bootstrap'
+import React, {useEffect, useState} from 'react'
+import {Row, Col, Form} from 'react-bootstrap'
 import '../Report.css';
 import { useParams } from "react-router-dom";
 import ToDoInfo from './ToDoInfo'
@@ -11,28 +11,39 @@ import {toISOString} from '../../../Helpers/date';
 
 //Graph making
 //https://www.freakyjolly.com/react-charts-examples/
+const periods = [
+    '3 Recent Days',
+    'One Week' 
+];
 
 const ToDoGraph = () => {
-    let {id} = useParams()
-    if (id == 'OneWeek'){
-        id = 'One Week'  
-    } else if (id == 'ComingSoon') {
-        id = 'Coming Soon' 
-    } else {
-        id = '3 Recent Days'
-    }
+    const [period, setPeriod] = useState('3 Recent Days');
 
     const {todos} = useSelector((state) => state.todos);
     const {uid} = useSelector((state) => state.user.userInfo);
     const dispatch = useDispatch();
 
-    useEffect(async() => {
-        await dispatch(filterTodosByDate(uid, id, toISOString(new Date())))
-    }, [id])
+    useEffect(() => {
+        dispatch(filterTodosByDate(uid, period, toISOString(new Date())))
+    }, [period])
 
     return (
         <div>
             <Row>
+                <Col md={12} className="d-flex">
+                    <Form.Control as='select' required
+                        defaultValue = 'Pick one...'
+                        onChange={(e) => setPeriod(e.target.value)}
+                    >
+                        {
+                            periods.map((value) => (
+                                <option>
+                                    {value}
+                                </option>
+                            ))
+                        }
+                    </Form.Control>
+                </Col>
                 <Col sm={5 }> 
                     <ToDoInfo todos={todos}/>
                 </Col>
@@ -49,7 +60,7 @@ const ToDoGraph = () => {
                     <Row className='graphBox'>
                         <Col>
                         <h5> 
-                            You have not made any expense in {id.toLowerCase()}
+                            You have not made any expense in {period.toLowerCase()}
                         </h5>
                         <p> 
                             Add new to-do to see the data

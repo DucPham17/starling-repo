@@ -27,7 +27,7 @@ export const TodosModule = () => {
             </Card.Body>
             <div className="divider"/>
             <Card.Body className="d-flex justify-content-center"> 
-                <LinkButton onClick={() => history.push('/notes')}>View all</LinkButton>
+                <LinkButton onClick={() => history.push('/notes/all')}>View all</LinkButton>
             </Card.Body>
         </Card>
     );
