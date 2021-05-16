@@ -24,15 +24,6 @@ export const NoteItem = ({note}) => {
         dispatch(toggleTodos(userInfo.uid, title, tag, date, isCompleted))
     } 
 
-
-    useEffect(() => {
-        dispatch(filterTodosByTag(userInfo.uid, selectedTag, type, toISOString(selectedDate)))
-    }, [selectedDate])
-
-    useEffect(() => {
-        dispatch(filterTodosByTag(userInfo.uid, selectedTag, type, toISOString(selectedDate)))
-    }, [selectedTag])
-
     useEffect(() => {
         dispatch(filterTodosByTag(userInfo.uid, selectedTag, type, toISOString(selectedDate)))
     }, [type])
