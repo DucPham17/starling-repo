@@ -96,7 +96,7 @@ const ExpenseGraph = (props) => {
                     <Card.Body>
                         {infoFilter.filterList.length > 0 ?
                             <>
-                                <h4> Graph of Earning and Spending</h4>
+                                <h4>Charting Earnings vs Spendings</h4>
                                 <div className="d-flex justify-content-center">
                                     <PieChart width={700} height={500}>
                                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >

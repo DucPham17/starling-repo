@@ -60,7 +60,7 @@ const Completion = (props) => {
     return (
         <Card className="mx-0">
             <Card.Body>
-                <h4> Graph of Completed and In Progress Tasks </h4>
+                <h4>Trends by Completion of Tasks</h4>
                 <div className="d-flex justify-content-center">
                     <PieChart width={500} height={500}>
                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >

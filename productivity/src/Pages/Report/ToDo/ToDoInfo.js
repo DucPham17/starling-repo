@@ -7,8 +7,8 @@ const ToDoInfo = (props) => {
     let {id} = useParams()
     if (id == 'OneWeek'){
         id = 'One Week'  
-    } else if (id == 'ComingSoon') {
-        id = 'Coming Soon' 
+    } else if (id == 'UpcomingTasks') {
+        id = 'Upcoming Tasks' 
     } else {
         id = '3 Recent Days'
     }
