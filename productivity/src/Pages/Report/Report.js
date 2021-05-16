@@ -4,6 +4,7 @@ import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import { CommonButton } from '../../Component/Common/CommonButton';
 import ExpenseGraph from './Expense/ExpenseGraph';
 import ToDoGraph from './ToDo/ToDoGraph';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const routes = [
     {
@@ -21,25 +22,31 @@ const Report = () => {
     const location = useLocation();
 
     return (
-        <div>
-            {
-                routes.map((route) => (
-                    <CommonButton
-                        className="mx-1"
-                        key={route.href}
-                        variant={location.pathname.startsWith(route.href) ? 'primary' : 'secondary'}
-                        onClick={() => history.push(route.href)}
-                    >
-                        {route.label}
-                    </CommonButton>
-                ))
-            }
-            <div className="divider"/>
-            <Switch>
-                <Route path="/report/expense" component={ExpenseGraph}/>
-                <Route path="/report/todo" component={ToDoGraph}/>
-            </Switch>
-        </div> 
+        <div className='w-100 v-100'>
+            <Container fluid className='px-5'>
+                <Row>
+                    <Col md={12}>
+                        {
+                            routes.map((route) => (
+                                <CommonButton
+                                    className="mx-1"
+                                    key={route.href}
+                                    variant={location.pathname.startsWith(route.href) ? 'primary' : 'secondary'}
+                                    onClick={() => history.push(route.href)}
+                                >
+                                    {route.label}
+                                </CommonButton>
+                            ))
+                        }
+                    </Col>
+                </Row>
+                <div className="divider"/>
+                <Switch>
+                    <Route path="/report/expense" component={ExpenseGraph}/>
+                    <Route path="/report/todo" component={ToDoGraph}/>
+                </Switch>
+            </Container>
+        </div>
     )
 }
 export default Report

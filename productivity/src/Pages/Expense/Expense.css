@@ -1,38 +1,46 @@
 .deck {
-    padding: 1em;
-    background-color: #ade8f4;
-    border-radius: 1em;
-    margin-right: 1em;
+  padding: 1em;
+  background-color: #ade8f4;
+  border-radius: 1em;
+  margin-right: 1em;
 }
 
 .card {
-    margin: 1em;
+  margin: 1em;
 }
 
 .info {
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
-    border-color: gray;
-    
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  border-color: gray;
 }
 
-.expenseList{
-    margin-top: 1em; 
+.expenseList {
+  margin-top: 1em;
 }
 
 .addButton {
-    margin-left: 3em;
+  margin-left: 3em;
 }
 
 #filter {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 1em;
-    width: 13em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  width: 13em;
 }
 
 .intro {
-    margin:1em;
-    font-weight: bold;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.table-row {
+  padding: 1px;
+  margin: 1px;
+}
+
+.table-row > th {
+  font-weight: 600;
 }

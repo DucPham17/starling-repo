@@ -63,8 +63,11 @@ export const NoteItem = ({note}) => {
                     <p className="tag">
                         {note.tag}
                     </p>
-                    <LinkButton className="ml-5 text-danger delete-btn text-align-center" onClick={(e) => handleDeleteTask(e, note.title, note.tag, note.date)}>
-                        <IoTrashOutline/>
+                    <LinkButton
+                        className="ml-5 text-danger delete-btn"
+                        onClick={(e) => handleDeleteTask(e, note.title, note.tag, note.date)}
+                    >
+                        <IoTrashOutline style={{verticalAlign: 'baseline'}}/>
                     </LinkButton>  
                 </div>
             </Form>

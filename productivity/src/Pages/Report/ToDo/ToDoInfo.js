@@ -38,18 +38,15 @@ const ToDoInfo = (props) => {
     })
 
     return (
-        <div>
-            <Card style={{margin:'2em'}}>
-                <Card.Header className='introG'>
-                    {id} Info
-                </Card.Header>
-                <Card.Body>
-                    <p>Total Amount of Tasks: {count}</p>
-                    <p>Amount of Completed tasks: {completed}</p>
-                    <p>Amount of In Progress tasks: {uncompleted}</p>
-                </Card.Body>
-            </Card>
-        </div> 
+        <Card className="mx-0">
+            <Card.Body>
+                <h4>{id} Info</h4>
+                <div className="divider"/>
+                <p>Total Tasks: {count}</p>
+                <p>Completed tasks: {completed}</p>
+                <p>In Progress tasks: {uncompleted}</p>
+            </Card.Body>
+        </Card>
     )
 }
 

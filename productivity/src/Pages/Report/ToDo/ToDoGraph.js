@@ -28,48 +28,44 @@ const ToDoGraph = () => {
     }, [period])
 
     return (
-        <div>
-            <Row>
-                <Col md={12} className="d-flex">
-                    <Form.Control as='select' required
-                        defaultValue = 'Pick one...'
-                        onChange={(e) => setPeriod(e.target.value)}
-                    >
-                        {
-                            periods.map((value) => (
-                                <option>
-                                    {value}
-                                </option>
-                            ))
-                        }
-                    </Form.Control>
+        <Row>
+            <Col md={12} className="d-flex">
+                <Form.Control as='select' required
+                    defaultValue = 'Pick one...'
+                    onChange={(e) => setPeriod(e.target.value)}
+                >
+                    {
+                        periods.map((value) => (
+                            <option>
+                                {value}
+                            </option>
+                        ))
+                    }
+                </Form.Control>
+            </Col>
+            <Col md={12} xl={2}> 
+                <ToDoInfo todos={todos}/>
+            </Col>
+            {todos.length > 0 ?
+                <>
+                    <Col md={12} xl={5}>
+                        <Type todos={todos}/>
+                    </Col>
+                    <Col md={12} xl={5}>
+                        <Completion todos={todos}/>
+                    </Col>
+                </>
+                :
+                <Col>
+                    <h5> 
+                        You have not made any expense in {period.toLowerCase()}
+                    </h5>
+                    <p> 
+                        Add new to-do to see the data
+                    </p>
                 </Col>
-                <Col sm={5 }> 
-                    <ToDoInfo todos={todos}/>
-                </Col>
-                {todos.length > 0 ?
-                    <Row style={{display:'inlineblock', margin:'2em'}}>
-                        <Col sm={6}>
-                            <Type todos={todos}/>
-                        </Col>
-                        <Col sm={6}>
-                            <Completion todos={todos}/>
-                        </Col>
-                    </Row>   
-                    :
-                    <Row className='graphBox'>
-                        <Col>
-                        <h5> 
-                            You have not made any expense in {period.toLowerCase()}
-                        </h5>
-                        <p> 
-                            Add new to-do to see the data
-                        </p>
-                        </Col>
-                    </Row>
-                }   
-            </Row>
-        </div> 
+            }   
+        </Row>
     )
 }
 

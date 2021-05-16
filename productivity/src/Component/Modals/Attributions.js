@@ -8,7 +8,14 @@ export const Attributions = (props) => {
                 <Modal.Title>Attributions and Credits</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Images</h4>
+                <h5>About us</h5>
+                <div>
+                    2021 © Starling Group
+                    <br/>
+                    Phuong Dinh, Ruhee Shrestha, Duc Pham, Tiffany Nguyen
+                </div>
+                <br/>
+                <h5>Images</h5>
                 <div>
                     <a target="_blank" href="https://unsplash.com/">Unsplash</a>
                 </div>

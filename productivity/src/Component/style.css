@@ -21,7 +21,7 @@
 
 .divider {
   width: 100%;
-  padding: 1rem;
+  margin: 1rem 0;
   border-bottom: 1px solid #ddd;
 }
 
@@ -44,9 +44,9 @@
 .nav-item-custom {
   text-align: right;
   font-size: 1rem;
-  padding: 0.7rem 1rem;
+  padding: 1.1rem 1rem;
   cursor: pointer;
-  color: #555;
+  color: #808080;
 }
 
 .nav-active {

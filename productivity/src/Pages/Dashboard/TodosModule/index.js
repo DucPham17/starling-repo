@@ -17,7 +17,7 @@ export const TodosModule = () => {
                         <Badge 
                             style={{ fontSize: '1.1rem' }}
                             pill
-                            className="bg-warning"
+                            className="bg-warning text-light"
                         >
                             Due today
                         </Badge>

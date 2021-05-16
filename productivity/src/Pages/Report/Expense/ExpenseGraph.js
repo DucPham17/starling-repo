@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Row, Col, Form} from 'react-bootstrap'
+import {Row, Col, Form, Card} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
 import './Expense.css';
 import { filterData } from '../../../Action/expenseAction'
@@ -73,54 +73,57 @@ const ExpenseGraph = (props) => {
     const list = getList(earning, spending)
 
     return (
-        <div>
-            <Row>
-                <Col md={12} className="d-flex">
-                    <Form.Control as='select' required
-                        defaultValue = 'Pick one...'
-                        onChange={(e) => setPeriod(e.target.value)}
-                    >
-                            {
-                                periods.map((value) => (
-                                    <option>
-                                        {value}
-                                    </option>
-                                ))
-                            }
-                    </Form.Control>
-                </Col>
-                <Col>
-                    <ExpenseInfo period={period}/> 
-                </Col>
-                <Col>
-                    {infoFilter.filterList.length > 0 ?
-                        <div className='graphBox'>
-                            <h5> Graph of Earning and Spending</h5>
-                            <PieChart width={700} height={500}>
-                                <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
-                                    {
-                                        list.map((entry, index) => 
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                                    
-                                    }
-                                </Pie>
-                                <Tooltip content={<CustomTooltip/>} />
-                                <Legend />
-                            </PieChart>   
-                        </div> 
-                        :
-                        <div className='graphBox'>
-                            <h5> 
-                                You have not made any expense {period.toLowerCase()}
-                            </h5>
-                            <p> 
-                                Add new expense to see the data
-                            </p>
-                        </div>     
-                    }
-                </Col>
-            </Row> 
-        </div> 
+        <Row>
+            <Col md={12} className="d-flex">
+                <Form.Control as='select' required
+                    defaultValue = 'Pick one...'
+                    onChange={(e) => setPeriod(e.target.value)}
+                >
+                        {
+                            periods.map((value) => (
+                                <option>
+                                    {value}
+                                </option>
+                            ))
+                        }
+                </Form.Control>
+            </Col>
+            <Col md={12} xl={3}> 
+                <ExpenseInfo period={period}/> 
+            </Col>
+                <Col md={12} xl={9}>
+                <Card className="mx-0">
+                    <Card.Body>
+                        {infoFilter.filterList.length > 0 ?
+                            <>
+                                <h4> Graph of Earning and Spending</h4>
+                                <div className="d-flex justify-content-center">
+                                    <PieChart width={700} height={500}>
+                                        <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
+                                            {
+                                                list.map((entry, index) => 
+                                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                                            
+                                            }
+                                        </Pie>
+                                        <Tooltip content={<CustomTooltip/>} />
+                                        <Legend />
+                                    </PieChart>  
+                                </div>
+                            </> :
+                            <>
+                                <h5> 
+                                    You have not made any expense {period.toLowerCase()}
+                                </h5>
+                                <p> 
+                                    Add new expense to see the data
+                                </p>
+                            </>
+                        }
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row>
     )
 }
 

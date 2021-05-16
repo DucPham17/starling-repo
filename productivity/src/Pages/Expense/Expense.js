@@ -57,10 +57,10 @@ const Expense = ()=> {
             <Row style={{margin:'1em'}}>
                 <Col sm={3}> 
                     <Card>
-                        <Card.Header style={{fontSize:'25px', fontWeight:'bold'}}>
-                            Information
-                        </Card.Header>
                         <Card.Body>
+                            <h4>
+                                Information
+                            </h4>
                             <Money label={'Earning'} amount={earning}/>
                             <Money label={'Spending'} amount={spending}/>
                             <div className='divider p-0 my-2'/>
@@ -73,8 +73,9 @@ const Expense = ()=> {
                     </Card>
                     <Card> 
                         <Card.Body>
-                            <p className='intro'>Filter by Date</p>
+                            <div className='intro'>Filter by Date</div>
                             <Form.Control as='select' id='filter1'
+                                className="mb-3"
                                 value = {infoFilter.date}
                                 defaultValue = {filterDate[0]}
                                 onChange={(e) => dispatch({
@@ -88,7 +89,7 @@ const Expense = ()=> {
                                     </option>
                                 )}
                             </Form.Control>
-                            <p className='intro'>Filter by Type</p>
+                            <div className='intro'>Filter by Type</div>
                             <Form.Control as='select' id='filter2'
                                 defaultValue = {infoFilter.type}
                                 onChange={(e) => dispatch({
@@ -107,17 +108,19 @@ const Expense = ()=> {
                 </Col>
                 <Col sm={9}> 
                     <Card className='card'>
-                        <Card.Header style={{backgroundColor:'#fcf4a3'}} className="d-flex justify-content-between"> 
-                            <h3>Finance</h3>
-                            <CommonButton className='addButton' variant="primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}
-                                style={{float:'right'}}> 
-                                <AddIcon/>Add New Expense 
-                            </CommonButton> 
-                        </Card.Header>
                         <Card.Body>
+                            <div className="d-flex justify-content-between mb-3">
+                                <h4>Finance</h4>
+                                <CommonButton className='addButton' variant="primary" onClick={() => dispatch(setModal(ModalTypes.EXPENSE))}
+                                    style={{float:'right'}}> 
+                                    <AddIcon/>Add New Expense 
+                                </CommonButton> 
+                            </div>
                             <Table>
                                 <thead>
-                                    <tr style={{padding:'1px', fontSize:'20px', margin:'1px'}}>
+                                    <tr
+                                        className="table-row"
+                                    >
                                         <th>Date</th>
                                         <th>Name</th>
                                         <th>Amount</th>

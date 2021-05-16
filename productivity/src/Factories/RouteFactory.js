@@ -23,7 +23,7 @@ export const getMainRoutes = () => (
                 <Redirect to='/home'/>
             </Switch>
         </div>
-        <Footer className='appFooter'/>
+        {/* <Footer className='appFooter'/> */}
     </div>
 );
 

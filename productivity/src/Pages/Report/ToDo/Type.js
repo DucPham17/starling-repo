@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Card} from 'react-bootstrap'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 //Graph making tutorial
@@ -95,10 +95,10 @@ const Type = (props) => {
     const list = getList(work, errand, shopping, personal, schoolwork, others)
 
     return (
-        <div className='graphBox'>
-            <Row>
-                <Col> 
-                    <h5> Graph of Tags </h5>
+        <Card className="mx-0">
+            <Card.Body>
+                <h4> Graph of Tags </h4>
+                <div className="d-flex justify-content-center">
                     <PieChart width={500} height={500}>
                         <Pie data={list} color="#03071e" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={200} fill="#8884d8" >
                             {
@@ -109,11 +109,10 @@ const Type = (props) => {
                         </Pie>
                         <Tooltip content={<CustomTooltip/>} />
                         <Legend />
-                    </PieChart>    
-                </Col>
-            </Row>
-            
-        </div> 
+                    </PieChart>  
+                </div> 
+            </Card.Body>
+        </Card>
     )
 }
 

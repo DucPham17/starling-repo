@@ -40,21 +40,18 @@ const ExpenseInfo = (props) => {
     }, [infoFilter]);
 
     return (
-        <div >
-            <Card style={{margin:'2em'}}>
-                <Card.Header className='introG'>
-                    {props.period} Info
-                </Card.Header>
-                <Card.Body>
-                    <p> Balance: {spending + earning}</p>
-                    <p> Spending Amount: {spending} </p>
-                    <p> Earning Amount: {earning} </p>
-                    <p> Total transactions: {spendingNumber + earningNumber} </p>
-                    <p> Number of Spending made: {spendingNumber} </p>
-                    <p> Number of Earning made: {earningNumber} </p>
-                </Card.Body>
-            </Card>            
-        </div>
+        <Card className="mx-0">
+            <Card.Body>
+                <h4>{props.period} Info</h4>
+                <div className="divider"/>
+                <p> Balance: {spending + earning}</p>
+                <p> Spending Amount: {spending} </p>
+                <p> Earning Amount: {earning} </p>
+                <p> Total transactions: {spendingNumber + earningNumber} </p>
+                <p> Number of Spending made: {spendingNumber} </p>
+                <p> Number of Earning made: {earningNumber} </p>
+            </Card.Body>
+        </Card>
     )
 }
 
