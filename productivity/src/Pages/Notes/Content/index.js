@@ -9,6 +9,7 @@ import { NoteCard } from './NoteCard';
 import {Card, Nav} from 'react-bootstrap';
 import './content.css';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
+import { CommonButton } from '../../../Component/Common/CommonButton';
 
 
 const filters = [
@@ -33,9 +34,9 @@ export const Content = (props) => {
         <div className={props.className}>
             <div className="d-flex justify-content-between w-100 mb-4">
                 <h3>{`Notes for ${dateToPresentableString(selectedDate)}`}</h3>
-                <Button onClick={onAddNoteClick} variant="outline-primary">
+                <CommonButton style={{ width: '15rem'}} onClick={onAddNoteClick}>
                     <IoAdd/> Add Note
-                </Button>
+                </CommonButton>
             </div>
 
              <Nav fill variant="pills" className="notes-content-card-header">

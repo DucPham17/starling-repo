@@ -10,7 +10,7 @@ export const NoNoteFound = () => {
                 play
                 style={{ width: '15rem', height: '15rem' }}
             />
-            <h5>Nothing for today. Click add note to add more notes</h5>
+            <h5>You don't have any notes for today. Add more!</h5>
         </div>
     )
 };

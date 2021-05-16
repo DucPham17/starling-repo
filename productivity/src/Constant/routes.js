@@ -1,10 +1,10 @@
 const routes = [
     {
-        href: '/dashboard',
-        label: 'Dashboard'
+        href: '/home',
+        label: 'Home'
     },
     {
-        href: '/notes',
+        href: '/notes/all',
         label: 'Notes'
     },
     {
@@ -12,7 +12,7 @@ const routes = [
         label: 'Expense'
     },
     {
-        href: '/report',
+        href: '/report/expense/3recentdays',
         label: 'Report'
     },
     

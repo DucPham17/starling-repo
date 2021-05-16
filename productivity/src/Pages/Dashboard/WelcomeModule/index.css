@@ -1,0 +1,6 @@
+.welcome-card {
+  background-image: url("../../../resources/images/galaxy.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fafafa;
+}

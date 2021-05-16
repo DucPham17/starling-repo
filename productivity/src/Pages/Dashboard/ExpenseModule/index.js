@@ -15,9 +15,9 @@ export const ExpenseModule = () => {
     } = getEarningAndSpendingAmount(expenses);
 
     return (
-        <Card>
-            <Card.Body>
-                <h2>Expense</h2>
+        <Card className="h-100">
+            <Card.Body className="h-100">
+                <h4>Expense</h4>
                 <div className="d-flex flex-column align-items-end">
                     <Money label={'Earning'} amount={earning}/>
                     <Money label={'Spending'} amount={spending}/>
@@ -31,7 +31,7 @@ export const ExpenseModule = () => {
             </Card.Body>
             <div className="divider"/>
             <Card.Body className="d-flex justify-content-center"> 
-                <LinkButton onClick={() => history.push('/expense')}>View all</LinkButton>
+                <LinkButton style={{maxHeight: '50px'}} onClick={() => history.push('/expense')}>View all</LinkButton>
             </Card.Body>
         </Card>
     )

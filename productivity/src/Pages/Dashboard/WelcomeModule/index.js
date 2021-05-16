@@ -11,6 +11,7 @@ import {
     WiStormShowers,
     WiSmog
 } from "react-icons/wi";
+import "./index.css";
 
 export const WelcomeModule = () => {
     const {
@@ -34,13 +35,14 @@ export const WelcomeModule = () => {
     }[main] || WiSmog;
 
     return (
-        <Card>
+        <Card className="welcome-card">
             <Card.Body>
                 <Row>
                     <Col md={6}>
                         <div className="d-flex align-items-start">
                             <WeatherIcon
                                 style={{
+                                    margin: '0 -0.5rem 0 -1.5rem',
                                     strokeWidth: "0"
                                 }}
                                 size={'10rem'}

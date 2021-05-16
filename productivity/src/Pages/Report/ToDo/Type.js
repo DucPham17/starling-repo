@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Row, Col} from 'react-bootstrap'
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
-//Graph making
+//Graph making tutorial
 //https://www.freakyjolly.com/react-charts-examples/
 
 const Type = (props) => {

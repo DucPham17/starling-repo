@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {Nav, Tabs, Tab, Row, Col} from 'react-bootstrap'
-import { useSelector, useDispatch } from "react-redux"
-import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, XAxis, YAxis, CartesianGrid, Line} from 'recharts';
-import { useParams } from "react-router-dom";
-import {filterTodosByDate } from '../../../Action/todosAction';
+import {Row, Col} from 'react-bootstrap'
+import { PieChart, Pie, Cell, Tooltip, Legend} from 'recharts';
 
-//Graph making
+
+//Graph making tutorial
 //https://www.freakyjolly.com/react-charts-examples/
 
 const Completion = (props) => {

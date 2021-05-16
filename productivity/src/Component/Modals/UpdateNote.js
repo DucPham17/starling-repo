@@ -9,6 +9,7 @@ import {colourStyles} from './colourStyles';
 
 
 import Select from 'react-select';
+import { CommonButton } from '../Common/CommonButton';
 
 const tags = [
     {label: 'Work', value: 'Work', color: '#5243AA'},
@@ -68,8 +69,8 @@ export const UpdateNote = (props) => {
                         </Select>
                  </Form.Group>
                 <Modal.Footer>
-                 <Button variant="primary" onClick={() => handleUpdate()}>Save</Button>
-                 <Button variant="secondary" onClick={props.onHide}>Cancel</Button>                 
+                 <CommonButton variant="primary" onClick={() => handleUpdate()}>Save</CommonButton>
+                 <CommonButton variant="secondary" onClick={props.onHide}>Cancel</CommonButton>                 
                 </Modal.Footer> 
                 </Modal.Body>
                 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Button, Modal, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
 import { addData, updateData } from '../../Action/expenseAction'
+import { CommonButton } from '../Common/CommonButton';
 
 export const Expense = (props) => {
     const infoUser = useSelector(state => state.user);
@@ -61,7 +62,7 @@ export const Expense = (props) => {
                     </Form.Group>
                 </Form>
                 <Modal.Footer>
-                    <Button variant='primary' onClick = {() => handleAdd(name, amount, choice, new Date().getTime())}> Save </Button>
+                    <CommonButton variant='primary' onClick = {() => handleAdd(name, amount, choice, new Date().getTime())}> Save </CommonButton>
                 </Modal.Footer>
             </Modal.Body>
         </Modal> 

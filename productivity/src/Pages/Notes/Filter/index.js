@@ -16,7 +16,7 @@ const tags = [
 ]
 
 
-export const Filter = () => {
+export const Filter = (props) => {
     
     const {selectedTag} = useSelector((state) => state.todos);
 
@@ -31,7 +31,7 @@ export const Filter = () => {
     }
 
     return (
-        <div>
+        <div {...props}>
             <b>Filter by tags: </b>
             <Select 
              options={tags}

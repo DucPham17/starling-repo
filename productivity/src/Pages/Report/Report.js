@@ -1,17 +1,17 @@
-import {Nav} from 'react-bootstrap'
 import React from 'react'
 import './Report.css';
-import ToDoReport from './ToDo/ToDoReport'
-import ExpenseReport from './Expense/ExpenseReport'
 import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { CommonButton } from '../../Component/Common/CommonButton';
+import ExpenseGraph from './Expense/ExpenseGraph';
+import ToDoGraph from './ToDo/ToDoGraph';
 
 const routes = [
     {
-        href: '/report/expense',
+        href: '/report/expense/3recentdays',
         label: 'Expense'
     },
     {
-        href: '/report/todo',
+        href: '/report/todo/3recentdays',
         label: 'Todos'
     }
 ]
@@ -22,24 +22,22 @@ const Report = () => {
 
     return (
         <div>
-            <Nav variant="tabs">
-                {
-                    routes.map((route) => (
-                        <Nav.Item variant='light' style={{fontSize:'18px'}}>
-                            <Nav.Link 
-                                key={route.href}
-                                active={location.pathname.startsWith(route.href)}
-                                onClick={() => history.push(route.href)}
-                            >
-                                {route.label}
-                            </Nav.Link>
-                        </Nav.Item>
-                    ))
-                }
-            </Nav>
+            {
+                routes.map((route) => (
+                    <CommonButton
+                        className="mx-1"
+                        key={route.href}
+                        variant={location.pathname.startsWith(route.href) ? 'primary' : 'secondary'}
+                        onClick={() => history.push(route.href)}
+                    >
+                        {route.label}
+                    </CommonButton>
+                ))
+            }
+            <div className="divider"/>
             <Switch>
-                <Route path="/report/expense" component={ExpenseReport}/>
-                <Route path="/report/todo" component={ToDoReport}/>
+                <Route path="/report/expense" component={ExpenseGraph}/>
+                <Route path="/report/todo" component={ToDoGraph}/>
             </Switch>
         </div> 
     )
