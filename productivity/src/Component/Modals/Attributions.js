@@ -25,6 +25,10 @@ export const Attributions = (props) => {
                 <div>
                     <a target="_blank" href="https://lottiefiles.com/46472-lurking-cat">Lottiefiles (Cat 2)</a>
                 </div>
+                <h5>Tutorial</h5>
+                <div>
+                    <a target="_blank" href="https://www.freakyjolly.com/react-charts-examples/">Charts</a>
+                </div>  
             </Modal.Body>
         </Modal>
     )

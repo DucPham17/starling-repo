@@ -1,17 +1,9 @@
 import {Card} from 'react-bootstrap'
 import React, {useState, useEffect} from 'react'
 import '../Report.css';
-import { useParams } from "react-router-dom";
 
 const ToDoInfo = (props) => {
-    let {id} = useParams()
-    if (id == 'OneWeek'){
-        id = 'One Week'  
-    } else if (id == 'UpcomingTasks') {
-        id = 'Upcoming Tasks' 
-    } else {
-        id = '3 Recent Days'
-    }
+
 
     const [completed, setCompleted] = useState(0)
     const [uncompleted, setUncompleted] = useState(0)
@@ -40,7 +32,7 @@ const ToDoInfo = (props) => {
     return (
         <Card className="mx-0">
             <Card.Body>
-                <h4>{id} Info</h4>
+                <h4>{props.period} Info</h4>
                 <div className="divider"/>
                 <p>Total Tasks: {count}</p>
                 <p>Completed tasks: {completed}</p>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Row, Col, Form} from 'react-bootstrap'
 import '../Report.css';
-import { useParams } from "react-router-dom";
 import ToDoInfo from './ToDoInfo'
 import Type from './Type'
 import Completion from './Completion'
@@ -13,7 +12,8 @@ import {toISOString} from '../../../Helpers/date';
 //https://www.freakyjolly.com/react-charts-examples/
 const periods = [
     '3 Recent Days',
-    'One Week' 
+    'One Week',
+    'Coming Soon' 
 ];
 
 const ToDoGraph = () => {
@@ -44,7 +44,7 @@ const ToDoGraph = () => {
                 </Form.Control>
             </Col>
             <Col md={12} xl={2}> 
-                <ToDoInfo todos={todos}/>
+                <ToDoInfo todos={todos} period={period}/>
             </Col>
             {todos.length > 0 ?
                 <>
