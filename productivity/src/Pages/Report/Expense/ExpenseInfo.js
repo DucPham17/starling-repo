@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector} from "react-redux"
 import './Expense.css';
 import {Card} from 'react-bootstrap'
-import { filterData } from '../../../Action/expenseAction'
 
 const ExpenseInfo = (props) => {
-    const infoUser = useSelector(state => state.user);
-    const infoExpense = useSelector(state => state.expense.expense);
     const infoFilter = useSelector(state => state.filter);
 
     const [spending, setSpending] = useState(0)

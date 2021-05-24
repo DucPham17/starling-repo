@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Form, Button, Modal, Dropdown, DropdownButton} from 'react-bootstrap';
+import {Form,Modal} from 'react-bootstrap';
 import { updateTodo } from '../../Action/todosAction';
-import { toISOString } from '../../Helpers/date';
-import { GetAction, GetTodosAction, SetAction, SetTodosAction } from '../../Action/updateAction'
-import CreatableSelect from 'react-select/creatable';
+import { GetAction, SetTodosAction } from '../../Action/updateAction'
 import {colourStyles} from './colourStyles';
 
 
@@ -21,7 +19,6 @@ const tags = [
 ]
 
 export const UpdateNote = (props) => {
-    const {selectedDate} = useSelector(state => state.todos);
     const {uid} = useSelector(state => state.user.userInfo);
     const todosUpdate = useSelector(state => state.updateTodos);
 

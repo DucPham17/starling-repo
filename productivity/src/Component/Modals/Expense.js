@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {Button, Modal, Form} from 'react-bootstrap'
+import React, { useState } from 'react';
+import {Modal, Form} from 'react-bootstrap'
 import { useSelector, useDispatch } from "react-redux"
-import { addData, updateData } from '../../Action/expenseAction'
+import { addData } from '../../Action/expenseAction'
 import { CommonButton } from '../Common/CommonButton';
 
 export const Expense = (props) => {

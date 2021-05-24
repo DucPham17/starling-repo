@@ -6,7 +6,6 @@ import LandingPage from "../Pages/LandingPage/LandingPage";
 import Expense from '../Pages/Expense/Expense';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Header from '../Component/Header';
-import Footer from '../Component/Footer';
 import './routeFactory.css';
 import Menu from "../Component/Menu";
 

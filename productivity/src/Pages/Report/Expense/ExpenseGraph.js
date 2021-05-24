@@ -15,7 +15,6 @@ const periods = [
 
 const ExpenseGraph = (props) => {    
     const infoUser = useSelector(state => state.user);
-    const infoExpense = useSelector(state => state.expense.expense);
     const infoFilter = useSelector(state => state.filter);
     const dispatch = useDispatch();
 

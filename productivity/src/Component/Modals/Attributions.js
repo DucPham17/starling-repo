@@ -14,6 +14,7 @@ export const Attributions = (props) => {
                     <br/>
                     Phuong Dinh, Ruhee Shrestha, Duc Pham, Tiffany Nguyen
                 </div>
+                <a target="_blank" href="https://github.com/DucPham17/starling-repo">Link to github code</a>
                 <br/>
                 <h5>Images</h5>
                 <div>

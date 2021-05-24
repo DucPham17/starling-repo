@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {Form, Button, Modal} from 'react-bootstrap';
+import {Form, Modal} from 'react-bootstrap';
 import { addTodo } from '../../Action/todosAction';
 import { toISOString } from '../../Helpers/date';
 import {colourStyles} from './colourStyles';

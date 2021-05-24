@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Row, Col, Card} from 'react-bootstrap'
+import { Card} from 'react-bootstrap'
 import { PieChart, Pie, Cell, Tooltip, Legend} from 'recharts';
 
 

@@ -1,7 +1,6 @@
 import { NoNoteFound } from "./NoNoteFound"
 import { NoteItem } from "./NoteItem"
-import {Card, Nav} from "react-bootstrap";
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from "react-router-dom";
 import './content.css';

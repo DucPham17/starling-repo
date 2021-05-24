@@ -3,10 +3,8 @@ import { Options } from "./Options";
 import { Content } from "./Content";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterTodosByTag, getTodos } from "../../Action/todosAction";
+import { filterTodosByTag} from "../../Action/todosAction";
 import { toISOString } from "../../Helpers/date";
-import {Filter} from "./Filter";
-import { Card } from "react-bootstrap";
 
 export const Notes = () => {
     const {selectedDate, selectedTag, selectByCompletion} = useSelector((state) => state.todos);
