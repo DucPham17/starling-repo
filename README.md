@@ -19,7 +19,7 @@ Back-end: Nodejs
 Databases: Firebase
 
 ## Demo
-
+<img src='https://github.com/DucPham17/starling-repo/blob/master/productivity%20demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## MIT License
 
