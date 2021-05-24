@@ -1,0 +1,21 @@
+{
+  "name": "starling",
+  "version": "1.0.0",
+  "description": "The main focus of our app will be college students, who struggle with deadlines and postpone completing work.\r ## Function\r There will be many kinds of todolist - no deadline (reading book list or grocery list) or deadline (homework list) - the type will be chosen by users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && node server.js",
+    "heroku-postbuild": "cd productivity && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DucPham17/starling-repo.git"
+  },
+  "author": "Duc Pham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DucPham17/starling-repo/issues"
+  },
+  "homepage": "https://github.com/DucPham17/starling-repo#readme"
+}
