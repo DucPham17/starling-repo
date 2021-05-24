@@ -8,12 +8,10 @@ const cookieSession = require('cookie-session');
 const config = require("./src/firebase.js");
 const firebase = require("firebase/app");
 const admin = require('firebase-admin');
-const serviceAccount = require("./key.json");
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-
 firebase.initializeApp(config);
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(JSON.parse(process.env.googleKey)),
   storageBucket: process.env.storageBucket,
   serviceAccountId: process.env.serviceAccountId
 });
