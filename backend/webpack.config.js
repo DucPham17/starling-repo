@@ -7,5 +7,6 @@ module.exports = {
     filename: 'api.bundle.js'
   },
   externals: {'@google-cloud/storage': 'commonjs @google-cloud/storage' },
-  target: 'node'
+  target: 'node',
+  mode: 'production'
 };

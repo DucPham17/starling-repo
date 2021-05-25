@@ -14,6 +14,10 @@ const isLoggedIn = (req, res, next) => {
     }
 }
 
+router.get("/test", (req,res) =>{
+    res.send("abc");
+})
+
 router.post("/signin", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;

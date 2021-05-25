@@ -5,8 +5,8 @@ const dotenv = require("dotenv")
 dotenv.config()
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-const config = require("./src/firebase.js");
 const firebase = require("firebase/app");
+const config = require("./src/firebase.js");
 const admin = require('firebase-admin');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 firebase.initializeApp(config);
