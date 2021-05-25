@@ -9,7 +9,7 @@ const firebase = require("firebase/app");
 const config = require("./src/firebase.js");
 const admin = require('firebase-admin');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-firebase.initializeApp(config);
+firebase.default.initializeApp(config);
 admin.initializeApp({
   credential: admin.credential.cert(JSON.parse(process.env.googleKey)),
   storageBucket: process.env.storageBucket,
