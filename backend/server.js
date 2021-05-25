@@ -61,6 +61,9 @@ app.use("/api/users", userRouter);
 app.use("/api/expenses", expenseRouter);
 app.use("/api/tasks", taskRouter);
 app.use("/api/weather", weatherRouter);
-app.listen(5000, () => {
-  console.log("server started at port 5000")
+
+var port_number = process.env.PORT || 3000;
+
+app.listen(port_number, () => {
+  console.log("server started at port " + port_number);
 })
