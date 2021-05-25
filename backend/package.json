@@ -5,7 +5,9 @@
     "main": "src/server.js",
     "scripts": {
         "setup": "npm install && npm update",
-        "start": "node server.js"
+        "start": "node server.js",
+        "prod": "node dist/api.bundle.js",
+        "build": "webpack"
     },
     "keywords": [
         "express",
@@ -35,7 +37,9 @@
         "passport": "^0.4.1",
         "passport-google-oauth2": "^0.2.0",
         "rotating-file-stream": "^1.4.6",
-        "sequelize": "^5.19.2"
+        "sequelize": "^5.19.2",
+        "webpack": "^5.37.1",
+        "webpack-cli": "^4.7.0"
     },
     "_moduleAliases": {
         "@root": "src",
