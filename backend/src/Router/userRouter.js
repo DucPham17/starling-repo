@@ -72,7 +72,7 @@ router.get("/signout", (req, res) => {
 
 router.post('/google-signin', async (req, res) => {
     const {idToken} = req.body;
-    
+    console.log(idToken);
     const credentials = await firebase.auth.GoogleAuthProvider.credential(idToken);
  
     try {
