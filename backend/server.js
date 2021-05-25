@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var cors = require('cors')
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv")
 dotenv.config()
@@ -42,7 +43,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
+app.use(cors())
 const userRouter = require('./src/Router/userRouter')
 const expenseRouter = require('./src/Router/expenseRouter')
 const taskRouter = require('./src/Router/taskRouter')
