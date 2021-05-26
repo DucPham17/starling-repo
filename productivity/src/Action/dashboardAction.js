@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../instance';
 import { SETUP_DASHBOARD } from '../Constant/actionTypes';
 import { toISOString } from '../Helpers/date';
 import { getPosition } from '../Helpers/weather';

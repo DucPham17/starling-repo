@@ -3,7 +3,7 @@ import './App.css';
 import { useSelector} from "react-redux";
 import { getEntryRoutes, getMainRoutes } from './Factories/RouteFactory';
 import React,{useEffect} from 'react';
-import axios from 'axios'
+import axios from './instance'
 function App() {
   const {userInfo} = useSelector(state => state.user);
   

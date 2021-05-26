@@ -1,4 +1,4 @@
-import Axios from "axios";
+import Axios from '../instance';
 import Cookie from "js-cookie";
 import { setModal } from "./modalsAction";
 

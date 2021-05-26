@@ -1,4 +1,4 @@
-import Axios from "axios";
+import Axios from '../instance';
 import Cookie from "js-cookie";
 import { SET_TODOS, TOGGLE_TODOS, UPDATE_TODOS, DELETE_TODOS} from "../Constant/actionTypes";
 import { setModal } from "./modalsAction";

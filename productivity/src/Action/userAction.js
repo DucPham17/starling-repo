@@ -1,6 +1,6 @@
 import { SIGNIN_ACTION_REQUEST, SIGNIN_ACTION_SUCCESS, SIGNIN_ACTION_FAIL, 
     SIGNUP_ACTION_REQUEST, SIGNUP_ACTION_SUCCESS, SIGNUP_ACTION_FAIL, SIGNOUT_ACTION_REQUEST } from "../Constant/actionTypes";
-import Axios from "axios";
+import Axios from '../instance';
 import Cookie from "js-cookie";
 import { setModal } from "./modalsAction";
 import { setLoading } from "./pageStatusAction";

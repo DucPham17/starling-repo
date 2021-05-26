@@ -2,9 +2,6 @@ const express = require("express");
 const firebase = require("firebase/app");
 require("firebase/auth");
 const router = express.Router();
-const admin = require('firebase-admin');
-const passport = require("passport");
-const sign = require('jwt-encode');
 
 const isLoggedIn = (req, res, next) => {
     if (req.user) {
@@ -37,6 +34,7 @@ router.post("/signin", async (req, res) => {
 })
 
 router.post("/signup", (req, res) => {
+    console.log("sign up");
     const email = req.body.email;
     const password = req.body.password;
     const name = req.body.name;
