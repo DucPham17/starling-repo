@@ -11,10 +11,7 @@ const config = require("./src/firebase.js");
 const admin = require('firebase-admin');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 firebase.default.initializeApp(config);
-var corsOptions = {
-  origin: 'http://localhost:3000/',
-}
-app.use(cors(corsOptions))
+app.use(cors())
 
 
 admin.initializeApp({
