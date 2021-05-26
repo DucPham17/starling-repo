@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-var cors = require('cors')
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const dotenv = require("dotenv")
 dotenv.config()
@@ -11,6 +11,12 @@ const config = require("./src/firebase.js");
 const admin = require('firebase-admin');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 firebase.default.initializeApp(config);
+var corsOptions = {
+  origin: 'http://localhost:3000/',
+}
+app.use(cors(corsOptions))
+
+
 admin.initializeApp({
   credential: admin.credential.cert(JSON.parse(process.env.googleKey)),
   storageBucket: process.env.storageBucket,
@@ -43,7 +49,7 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-app.use(cors())
+
 const userRouter = require('./src/Router/userRouter')
 const expenseRouter = require('./src/Router/expenseRouter')
 const taskRouter = require('./src/Router/taskRouter')

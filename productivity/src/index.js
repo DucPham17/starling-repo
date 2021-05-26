@@ -12,6 +12,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Modals } from './Component/Modals';
 import "react-datepicker/dist/react-datepicker.css";
 import { FullPageLoading } from './Component/Common/FullPageLoading';
+import axios from 'axios'
+axios.defaults.headers.common = {'X-Requested-With': 'XMLHttpRequest'}
+axios.defaults.baseURL = "https://backend-starling.herokuapp.com/";
 
 ReactDOM.render(
   <Provider store = {store}>
